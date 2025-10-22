@@ -14,14 +14,14 @@ public class Paddle extends GameObject {
 
     public void moveLeft() {
         if (x > 0) {
-            x -= 15;
+            x -= 8;
             shape.setLayoutX(x);
         }
     }
 
     public void moveRight(double sceneWidth) {
         if (x + w < sceneWidth) {
-            x += 15;
+            x += 8;
             shape.setLayoutX(x);
         }
     }

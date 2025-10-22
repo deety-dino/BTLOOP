@@ -22,6 +22,8 @@ public class IngameController {
     private AnchorPane root;
 
     private Paddle paddle;
+    private boolean leftPressed = false;
+    private boolean rightPressed = false;
     private Ball ball;
     private List<Brick> bricks = new ArrayList<>();
     private AnimationTimer gameLoop;
@@ -44,13 +46,15 @@ public class IngameController {
         }
 
         root.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.LEFT) {
-                paddle.moveLeft();
-            }
-            if (e.getCode() == KeyCode.RIGHT) {
-                paddle.moveRight(root.getWidth());
-            }
+            if (e.getCode() == KeyCode.LEFT) leftPressed = true;
+            if (e.getCode() == KeyCode.RIGHT) rightPressed = true;
         });
+
+        root.setOnKeyReleased(e -> {
+            if (e.getCode() == KeyCode.LEFT) leftPressed = false;
+            if (e.getCode() == KeyCode.RIGHT) rightPressed = false;
+        });
+
         root.setFocusTraversable(true);
         Platform.runLater(() -> root.requestFocus());
 
@@ -85,6 +89,14 @@ public class IngameController {
     }
 
     private void updateGame() {
+        // Handle paddle movement
+        if (leftPressed) {
+            paddle.moveLeft();
+        }
+        if (rightPressed) {
+            paddle.moveRight(root.getWidth());
+        }
+
         ball.update();
 
         //Bounce
