@@ -6,8 +6,10 @@ import javafx.scene.shape.Rectangle;
 public class Paddle extends GameObject {
     public Paddle(double x, double y, double w, double h) {
         super(x, y, w, h);
-        shape = new Rectangle(x,y,w,h);
+        shape = new Rectangle(w,h);
         ((Rectangle) shape).setFill(Color.LIGHTBLUE);
+        shape.setLayoutX(x);
+        shape.setLayoutY(y);
     }
 
     public void moveLeft() {
@@ -26,6 +28,6 @@ public class Paddle extends GameObject {
 
     @Override
     public void update() {
-        // Paddle is controlled by player, so nothing automatic yet
+
     }
 }
