@@ -4,8 +4,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class Ball extends GameObject {
-    private double dx = 3;
-    private double dy = -3;
+    private double dx = 4;
+    private double dy = -4;
 
     public Ball(double x, double y, double radius) {
         super(x, y, radius*2, radius*2);
