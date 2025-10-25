@@ -31,7 +31,7 @@ public class IngameController {
     @FXML
     public void initialize() {
         //Create game objects
-        paddle = new Paddle(350, 550, 100, 15);
+        paddle = new Paddle(325, 550, 150, 15);
         ball = new Ball(400, 300, 8);
         createBricks();
 
@@ -74,7 +74,7 @@ public class IngameController {
         double brickWidth = 70;
         double brickHeight = 20;
         double offsetX = 35;
-        double offsetY = 50;
+        double offsetY = 0;
 
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
@@ -109,7 +109,14 @@ public class IngameController {
 
         //Paddle collision
         if (ball.intersects(paddle)) {
-            ball.bounceY();
+            double ballBottom = ball.getY() + ball.getH() / 2;
+            double paddleTop = paddle.getY();
+
+            if (ballBottom <= paddleTop + 5) {
+                ball.bounceY();
+            } else {
+                ball.bounceX();
+            }
         }
 
         //Brick collision
@@ -117,7 +124,33 @@ public class IngameController {
         while (it.hasNext()) {
             Brick brick = it.next();
             if (ball.intersects(brick)) {
-                ball.bounceY();
+
+                // Get edges of Ball and Brick
+                double ballLeft = ball.getX() - ball.getW() / 2;
+                double ballRight = ball.getX() + ball.getW() / 2;
+                double ballTop = ball.getY() - ball.getH() / 2;
+                double ballBottom = ball.getY() + ball.getH() / 2;
+                double brickLeft = brick.getX();
+                double brickRight = brick.getX() + brick.getW();
+                double brickTop = brick.getY();
+                double brickBottom = brick.getY() + brick.getH();
+
+                // Compute overlap distances for every situation
+                double overlapLeft = ballRight - brickLeft;
+                double overlapRight = brickRight - ballLeft;
+                double overlapTop = ballBottom - brickTop;
+                double overlapBottom = brickBottom - ballTop;
+
+                // Find the smallest overlap to tell side of collision
+                double minOverlapX = Math.min(overlapLeft, overlapRight);
+                double minOverlapY = Math.min(overlapTop, overlapBottom);
+
+                if (minOverlapX < minOverlapY) {
+                    ball.bounceX(); // X-axis
+                } else {
+                    ball.bounceY(); // Y-axis
+                }
+
                 root.getChildren().remove(brick.getNode());
                 it.remove();
                 break;
