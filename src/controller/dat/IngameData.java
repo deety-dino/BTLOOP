@@ -6,27 +6,33 @@ import java.util.Iterator;
 import gameobjects.Paddle;
 import gameobjects.Ball;
 import gameobjects.Brick;
+import javafx.scene.Group;
 import javafx.scene.layout.AnchorPane;
 
-public class IngameData implements dat{
-    private AnchorPane root;
-    private boolean isContinue = true;
+public class IngameData implements dat {
+    private Group root;
+    private boolean isPause;
+    private boolean isRunning;
     private boolean leftPressed = false;
     private boolean rightPressed = false;
     ArrayList<Ball> balls = new ArrayList<Ball>();
     ArrayList<Brick> bricks = new ArrayList<Brick>();
 
     Paddle paddle;
+
     //Constructor
-    public IngameData(AnchorPane root) {
+    public IngameData(Group root) {
         this.root = root;
-        root.setPrefSize(width, height);
+        isPause = false;
+        isRunning = true;
         paddle = new Paddle(350, 550, 100, 15);
+
     }
 
-    public void loadData(int level){
-        isContinue = true;
-        switch (level){
+    public void loadData(int level) {
+        isPause = false;
+        isRunning = true;
+        switch (level) {
             case 1:
                 level1();
                 break;
@@ -60,41 +66,45 @@ public class IngameData implements dat{
     }
 
     //update
-    private void updatePaddle(){
-        if(leftPressed) {
+    private void updatePaddle() {
+        if (leftPressed) {
             paddle.moveLeft();
         }
-        if(rightPressed) {
+        if (rightPressed) {
             paddle.moveRight();
         }
     }
-    private void updateBall() {
-        if(balls.size() == 0) {
-            isContinue = false;
-            return;
-        }
-        for (Ball ball : balls) {
-            if(ball.getY() > height){
-                balls.remove(ball);
-                continue;
-            }
-            //Brick collision
-            Iterator<Brick> it = bricks.iterator();
-            while (it.hasNext()) {
-                Brick brick = it.next();
-                if (ball.intersects(brick)) {
-                    ball.bounce(brick);
-                    root.getChildren().remove(brick.getNode());
-                    it.remove();
-                    break;
-                }
-            }
 
-            //Paddle collision
-            if(ball.intersects(paddle)){
-                ball.bounce(paddle);
+    private void updateBall() {
+        if (balls.size() == 0) {
+            isRunning = false;
+            return;
+        } else {
+            for (Ball ball : balls) {
+                if (ball.getY() > height) {
+                    balls.remove(ball);
+                    continue;
+                }
+
+                //Brick collision
+                Iterator<Brick> it = bricks.iterator();
+                while (it.hasNext()) {
+                    Brick brick = it.next();
+                    if (ball.intersects(brick)) {
+                        ball.bounce(brick);
+                        root.getChildren().remove(brick.getNode());
+                        it.remove();
+                        break;
+                    }
+                }
+
+
+                //Paddle collision
+                if (ball.intersects(paddle)) {
+                    ball.bounce(paddle);
+                }
+                ball.update();
             }
-            ball.update();
         }
 
     }
@@ -108,20 +118,35 @@ public class IngameData implements dat{
     public void setLeftPressed(boolean leftPressed) {
         this.leftPressed = leftPressed;
     }
+
     public void setRightPressed(boolean rightPressed) {
         this.rightPressed = rightPressed;
     }
-    public void getRoot(/*AnchorPane root*/) {
+
+    public void getGroup() {
+        root.getChildren().clear();
         root.getChildren().add(paddle.getNode());
-        for(Brick brick : bricks) {
+        for (Brick brick : bricks) {
             root.getChildren().add(brick.getNode());
         }
-        for(Ball ball : balls) {
+        for (Ball ball : balls) {
             root.getChildren().add(ball.getNode());
         }
     }
-    public boolean isContinue() {
-        return isContinue;
+
+    public void setPause() {
+        isPause = !isPause;
     }
 
+    public boolean isPause() {
+        return isPause;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
+    }
+
+    public void setRunning() {
+        isRunning = true;
+    }
 }
