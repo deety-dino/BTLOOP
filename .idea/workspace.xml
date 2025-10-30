@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="007a0407-1f25-4a44-a6ef-23b7e48c963b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Lobby theme.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Lost theme.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/MenuIMG.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/NotoSans-ExtraBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/NotoSans.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/OST1.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/OST2.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/OST3.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-Black.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-BlackItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-ExtraLight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-ExtraLightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-MediumItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-SemiBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-Thin.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans-ThinItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-Black.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-BlackItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-ExtraBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-ExtraLight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-ExtraLightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-MediumItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-SemiBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-Thin.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_Condensed-ThinItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-Black.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-BlackItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-ExtraBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-ExtraLight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-ExtraLightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-MediumItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-SemiBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-Thin.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_ExtraCondensed-ThinItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-Black.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-BlackItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-BoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-ExtraBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-ExtraBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-ExtraLight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-ExtraLightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-Italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-Light.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-LightItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-MediumItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-SemiBold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-SemiBoldItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-Thin.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/static/NotoSans_SemiCondensed-ThinItalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/title.png" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="CLEAR_OUTPUT_DIRECTORY" value="false" />
+  </component>
+  <component name="FindBugs-IDEA-Workspace">
+    <analyzeAfterCompile>true</analyzeAfterCompile>
+    <toolWindowToFront>false</toolWindowToFront>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="34QNG8TZ8qtDsEQpWJtyWlL4moZ" />
+  <component name="ProjectViewState">
+    <option name="abbreviatePackageNames" value="true" />
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showModules" value="false" />
+    <option name="sortByType" value="true" />
+    <option name="sortKey" value="BY_TYPE" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Arkanoid.executor": "Run",
+    "Application.Launcher.executor": "Run",
+    "Application.main.Launcher.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "UI-+-Sound",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/BTLOOP",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.main.Launcher">
+    <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+    </configuration>
+    <configuration name="Arkanoid" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.Arkanoid" />
+      <module name="BTLOOP" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Launcher" />
+      <module name="BTLOOP2" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main.Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.Launcher" />
+      <module name="BTLOOP" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.main.Launcher" />
+        <item itemvalue="Application.Arkanoid" />
+        <item itemvalue="Application.Launcher" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="007a0407-1f25-4a44-a6ef-23b7e48c963b" name="Changes" comment="" />
+      <created>1761141737922</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761141737922</updated>
+    </task>
+    <servers />
+  </component>
+</project>

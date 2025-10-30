@@ -1,0 +1,11 @@
+@font-face {
+    font-family: "NotoSansExtraBoldItalic";
+    src: url("ttf/NotoSans-ExtraBoldItalic.ttf");
+}
+
+.button {
+    -fx-font-family: "NotoSansExtraBoldItalic";
+    -fx-font-size: 30px;
+    -fx-text-fill: #000405;
+    -fx-background-color: linear-gradient(to bottom right, #f9a300, #ffea00);
+}
