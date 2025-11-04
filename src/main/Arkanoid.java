@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Arkanoid extends Application implements dat {
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Arkanoid.class.getResource("/scene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Arkanoid.class.getResource("/controller/fxml/scene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), width, height);
         primaryStage.setTitle("Arkanoid");
         primaryStage.setScene(scene);
