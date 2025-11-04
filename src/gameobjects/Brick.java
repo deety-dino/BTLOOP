@@ -3,17 +3,34 @@ package gameobjects;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Brick extends GameObject {
+public abstract class Brick extends GameObject {
 
-    public Brick(double x, double y, double w, double h) {
+    protected int hitPoints;
+
+    public Brick(double x, double y, double w, double h, int hitPoints, Color color) {
         super(x, y, w, h);
-        shape = new Rectangle(x, y, w, h);
-        ((Rectangle) shape).setFill(Color.ORANGE);
-        ((Rectangle) shape).setStroke(Color.BLACK);
+        this.hitPoints = hitPoints;
+
+        shape = new Rectangle(w, h, color);
+        shape.setLayoutX(x);
+        shape.setLayoutY(y);
     }
+
+    public void hit() {
+        hitPoints--;
+        onHit();
+    }
+
+    public boolean isDestroyed() {
+        return hitPoints <= 0;
+    }
+
+    public void onDestroyed() {}
+    protected void onHit() {}
 
     @Override
     public void update() {
 
     }
+
 }
