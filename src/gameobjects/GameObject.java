@@ -74,4 +74,11 @@ public abstract class GameObject implements dat {
         return shape.getBoundsInParent().intersects(other.shape.getBoundsInParent());
     }
 
+    public double getX() {
+        return position.getX();
+    }
+
+    public double getY() {
+        return position.getY();
+    }
 }
