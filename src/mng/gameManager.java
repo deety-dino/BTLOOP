@@ -11,6 +11,7 @@ import main.Arkanoid;
 import user.User;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class gameManager implements dat {
     private AnimationTimer loop;
@@ -48,33 +49,40 @@ public class gameManager implements dat {
     }
 
     public void loadResource() throws IOException {
+        // Helper to load a single FXML by path
         try {
-            fxmlLoader[0] = new FXMLLoader(Arkanoid.class.getResource("/login.fxml"));
+            String path = "/controller/fxml/login.fxml";
+            URL url = Arkanoid.class.getResource(path);
+            if (url == null) throw new IOException("FXML resource not found on classpath: " + path);
+            fxmlLoader[0] = new FXMLLoader(url);
             scene[0] = new Scene(fxmlLoader[0].load(), 800, 600);
-            System.out.println("Login scene loaded successfully!");
+            System.out.println("Login scene loaded successfully from " + path);
         } catch (IOException e) {
             System.err.println("Failed to load login scene: " + e.getMessage());
-            e.printStackTrace();
-            throw e; // Re-throw if you want the calling method to handle it
-        }
-
-        try {
-            fxmlLoader[1] = new FXMLLoader(Arkanoid.class.getResource("/levelSelection.fxml"));
-            scene[1] = new Scene(fxmlLoader[1].load(), 800, 600);
-            System.out.println("Level scene loaded successfully!");
-        } catch (IOException e)  {
-            System.err.println("Failed to load level selection scene: " + e.getMessage());
-            e.printStackTrace();
             throw e;
         }
 
         try {
-            fxmlLoader[2] = new FXMLLoader(Arkanoid.class.getResource("/play.fxml"));
+            String path = "/controller/fxml/levelSelection.fxml";
+            URL url = Arkanoid.class.getResource(path);
+            if (url == null) throw new IOException("FXML resource not found on classpath: " + path);
+            fxmlLoader[1] = new FXMLLoader(url);
+            scene[1] = new Scene(fxmlLoader[1].load(), 800, 600);
+            System.out.println("Level scene loaded successfully from " + path);
+        } catch (IOException e)  {
+            System.err.println("Failed to load level selection scene: " + e.getMessage());
+            throw e;
+        }
+
+        try {
+            String path = "/controller/fxml/play.fxml";
+            URL url = Arkanoid.class.getResource(path);
+            if (url == null) throw new IOException("FXML resource not found on classpath: " + path);
+            fxmlLoader[2] = new FXMLLoader(url);
             scene[2] = new Scene(fxmlLoader[2].load(), 800, 600);
-            System.out.println("Play scene loaded successfully!");
+            System.out.println("Play scene loaded successfully from " + path);
         } catch (IOException e) {
             System.err.println("Failed to load play scene: " + e.getMessage());
-            e.printStackTrace();
             throw e;
         }
     }
