@@ -41,7 +41,7 @@ public class Play {
                     user = User.getInstance();
                 } else if (user.isSelected()) {
                     data.loadData(user.getSelectedLevel());
-                    data.getRoot();
+                    data.getGroup();
                     User.setSelected(false);
                 } else {
                     update();

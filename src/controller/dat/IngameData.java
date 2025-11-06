@@ -8,10 +8,10 @@ import gameobjects.Paddle;
 import gameobjects.Ball;
 import gameobjects.Brick;
 import javafx.scene.Group;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 
 public class IngameData implements dat {
-    private Group group;
+    private Group root;
     private boolean isPause;
     private boolean isRunning;
     private boolean leftPressed = false;
@@ -22,8 +22,8 @@ public class IngameData implements dat {
     Paddle paddle;
 
     //Constructor
-    public IngameData(Group group) {
-        this.group = group;
+    public IngameData(Group root) {
+        this.root = root;
         isPause = false;
         isRunning = true;
         paddle = new Paddle(350, 550, 100, 15);
@@ -92,11 +92,17 @@ public class IngameData implements dat {
                     Brick brick = it.next();
                     if (ball.intersects(brick)) {
                         ball.bounce(brick);
-                        group.getChildren().remove(brick.getNode());
-                        it.remove();
-                        break;
+                        brick.hit();
+
+                        if (brick.isDestroyed()) {
+                            brick.onDestroyed();
+                            it.remove();
+                            root.getChildren().remove(brick.getNode());
+                        }
                     }
                 }
+
+
                 //Paddle collision
                 if (ball.intersects(paddle)) {
                     ball.bounce(paddle);
@@ -121,14 +127,14 @@ public class IngameData implements dat {
         this.rightPressed = rightPressed;
     }
 
-    public void getRoot() {
-        group.getChildren().clear();
-        group.getChildren().add(paddle.getNode());
+    public void getGroup() {
+        root.getChildren().clear();
+        root.getChildren().add(paddle.getNode());
         for (Brick brick : bricks) {
-            group.getChildren().add(brick.getNode());
+            root.getChildren().add(brick.getNode());
         }
         for (Ball ball : balls) {
-            group.getChildren().add(ball.getNode());
+            root.getChildren().add(ball.getNode());
         }
     }
 
