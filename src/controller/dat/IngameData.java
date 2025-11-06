@@ -7,10 +7,10 @@ import gameobjects.Paddle;
 import gameobjects.Ball;
 import gameobjects.Brick;
 import javafx.scene.Group;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 public class IngameData implements dat {
-    private Group root;
+    private Group group;
     private boolean isPause;
     private boolean isRunning;
     private boolean leftPressed = false;
@@ -21,8 +21,8 @@ public class IngameData implements dat {
     Paddle paddle;
 
     //Constructor
-    public IngameData(Group root) {
-        this.root = root;
+    public IngameData(Group group) {
+        this.group = group;
         isPause = false;
         isRunning = true;
         paddle = new Paddle(350, 550, 100, 15);
@@ -92,13 +92,11 @@ public class IngameData implements dat {
                     Brick brick = it.next();
                     if (ball.intersects(brick)) {
                         ball.bounce(brick);
-                        root.getChildren().remove(brick.getNode());
+                        group.getChildren().remove(brick.getNode());
                         it.remove();
                         break;
                     }
                 }
-
-
                 //Paddle collision
                 if (ball.intersects(paddle)) {
                     ball.bounce(paddle);
@@ -123,14 +121,14 @@ public class IngameData implements dat {
         this.rightPressed = rightPressed;
     }
 
-    public void getGroup() {
-        root.getChildren().clear();
-        root.getChildren().add(paddle.getNode());
+    public void getRoot() {
+        group.getChildren().clear();
+        group.getChildren().add(paddle.getNode());
         for (Brick brick : bricks) {
-            root.getChildren().add(brick.getNode());
+            group.getChildren().add(brick.getNode());
         }
         for (Ball ball : balls) {
-            root.getChildren().add(ball.getNode());
+            group.getChildren().add(ball.getNode());
         }
     }
 
