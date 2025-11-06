@@ -3,6 +3,7 @@ package controller.dat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import gameobjects.BrickFactory;
 import gameobjects.Paddle;
 import gameobjects.Ball;
 import gameobjects.Brick;
@@ -55,11 +56,10 @@ public class IngameData implements dat {
 
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                Brick brick = new Brick(
+                Brick brick = BrickFactory.createRandomBrick(
                         offsetX + col * (brickWidth + 5),
                         offsetY + row * (brickHeight + 5),
-                        brickWidth, brickHeight
-                );
+                        brickWidth, brickHeight);
                 bricks.add(brick);
             }
         }
