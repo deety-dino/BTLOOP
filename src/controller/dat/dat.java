@@ -6,7 +6,7 @@ import main.Arkanoid;
 public interface dat {
     int width=800;
     int height=600;
-    double ball_velocity = 3;
+    double ball_velocity = 5;
     double paddle_velocity = 6;
 
     int loginStatus = 0;

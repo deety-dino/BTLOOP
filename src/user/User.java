@@ -23,7 +23,6 @@ public class User {
     public int getSelectedLevel() {
         return selectedLevel;
     }
-
     public boolean isSelected() {
         return selected;
     }
