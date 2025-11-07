@@ -1,6 +1,8 @@
 <component name="libraryTable">
   <library name="javafx">
-    <CLASSES />
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../JavaFX/javafx-sdk-25.0.1/lib" />
+    </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="file://$PROJECT_DIR$/../JavaFX/javafx-sdk-25.0.1/src/javafx.base" />
@@ -14,5 +16,6 @@
       <root url="file://$PROJECT_DIR$/../JavaFX/javafx-sdk-25.0.1/src/jfx.incubator.input" />
       <root url="file://$PROJECT_DIR$/../JavaFX/javafx-sdk-25.0.1/src/jfx.incubator.richtext" />
     </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../JavaFX/javafx-sdk-25.0.1/lib" recursive="false" />
   </library>
 </component>
