@@ -16,14 +16,14 @@
    <Group fx:id="pane" layoutX="300.0" layoutY="250.0">
       <children>
          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-         <Label layoutX="60.0" text="Game Over!" textFill="#fffcfc">
+         <Label layoutX="55.0" text="Game Over!" textFill="#fffcfc">
             <font>
                <Font size="15.0" />
             </font>
          </Label>
-         <Button layoutX="-10.0" layoutY="60.0" mnemonicParsing="false" text="Home" onAction="#clickToHome"/>
-         <Button layoutX="69.0" layoutY="60.0" mnemonicParsing="false" text="Restart" onAction="#clickRestart"/>
-         <Button layoutX="161.0" layoutY="60.0" mnemonicParsing="false" text="Next" onAction="#clickNext"/>
+         <Button layoutX="-10.0" layoutY="70.0" mnemonicParsing="false" text="Home" />
+         <Button layoutX="69.0" layoutY="70.0" mnemonicParsing="false" text="Restart" />
+         <Button layoutX="161.0" layoutY="70.0" mnemonicParsing="false" text="Next" />
       </children>
    </Group>
 </Pane>
