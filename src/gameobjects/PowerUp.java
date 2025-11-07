@@ -127,15 +127,14 @@ public class PowerUp extends GameObject {
                 for (int i = 0; i < balls.size(); i++) {
                     Ball b = balls.get(i);
                     if (b == null) continue;
-                    originalVelocities[i] = b.getBallVelocity();
-                    b.setBallVelocity(originalVelocities[i] * 1.7);  // Adjusted multiplier
+                    b.setVe_Multi(1.7);
                 }
 
                 PauseTransition pt = new PauseTransition(Duration.seconds(10));
                 pt.setOnFinished(evt -> {
                     for (int i = 0; i < balls.size() && i < originalVelocities.length; i++) {
                         Ball b = balls.get(i);
-                        if (b != null) b.setBallVelocity(originalVelocities[i]);
+                        b.setVe_Multi(1);
                     }
                 });
                 pt.play();
@@ -202,10 +201,9 @@ public class PowerUp extends GameObject {
             }
             case SPEED_BALL: {
                 if (ball != null) {
-                    double originalVelocity = ball.getBallVelocity();
-                    ball.setBallVelocity(originalVelocity * 1.7);
+                    ball.setVe_Multi(1.7);
                     PauseTransition pt = new PauseTransition(Duration.seconds(10));
-                    pt.setOnFinished(evt -> ball.setBallVelocity(originalVelocity));
+                    pt.setOnFinished(evt -> ball.setVe_Multi(1));
                     pt.play();
                 }
                 break;

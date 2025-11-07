@@ -5,28 +5,25 @@ import javafx.scene.shape.Circle;
 
 public class Ball extends GameObject {
     vector2f direction;
-    private double ballVelocity = 5.0; // Default ball speed
+    private double ve_Multi;
 
-    public void setBallVelocity(double velocity) {
-        this.ballVelocity = velocity;
+    public void setVe_Multi(double ve_Multi) {
+        this.ve_Multi = ve_Multi;
     }
-
-    public double getBallVelocity() {
-        return this.ballVelocity;
-    }
-
     public Ball(double x, double y, double radius) {
         super(x, y, radius * 2, radius * 2);
         shape = new Circle(x, y, radius);
         Circle circ = (Circle) shape;
         circ.setFill(Color.WHITE);
+        ve_Multi = 1;
         direction = new vector2f(1, 1);
     }
 
     @Override
     public void update() {
         direction.normalize(1);
-        position.setPosition(position.getX() + ballVelocity * direction.getX(), position.getY() + ballVelocity * direction.getY());
+        position.setPosition(position.getX() + ball_velocity * ve_Multi * direction.getX(),
+                position.getY() + ball_velocity * ve_Multi * direction.getY());
         ((Circle) shape).setCenterX(position.getX());
         ((Circle) shape).setCenterY(position.getY());
         if (position.getX() <= 0 || position.getX() >= width) {
