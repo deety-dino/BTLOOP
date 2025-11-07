@@ -20,7 +20,7 @@ public class Play {
     @FXML
     protected Pane root;
     @FXML
-    protected Group buttonGroup, gamePlay;
+    protected Group buttonGroup, gamePlay, pane;
 
     @FXML
     protected void clickPause() {
@@ -30,6 +30,19 @@ public class Play {
     @FXML
     protected void clickToHome() throws IOException {
         gameManager.letShow(dat.levelStatus);
+    }
+    @FXML
+    protected void clickRestart() {
+        pane.setVisible(false);
+        gamePlay.setVisible(true);
+        data.loadData(user.getSelectedLevel());
+        data.getGroup();
+    }
+    @FXML
+    protected void clickNext() {
+        User.setSelectedLevel(user.getSelectedLevel() + 1);
+        data.loadData(user.getSelectedLevel());
+        data.getGroup();
     }
     @FXML
     protected void initialize() {
@@ -42,6 +55,8 @@ public class Play {
                 } else if (user.isSelected()) {
                     data.loadData(user.getSelectedLevel());
                     data.getGroup();
+                    pane.setVisible(false);
+                    gamePlay.setVisible(true);
                     User.setSelected(false);
                 } else {
                     update();
@@ -52,7 +67,10 @@ public class Play {
     }
 
     private void update() {
-        if (!data.isPause()) {
+        if (!data.isRunning()) {
+            pane.setVisible(true);
+            gamePlay.setVisible(false);
+        } else if (!data.isPause()) {
             root.setOnKeyReleased(e -> {
                 if (e.getCode() == KeyCode.LEFT) {
                     data.setLeftPressed(false);
