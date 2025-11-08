@@ -47,6 +47,12 @@ class size extends vector2f {
     public void setSize(double x, double y) {
         super.setVector(x, y);
     }
+    public void setWidth(double width) {
+        super.setVector(width, getHeight());
+    }
+    public void setHeight(double height) {
+        super.setVector(getWidth(), height);
+    }
     public double getWidth() {
         return super.getX();
     }
@@ -80,5 +86,9 @@ public abstract class GameObject implements dat {
 
     public double getY() {
         return position.getY();
+    }
+
+    public Shape getShape() {
+        return shape;
     }
 }
