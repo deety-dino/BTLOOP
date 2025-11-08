@@ -6,7 +6,6 @@ import java.util.Iterator;
 import gameobjects.*;  // Updated import to include PowerUp
 import javafx.scene.Group;
 import javafx.animation.PauseTransition;
-import javafx.scene.control.Alert;
 import javafx.util.Duration;
 
 // Removed unused import
@@ -193,41 +192,10 @@ public class IngameData implements dat {
         }
     }
 
-    private void checkGameState() {
-        if (!isRunning) return;
-
-        // Kiểm tra thua (không còn bóng)
-        if (balls.isEmpty()) {
-            isRunning = false;
-            showGameOver("Game Over", "Bạn đã thua!");
-            return;
-        }
-
-        // Kiểm tra thắng (phá hết gạch)
-        if (bricks.isEmpty()) {
-            isRunning = false;
-            showGameOver("Victory!", "Chúc mừng! Bạn đã chiến thắng!");
-        }
-    }
-
-    private void showGameOver(String title, String content) {
-        // Hiển thị thông báo trên UI thread
-        javafx.application.Platform.runLater(() -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle(title);
-            alert.setHeaderText(null);
-            alert.setContentText(content);
-            alert.show();
-        });
-    }
-
     public void update() {
-        if (!isRunning || isPause) return;
-
         updatePaddle();
         updateBall();
         updatePowerUps();
-        checkGameState();
     }
 
     //Getter and setter
