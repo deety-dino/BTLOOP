@@ -22,16 +22,22 @@ public class Ball extends GameObject {
     @Override
     public void update() {
         direction.normalize(1);
-        position.setPosition(position.getX() + ball_velocity * ve_Multi * direction.getX(),
-                position.getY() + ball_velocity * ve_Multi * direction.getY());
+        double nextX = position.getX() + ball_velocity * ve_Multi * direction.getX();
+        double nextY = position.getY() + ball_velocity * ve_Multi * direction.getY();
+
+        // Kiểm tra va chạm với biên màn hình trước khi cập nhật vị trí
+        if (nextX <= 0 || nextX >= width) {
+            direction.setVector(-direction.getX(), direction.getY());
+            nextX = Math.max(0, Math.min(nextX, width));
+        }
+        if (nextY <= 0) {
+            direction.setVector(direction.getX(), -direction.getY());
+            nextY = 0;
+        }
+
+        position.setPosition(nextX, nextY);
         ((Circle) shape).setCenterX(position.getX());
         ((Circle) shape).setCenterY(position.getY());
-        if (position.getX() <= 0 || position.getX() >= width) {
-            direction.setVector(-direction.getX(), direction.getY());
-        }
-        if (position.getY() <= 0) {
-            direction.setVector(direction.getX(), -direction.getY());
-        }
     }
 
     // Allow external code to set the initial direction of the ball
@@ -84,5 +90,18 @@ public class Ball extends GameObject {
 
     public double getRadius() {
         return size.getHeight() / 2;
+    }
+
+    public void setVelocity(double velocityX, double velocityY) {
+        direction.setVector(velocityX, velocityY);
+        direction.normalize(1);
+    }
+
+    public double getVelocityX() {
+        return direction.getX() * ball_velocity * ve_Multi;
+    }
+
+    public double getVelocityY() {
+        return direction.getY() * ball_velocity * ve_Multi;
     }
 }

@@ -33,4 +33,19 @@ public abstract class Brick extends GameObject {
 
     }
 
+    public boolean checkCollision(Ball ball) {
+        if (intersects(ball)) {
+            ball.bounce(this);
+            return true;
+        }
+        return false;
+    }
+
+    public double getWidth() {
+        return size.getWidth();
+    }
+
+    public double getHeight() {
+        return size.getHeight();
+    }
 }
