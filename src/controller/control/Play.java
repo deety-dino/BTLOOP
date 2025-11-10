@@ -1,92 +1,155 @@
 package controller.control;
 
 import controller.dat.IngameData;
-import controller.dat.dat;
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import mng.gameManager;
-import user.User;
-
-import java.io.IOException;
 
 public class Play {
-    private AnimationTimer gameLoop;
+    @FXML
+    private Group gamePlay;
+    @FXML
+    private Group buttonGroup;
+    @FXML
+    private Group pane;
+    @FXML
+    private Pane root;
+
     private IngameData data;
-    private User user;
-    @FXML
-    protected Pane root;
-    @FXML
-    protected Group buttonGroup, gamePlay, pane;
+    private Scene scene;
+    private static int level = 1;
+    private AnimationTimer gameLoop;
 
-    @FXML
-    protected void clickPause() {
-        data.setPause();
+    public Group getGamePlayGroup() {
+        return gamePlay;
     }
 
-    @FXML
-    protected void clickToHome() throws IOException {
-        gameManager.letShow(dat.levelStatus);
-    }
-    @FXML
-    protected void clickRestart() {
-        pane.setVisible(false);
-        gamePlay.setVisible(true);
-        data.loadData(user.getSelectedLevel());
-        data.getGroup();
-    }
-    @FXML
-    protected void clickNext() {
-        User.setSelectedLevel(user.getSelectedLevel() + 1);
-        data.loadData(user.getSelectedLevel());
-        data.getGroup();
-    }
     @FXML
     protected void initialize() {
         data = new IngameData(gamePlay);
+        data.loadData(level);
+
         gameLoop = new AnimationTimer() {
             @Override
-            public void handle(long l) {
-                if(user == null) {
-                    user = User.getInstance();
-                } else if (user.isSelected()) {
-                    data.loadData(user.getSelectedLevel());
-                    data.getGroup();
-                    pane.setVisible(false);
-                    gamePlay.setVisible(true);
-                    User.setSelected(false);
-                } else {
-                    update();
+            public void handle(long now) {
+                if (data != null) {
+                    data.update();
+
+                    if (!data.isRunning() && !data.isPause()) {
+                        data.setPause();
+                        pane.setVisible(true);
+                    }
                 }
             }
         };
         gameLoop.start();
+
+        root.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null && scene != newScene) {
+                scene = newScene;
+                setupKeyHandlers();
+                root.requestFocus();
+            }
+        });
+
+        root.setFocusTraversable(true);
     }
 
-    private void update() {
-        if (!data.isRunning()) {
+    public IngameData getData() {
+        return data;
+    }
+
+    private void setupKeyHandlers() {
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, this::handleKeyPress);
+        scene.addEventFilter(KeyEvent.KEY_RELEASED, this::handleKeyRelease);
+    }
+
+    private void handleKeyPress(KeyEvent event) {
+        KeyCode code = event.getCode();
+        switch (code) {
+            case SPACE -> {
+                data.handleKeyPress(KeyCode.SPACE);
+                event.consume();
+            }
+            case LEFT -> {
+                data.handleKeyPress(KeyCode.LEFT);
+                event.consume();
+            }
+            case RIGHT -> {
+                data.handleKeyPress(KeyCode.RIGHT);
+                event.consume();
+            }
+            case ESCAPE -> {
+                clickPause();
+                event.consume();
+            }
+        }
+    }
+
+    private void handleKeyRelease(KeyEvent event) {
+        KeyCode code = event.getCode();
+        switch (code) {
+            case LEFT -> {
+                data.handleKeyRelease(KeyCode.LEFT);
+                event.consume();
+            }
+            case RIGHT -> {
+                data.handleKeyRelease(KeyCode.RIGHT);
+                event.consume();
+            }
+        }
+    }
+
+    @FXML
+    protected void clickToHome() {
+        try {
+            gameManager.letShow(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    protected void clickPause() {
+        data.setPause();
+        if (data.isPause()) {
             pane.setVisible(true);
-            gamePlay.setVisible(false);
-        } else if (!data.isPause()) {
-            root.setOnKeyReleased(e -> {
-                if (e.getCode() == KeyCode.LEFT) {
-                    data.setLeftPressed(false);
-                }
-                if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(false);
-            });
-            root.setOnKeyPressed(e -> {
-                if (e.getCode() == KeyCode.LEFT) data.setLeftPressed(true);
-                if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(true);
-                if (e.getCode() == KeyCode.K) {
-                    data.setPause();
-                }
-            });
-            root.setFocusTraversable(true);
-            Platform.runLater(() -> root.requestFocus());
-            data.update();
+        } else {
+            pane.setVisible(false);
+        }
+    }
+
+    @FXML
+    protected void clickNext() {
+        pane.setVisible(false);
+        level++;
+        data.loadData(level);
+        data.setRunning();
+        if (data.isPause()) {
+            data.setPause();
+        }
+        root.requestFocus();
+    }
+
+    @FXML
+    protected void clickRestart() {
+        pane.setVisible(false);
+        data.loadData(level);
+        data.setRunning();
+        if (data.isPause()) {
+            data.setPause();
+        }
+        root.requestFocus();
+    }
+
+    public void stopGameLoop() {
+        if (gameLoop != null) {
+            gameLoop.stop();
         }
     }
 }

@@ -32,8 +32,16 @@ public class Paddle extends GameObject {
     }
 
     public void setWidth(double width) {
+        double centerX = position.getX() + size.getWidth() / 2;
+
         size.setWidth(width);
         ((Rectangle)shape).setWidth(width);
+
+        double newX = centerX - width / 2;
+        newX = Math.max(0, Math.min(newX, dat.width - width));
+
+        position.setPosition(newX, position.getY());
+        shape.setLayoutX(newX);
     }
 
     public double getWidth() {

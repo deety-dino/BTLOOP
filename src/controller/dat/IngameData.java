@@ -2,14 +2,12 @@ package controller.dat;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import gameobjects.*;  // Updated import to include PowerUp
+import gameobjects.*;
 import javafx.scene.Group;
 import javafx.animation.PauseTransition;
 import javafx.scene.control.Alert;
+import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
-
-// Removed unused import
 
 public class IngameData implements dat {
     private static IngameData instance;
@@ -18,17 +16,18 @@ public class IngameData implements dat {
     private boolean isRunning;
     private boolean leftPressed = false;
     private boolean rightPressed = false;
+    private boolean gameStarted = false;  // Trạng thái game đã bắt đầu chưa
     ArrayList<Ball> balls = new ArrayList<>();
     ArrayList<Brick> bricks = new ArrayList<>();
     ArrayList<PowerUp> powerUps = new ArrayList<>();
 
     Paddle paddle;
 
-    //Constructor
     public IngameData(Group root) {
         this.root = root;
         isPause = false;
         isRunning = true;
+        gameStarted = false;
         paddle = new Paddle(350, 550, 100, 15);
         instance = this;
     }
@@ -42,19 +41,16 @@ public class IngameData implements dat {
         root.getChildren().add(powerUp.getNode());
     }
 
-    // Allow power-ups to access the paddle
     public Paddle getPaddle() {
         return paddle;
     }
 
-    // Add a ball to the game and the scene
     public void addBall(Ball ball) {
         if (ball == null) return;
         balls.add(ball);
         root.getChildren().add(ball.getNode());
     }
 
-    // Allow power-ups to inspect/modify current balls
     public ArrayList<Ball> getBalls() {
         return balls;
     }
@@ -71,11 +67,27 @@ public class IngameData implements dat {
         }
     }
 
-    //level Pane
     private void level1() {
         balls.clear();
         bricks.clear();
-        balls.add(new Ball(400, 100, 8));
+        powerUps.clear();
+        root.getChildren().clear();
+        gameStarted = false;
+
+        // Khởi tạo paddle ở giữa màn hình
+        double paddleX = (width - 100) / 2;
+        paddle = new Paddle(paddleX, 550, 100, 15);
+        root.getChildren().add(paddle.getNode());
+
+        // Khởi tạo bóng ở vị trí chính xác trên paddle ngay từ đầu
+        double ballX = paddleX + 50;  // Giữa paddle (paddle width = 100, nên 100/2 = 50)
+        double ballY = 550 - 16;  // Trên paddle (paddle Y = 550, ball radius = 8, nên 8*2 = 16)
+        Ball initialBall = new Ball(ballX, ballY, 8);
+        initialBall.attachToPaddle(paddle);
+        balls.add(initialBall);
+        root.getChildren().add(initialBall.getNode());
+
+        // Khởi tạo các brick
         int rows = 5;
         int cols = 10;
         double brickWidth = 70;
@@ -90,11 +102,45 @@ public class IngameData implements dat {
                         offsetY + row * (brickHeight + 5),
                         brickWidth, brickHeight);
                 bricks.add(brick);
+                root.getChildren().add(brick.getNode());
             }
         }
     }
 
-    //update
+    public void handleKeyPress(KeyCode code) {
+        switch (code) {
+            case SPACE:
+                if (!gameStarted) {
+                    gameStarted = true;
+                    for (Ball ball : balls) {
+                        // Đặt hướng ban đầu với góc chéo ngẫu nhiên
+                        double randomAngle = -60 - Math.random() * 60; // Góc từ -60 đến -120 độ
+                        double radians = Math.toRadians(randomAngle);
+                        ball.setDirection(Math.cos(radians), Math.sin(radians));
+                        ball.launch();
+                    }
+                }
+                break;
+            case LEFT:
+                leftPressed = true;
+                break;
+            case RIGHT:
+                rightPressed = true;
+                break;
+        }
+    }
+
+    public void handleKeyRelease(KeyCode code) {
+        switch (code) {
+            case LEFT:
+                leftPressed = false;
+                break;
+            case RIGHT:
+                rightPressed = false;
+                break;
+        }
+    }
+
     private void updatePaddle() {
         if (leftPressed) {
             paddle.moveLeft();
@@ -105,37 +151,39 @@ public class IngameData implements dat {
     }
 
     private void updatePowerUps() {
-        Iterator<PowerUp> it = powerUps.iterator();
-        while (it.hasNext()) {
-            PowerUp powerUp = it.next();
+        ArrayList<PowerUp> snapshot = new ArrayList<>(powerUps);
+        ArrayList<PowerUp> toRemove = new ArrayList<>();
+
+        for (PowerUp powerUp : snapshot) {
             powerUp.update();
 
-            // Check if power-up is off screen
-            if (powerUp.getY() > height + 50) {  // Give some margin
-                it.remove();
-                root.getChildren().remove(powerUp.getNode());
+            if (powerUp.getY() > height + 50) {
+                toRemove.add(powerUp);
                 continue;
             }
 
-            // Enhanced collision detection with paddle
             if (powerUp.intersects(paddle) && !powerUp.isActive()) {
-                // Add visual/sound feedback before activation
                 javafx.scene.effect.Glow glow = new javafx.scene.effect.Glow(0.8);
                 powerUp.getNode().setEffect(glow);
 
-                // Small animation before removal
                 javafx.animation.ScaleTransition st = new javafx.animation.ScaleTransition(
                     Duration.millis(200), powerUp.getNode());
                 st.setByX(0.3);
                 st.setByY(0.3);
                 st.setOnFinished(e -> {
-                    // Get first ball for backwards compatibility
                     Ball firstBall = balls.isEmpty() ? null : balls.get(0);
                     powerUp.activate(paddle, firstBall);
-                    it.remove();
+                    powerUps.remove(powerUp);
                     root.getChildren().remove(powerUp.getNode());
                 });
                 st.play();
+            }
+        }
+
+        if (!toRemove.isEmpty()) {
+            for (PowerUp p : toRemove) {
+                powerUps.remove(p);
+                root.getChildren().remove(p.getNode());
             }
         }
     }
@@ -143,67 +191,78 @@ public class IngameData implements dat {
     private void updateBall() {
         if (balls.isEmpty()) {
             isRunning = false;
-        } else {
-            Iterator<Ball> ballIt = balls.iterator();
-            while (ballIt.hasNext()) {
-                Ball ball = ballIt.next();
+            return;
+        }
 
-                if (ball.getY() > height) {
-                    root.getChildren().remove(ball.getNode());
-                    ballIt.remove();
-                    continue;
+        if (!gameStarted) {
+            for (Ball ball : balls) {
+                ball.attachToPaddle(paddle);
+            }
+            return;
+        }
+
+        Iterator<Ball> ballIt = balls.iterator();
+        while (ballIt.hasNext()) {
+            Ball ball = ballIt.next();
+
+            if (ball.getY() > height) {
+                root.getChildren().remove(ball.getNode());
+                ballIt.remove();
+                if (balls.isEmpty()) {
+                    isRunning = false;
+                    showGameOver("Game Over", "Bạn đã thua!");
                 }
+                continue;
+            }
 
-                // Brick collision with enhanced effects
-                Iterator<Brick> brickIt = bricks.iterator();
-                while (brickIt.hasNext()) {
-                    Brick brick = brickIt.next();
-                    if (ball.intersects(brick)) {
-                        ball.bounce(brick);
-                        brick.hit();
+            Iterator<Brick> brickIt = bricks.iterator();
+            while (brickIt.hasNext()) {
+                Brick brick = brickIt.next();
+                if (ball.intersects(brick)) {
+                    ball.bounce(brick);
+                    brick.hit();
 
-                        if (brick.isDestroyed()) {
-                            brick.onDestroyed();
-                            if (brick instanceof PowerUpBrick) {
-                                PowerUp powerUp = ((PowerUpBrick) brick).getPowerUp();
-                                if (powerUp != null) {
-                                    powerUps.add(powerUp);
-                                    root.getChildren().add(powerUp.getNode());
-                                }
+                    if (brick.isDestroyed()) {
+                        // Nếu là PowerUpBrick, tạo PowerUp trước khi xóa brick
+                        if (brick instanceof PowerUpBrick) {
+                            PowerUpBrick powerUpBrick = (PowerUpBrick) brick;
+                            // Gọi onDestroyed để tạo PowerUp
+                            powerUpBrick.onDestroyed();
+                            PowerUp powerUp = powerUpBrick.getPowerUp();
+                            if (powerUp != null) {
+                                powerUps.add(powerUp);
+                                root.getChildren().add(powerUp.getNode());
                             }
-                            brickIt.remove();
-                            root.getChildren().remove(brick.getNode());
                         }
+
+                        brickIt.remove();
+                        root.getChildren().remove(brick.getNode());
                     }
                 }
-
-                // Paddle collision with improved bounce angles
-                if (ball.intersects(paddle)) {
-                    ball.bounce(paddle);
-                    // Add subtle visual feedback
-                    javafx.scene.effect.Glow glow = new javafx.scene.effect.Glow(0.3);
-                    paddle.getNode().setEffect(glow);
-                    PauseTransition pt = new PauseTransition(Duration.millis(100));
-                    pt.setOnFinished(e -> paddle.getNode().setEffect(null));
-                    pt.play();
-                }
-
-                ball.update();
             }
+
+            if (ball.intersects(paddle)) {
+                ball.bounce(paddle);
+                javafx.scene.effect.Glow glow = new javafx.scene.effect.Glow(0.3);
+                paddle.getNode().setEffect(glow);
+                PauseTransition pt = new PauseTransition(Duration.millis(100));
+                pt.setOnFinished(e -> paddle.getNode().setEffect(null));
+                pt.play();
+            }
+
+            ball.update();
         }
     }
 
     private void checkGameState() {
         if (!isRunning) return;
 
-        // Kiểm tra thua (không còn bóng)
         if (balls.isEmpty()) {
             isRunning = false;
             showGameOver("Game Over", "Bạn đã thua!");
             return;
         }
 
-        // Kiểm tra thắng (phá hết gạch)
         if (bricks.isEmpty()) {
             isRunning = false;
             showGameOver("Victory!", "Chúc mừng! Bạn đã chiến thắng!");
@@ -211,13 +270,8 @@ public class IngameData implements dat {
     }
 
     private void showGameOver(String title, String content) {
-        // Hiển thị thông báo trên UI thread
         javafx.application.Platform.runLater(() -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle(title);
-            alert.setHeaderText(null);
-            alert.setContentText(content);
-            alert.show();
+            isPause = true;
         });
     }
 
@@ -230,7 +284,6 @@ public class IngameData implements dat {
         checkGameState();
     }
 
-    //Getter and setter
     public void setLeftPressed(boolean leftPressed) {
         this.leftPressed = leftPressed;
     }

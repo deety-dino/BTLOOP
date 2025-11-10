@@ -6,9 +6,14 @@ import javafx.scene.shape.Circle;
 public class Ball extends GameObject {
     vector2f direction;
     private double ve_Multi;
+    private boolean isActive = false;  // Trạng thái chờ bắt đầu
 
     public void setVe_Multi(double ve_Multi) {
         this.ve_Multi = ve_Multi;
+    }
+
+    public double getVe_Multi() {
+        return ve_Multi;
     }
     public Ball(double x, double y, double radius) {
         super(x, y, radius * 2, radius * 2);
@@ -16,11 +21,14 @@ public class Ball extends GameObject {
         Circle circ = (Circle) shape;
         circ.setFill(Color.WHITE);
         ve_Multi = 1;
-        direction = new vector2f(1, 1);
+        direction = new vector2f(0, -1);  // Hướng mặc định là lên trên
+        isActive = false;
     }
 
     @Override
     public void update() {
+        if (!isActive) return;  // Không di chuyển nếu chưa active
+
         direction.normalize(1);
         double nextX = position.getX() + ball_velocity * ve_Multi * direction.getX();
         double nextY = position.getY() + ball_velocity * ve_Multi * direction.getY();
@@ -38,6 +46,20 @@ public class Ball extends GameObject {
         position.setPosition(nextX, nextY);
         ((Circle) shape).setCenterX(position.getX());
         ((Circle) shape).setCenterY(position.getY());
+    }
+
+    // Bắt đầu chuyển động của bóng
+    public void launch() {
+        isActive = true;
+    }
+
+    // Gắn bóng vào vợt
+    public void attachToPaddle(Paddle paddle) {
+        double x = paddle.getX() + paddle.getWidth() / 2;
+        double y = paddle.getY() - getRadius() * 2;
+        position.setPosition(x, y);
+        ((Circle) shape).setCenterX(x);
+        ((Circle) shape).setCenterY(y);
     }
 
     // Allow external code to set the initial direction of the ball
@@ -59,6 +81,15 @@ public class Ball extends GameObject {
         double bottomSide = obj.position.getY() + obj.size.getHeight();
         double leftSide = obj.position.getX();
         double rightSide = obj.position.getX() + obj.size.getWidth();
+
+        if (obj instanceof Paddle) {
+            double relativeIntersectX = (position.getX() - leftSide) / obj.size.getWidth();
+            double normalizedRelativeIntersectionX = (relativeIntersectX - 0.5) * 2;
+            double bounceAngle = normalizedRelativeIntersectionX * 60;
+            double radians = Math.toRadians(-90 + bounceAngle);
+            direction.setVector(Math.cos(radians), Math.sin(radians));
+            return;
+        }
         if (position.getY() < topSide) {
             if (position.getX() < leftSide) {
                 vector2f vector = new vector2f(position.getX() - leftSide, position.getY() - topSide);

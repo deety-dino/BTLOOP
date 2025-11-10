@@ -12,10 +12,7 @@ public class PowerUpBrick extends Brick {
     private static final Color GLOW_COLOR = Color.YELLOW;
 
     public PowerUpBrick(double x, double y, double w, double h) {
-        // Pass the base color to super constructor instead of gradient
         super(x, y, w, h, 1, BRICK_COLOR);
-
-        // Apply gradient and effects to shape after construction
         Rectangle rect = (Rectangle) shape;
         rect.setFill(createGradient());
         rect.setStroke(GLOW_COLOR);
@@ -33,39 +30,31 @@ public class PowerUpBrick extends Brick {
 
     @Override
     public void onDestroyed() {
-        // Enhanced power-up type selection with weighted probabilities
         double r = Math.random();
         PowerUp.PowerUpType type;
 
-        if (r < 0.35) {
-            type = PowerUp.PowerUpType.WIDE_PADDLE;      // 35% chance
-        } else if (r < 0.65) {
-            type = PowerUp.PowerUpType.SPEED_BALL;       // 30% chance
-        } else if (r < 0.85) {
-            type = PowerUp.PowerUpType.MULTI_BALL;       // 20% chance
+        if (r < 0.40) {
+            type = PowerUp.PowerUpType.WIDE_PADDLE;
+        } else if (r < 0.70) {
+            type = PowerUp.PowerUpType.SPEED_BALL;
         } else {
-            type = PowerUp.PowerUpType.LASER_PADDLE;     // 15% chance
+            type = PowerUp.PowerUpType.MULTI_BALL;
         }
 
-        // Create power-up at brick's position with slight random offset
-        double offsetX = (Math.random() - 0.5) * 10;  // ±5 pixels
-        powerUp = new PowerUp(
-            getPosition().getX() + offsetX,
-            getPosition().getY(),
-            type
-        );
+        double powerUpX = position.getX() + (size.getWidth() - 20) / 2;
+        double powerUpY = position.getY();
+        powerUp = new PowerUp(powerUpX, powerUpY, type);
     }
 
     @Override
     public void hit() {
         super.hit();
-        // Add visual feedback when hit
         shape.setOpacity(0.8);
     }
 
     public PowerUp getPowerUp() {
         PowerUp temp = powerUp;
-        powerUp = null; // Clear reference after getting it
+        powerUp = null;
         return temp;
     }
 }
