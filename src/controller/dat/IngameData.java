@@ -3,15 +3,22 @@ package controller.dat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import gameobjects.*;  // Updated import to include PowerUp
+import gameobjects.Ball.Ball;
+import gameobjects.Brick.Brick;
+import gameobjects.Brick.BrickFactory;
+import gameobjects.Brick.PowerUpBrick;
+import gameobjects.Controller.powerUpController;
+import gameobjects.paddle.Paddle;
+import gameobjects.powerup.PowerUp;
 import javafx.scene.Group;
 import javafx.animation.PauseTransition;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
+import mng.gameInfo;
 
 // Removed unused import
 
-public class IngameData implements dat {
-    private static IngameData instance;
+public class IngameData  {
     private final Group root;
     private boolean isPause;
     private boolean isRunning;
@@ -19,7 +26,7 @@ public class IngameData implements dat {
     private boolean rightPressed = false;
     ArrayList<Ball> balls = new ArrayList<>();
     ArrayList<Brick> bricks = new ArrayList<>();
-    ArrayList<PowerUp> powerUps = new ArrayList<>();
+    powerUpController powerUps;
 
     Paddle paddle;
 
@@ -29,18 +36,17 @@ public class IngameData implements dat {
         isPause = false;
         isRunning = true;
         paddle = new Paddle(350, 550, 100, 15);
-        instance = this;
+        powerUps = powerUpController.getInstance();
     }
 
-    public static IngameData getInstance() {
-        return instance;
-    }
 
     public void addPowerUp(PowerUp powerUp) {
-        powerUps.add(powerUp);
-        root.getChildren().add(powerUp.getNode());
+        powerUps.addPowerUp(powerUp, root);
     }
 
+    public void getText(Text laser, Text wide, Text speed) {
+        powerUps.getText(laser, wide, speed);
+    }
     // Allow power-ups to access the paddle
     public Paddle getPaddle() {
         return paddle;
@@ -61,6 +67,8 @@ public class IngameData implements dat {
     public void loadData(int level) {
         isPause = false;
         isRunning = true;
+        balls.clear();
+        bricks.clear();
         switch (level) {
             case 1:
                 level1();
@@ -72,8 +80,6 @@ public class IngameData implements dat {
 
     //level Pane
     private void level1() {
-        balls.clear();
-        bricks.clear();
         balls.add(new Ball(400, 100, 8));
         int rows = 5;
         int cols = 10;
@@ -103,42 +109,6 @@ public class IngameData implements dat {
         }
     }
 
-    private void updatePowerUps() {
-        Iterator<PowerUp> it = powerUps.iterator();
-        while (it.hasNext()) {
-            PowerUp powerUp = it.next();
-            powerUp.update();
-
-            // Check if power-up is off screen
-            if (powerUp.getY() > height + 50) {  // Give some margin
-                it.remove();
-                root.getChildren().remove(powerUp.getNode());
-                continue;
-            }
-
-            // Enhanced collision detection with paddle
-            if (powerUp.intersects(paddle) && !powerUp.isActive()) {
-                // Add visual/sound feedback before activation
-                javafx.scene.effect.Glow glow = new javafx.scene.effect.Glow(0.8);
-                powerUp.getNode().setEffect(glow);
-
-                // Small animation before removal
-                javafx.animation.ScaleTransition st = new javafx.animation.ScaleTransition(
-                    Duration.millis(200), powerUp.getNode());
-                st.setByX(0.3);
-                st.setByY(0.3);
-                st.setOnFinished(e -> {
-                    // Get first ball for backwards compatibility
-                    Ball firstBall = balls.isEmpty() ? null : balls.get(0);
-                    powerUp.activate(paddle, firstBall);
-                    it.remove();
-                    root.getChildren().remove(powerUp.getNode());
-                });
-                st.play();
-            }
-        }
-    }
-
     private void updateBall() {
         if (balls.isEmpty()) {
             isRunning = false;
@@ -147,7 +117,7 @@ public class IngameData implements dat {
             while (ballIt.hasNext()) {
                 Ball ball = ballIt.next();
 
-                if (ball.getY() > height) {
+                if (ball.getY() > gameInfo.height) {
                     root.getChildren().remove(ball.getNode());
                     ballIt.remove();
                     continue;
@@ -166,8 +136,7 @@ public class IngameData implements dat {
                             if (brick instanceof PowerUpBrick) {
                                 PowerUp powerUp = ((PowerUpBrick) brick).getPowerUp();
                                 if (powerUp != null) {
-                                    powerUps.add(powerUp);
-                                    root.getChildren().add(powerUp.getNode());
+                                    powerUps.addPowerUp(powerUp, root);
                                 }
                             }
                             brickIt.remove();
@@ -186,16 +155,15 @@ public class IngameData implements dat {
                     pt.setOnFinished(e -> paddle.getNode().setEffect(null));
                     pt.play();
                 }
-
                 ball.update();
             }
         }
     }
 
-    public void update() {
+    public void update(double time) {
         updatePaddle();
         updateBall();
-        updatePowerUps();
+        powerUps.update(root, time, paddle, balls);
     }
 
     //Getter and setter
@@ -215,9 +183,6 @@ public class IngameData implements dat {
         }
         for (Ball ball : balls) {
             root.getChildren().add(ball.getNode());
-        }
-        for (PowerUp powerUp : powerUps) {
-            root.getChildren().add(powerUp.getNode());
         }
     }
 

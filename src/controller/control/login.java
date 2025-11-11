@@ -1,6 +1,5 @@
 package controller.control;
 
-import controller.dat.dat;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.TextField;
@@ -26,7 +25,8 @@ public class login {
     @FXML
     protected void lLogin() {
         try {
-            gameManager.letShow(dat.levelStatus);
+            gameManager.State = gameManager.ApplicationState.LEVEL_SELECTION_SCREEN;
+            gameManager.letShow();
             User.login(lUserName.getText(), lPassword.getText());
         } catch (Exception e) {
             System.err.println("Login error: " + e.getMessage());

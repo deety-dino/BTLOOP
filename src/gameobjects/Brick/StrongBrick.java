@@ -1,4 +1,4 @@
-package gameobjects;
+package gameobjects.Brick;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
