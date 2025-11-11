@@ -8,33 +8,42 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="root" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.control.login">
+<Pane fx:id="root" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;"
+      xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.control.login">
     <children>
-      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
-         <image>
-            <Image url="@../../../resources/gfx/login/LogInBG.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="176.0" fitWidth="448.0" layoutX="176.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../resources/gfx/login/title.png" />
-         </image>
-      </ImageView>
+        <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true">
+            <image>
+                <Image url="@../../../resources/gfx/login/LogInBG.jpg"/>
+            </image>
+        </ImageView>
+        <ImageView fitHeight="176.0" fitWidth="448.0" layoutX="176.0" layoutY="45.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../../../resources/gfx/login/title.png"/>
+            </image>
+        </ImageView>
         <Group fx:id="signUpField" layoutX="312.0" layoutY="252.0">
             <children>
-                <TextField fx:id="sUserName" prefHeight="25.0" prefWidth="176.0" promptText="Enter username" />
-                <PasswordField fx:id="sPassword" layoutY="36.0" prefHeight="25.0" prefWidth="176.0" promptText="Enter password" />
-                <TextField fx:id="sRePassword" layoutY="72.0" prefHeight="25.0" prefWidth="176.0" promptText="Confirm password" />
-                <Button layoutY="110.0" mnemonicParsing="false" onAction="#sLogin" stylesheets="@../../../resources/style2.css" text="Login" />
-                <Button layoutX="120.0" layoutY="110.0" mnemonicParsing="false" onAction="#sSignUp" stylesheets="@../../../resources/style2.css" text="Sign up" />
+                <TextField fx:id="sUserName" prefHeight="25.0" prefWidth="176.0" promptText="Enter username"/>
+                <PasswordField fx:id="sPassword" layoutY="36.0" prefHeight="25.0" prefWidth="176.0"
+                               promptText="Enter password"/>
+                <TextField fx:id="sRePassword" layoutY="72.0" prefHeight="25.0" prefWidth="176.0"
+                           promptText="Confirm password"/>
+                <Button layoutY="110.0" mnemonicParsing="false" onAction="#sLogin"
+                        stylesheets="@../../../resources/style2.css" text="Login"/>
+                <Button layoutX="120.0" layoutY="110.0" mnemonicParsing="false" onAction="#sSignUp"
+                        stylesheets="@../../../resources/style2.css" text="Sign up"/>
             </children>
         </Group>
         <Group fx:id="loginField" layoutX="312.0" layoutY="252.0">
             <children>
-                <TextField fx:id="lUserName" prefHeight="25.0" prefWidth="176.0" promptText="Enter username" />
-                <PasswordField fx:id="lPassword" layoutY="36.0" prefHeight="25.0" prefWidth="176.0" promptText="Enter password" />
-                <Button layoutY="76.0" mnemonicParsing="false" onAction="#lLogin" stylesheets="@../../../resources/style2.css" text="Login" />
-                <Button layoutX="119.0" layoutY="76.0" mnemonicParsing="false" onAction="#lSignUp" stylesheets="@../../../resources/style2.css" text="Sign up" />
+                <TextField fx:id="lUserName" prefHeight="25.0" prefWidth="176.0" promptText="Enter username"/>
+                <PasswordField fx:id="lPassword" layoutY="36.0" prefHeight="25.0" prefWidth="176.0"
+                               promptText="Enter password"/>
+                <Button layoutY="76.0" mnemonicParsing="false" onAction="#lLogin"
+                        stylesheets="@../../../resources/style2.css" text="Login"/>
+                <Button layoutX="119.0" layoutY="76.0" mnemonicParsing="false" onAction="#lSignUp"
+                        stylesheets="@../../../resources/style2.css" text="Sign up"/>
             </children>
         </Group>
     </children>

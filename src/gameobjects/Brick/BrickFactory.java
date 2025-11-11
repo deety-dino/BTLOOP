@@ -1,4 +1,4 @@
-package gameobjects;
+package gameobjects.Brick;
 
 import java.util.Random;
 

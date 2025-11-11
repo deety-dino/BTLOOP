@@ -1,8 +1,10 @@
-package gameobjects;
+package gameobjects.paddle;
 
-import controller.dat.dat;
+import gameobjects.Controller.objectInfo;
+import gameobjects.GameObject;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import mng.gameInfo;
 
 public class Paddle extends GameObject {
     public Paddle(double x, double y, double w, double h) {
@@ -16,14 +18,14 @@ public class Paddle extends GameObject {
 
     public void moveLeft() {
         if (position.getX() > 0) {
-            position.setPosition(position.getX() - dat.paddle_velocity, position.getY());
+            position.setPosition(position.getX() - objectInfo.paddleVelocity, position.getY());
             shape.setLayoutX(position.getX());
         }
     }
 
     public void moveRight() {
-        if (position.getX() + size.getWidth() < dat.width) {
-            position.setPosition(position.getX() + dat.paddle_velocity, position.getY());
+        if (position.getX() + size.getWidth() < gameInfo.width) {
+            position.setPosition(position.getX() + objectInfo.paddleVelocity, position.getY());
             shape.setLayoutX(position.getX());
         }
     }

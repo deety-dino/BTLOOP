@@ -1,9 +1,6 @@
 package controller.control;
 
-import controller.dat.dat;
 import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import mng.gameManager;
 import user.User;
@@ -17,7 +14,8 @@ public class levelSelection {
     protected void loadLevel1() throws IOException {
         User.setSelectedLevel(1);
         User.setSelected(true);
-        gameManager.letShow(dat.ingameStatus);
+        gameManager.State = gameManager.ApplicationState.IN_GAME_SCREEN;
+        gameManager.letShow();
     }
     @FXML
     protected void loadLevel2() {
