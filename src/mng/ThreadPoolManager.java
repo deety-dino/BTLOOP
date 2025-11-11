@@ -3,56 +3,79 @@ package mng;
 import java.util.concurrent.*;
 
 /**
- * Centralized thread pool manager for background game work and scheduling.
+ * Centralized thread pool manager for the game.
+ * Manages all background tasks and parallel processing.
  */
 public class ThreadPoolManager {
-    private static volatile ThreadPoolManager instance;
+    private static ThreadPoolManager instance;
     private final ExecutorService executorService;
     private final ScheduledExecutorService scheduledExecutor;
 
     private ThreadPoolManager() {
-        // Reserve 1 core for JavaFX; use the rest for background work
-        int processors = Math.max(1, Runtime.getRuntime().availableProcessors() - 1);
+        // Create thread pool with available processors
+        int processors = Runtime.getRuntime().availableProcessors();
         this.executorService = Executors.newFixedThreadPool(processors);
         this.scheduledExecutor = Executors.newScheduledThreadPool(2);
     }
 
-    public static ThreadPoolManager getInstance() {
+    public static synchronized ThreadPoolManager getInstance() {
         if (instance == null) {
-            synchronized (ThreadPoolManager.class) {
-                if (instance == null) instance = new ThreadPoolManager();
-            }
+            instance = new ThreadPoolManager();
         }
         return instance;
     }
 
-    // Submit a one-off runnable task
+    /**
+     * Submit a task for execution in the thread pool
+     */
     public Future<?> submit(Runnable task) {
         return executorService.submit(task);
     }
 
-    // Submit a callable task
+    /**
+     * Submit a callable task that returns a result
+     */
     public <T> Future<T> submit(Callable<T> task) {
         return executorService.submit(task);
     }
 
-    // Schedule a single run after a delay
+    /**
+     * Schedule a task to run after a delay
+     */
     public ScheduledFuture<?> schedule(Runnable task, long delay, TimeUnit unit) {
         return scheduledExecutor.schedule(task, delay, unit);
     }
 
-    // Schedule a recurring task at fixed rate (this is the method Play.java expects)
-    public ScheduledFuture<?> scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit) {
-        return scheduledExecutor.scheduleAtFixedRate(command, initialDelay, period, unit);
+    /**
+     * Execute tasks in parallel and wait for all to complete
+     */
+    public void executeInParallel(Runnable... tasks) throws InterruptedException {
+        CountDownLatch latch = new CountDownLatch(tasks.length);
+        for (Runnable task : tasks) {
+            executorService.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    latch.countDown();
+                }
+            });
+        }
+        latch.await();
     }
 
-    // Shutdown executors gracefully
+    /**
+     * Shutdown all thread pools gracefully
+     */
     public void shutdown() {
         executorService.shutdown();
         scheduledExecutor.shutdown();
         try {
-            if (!executorService.awaitTermination(3, TimeUnit.SECONDS)) executorService.shutdownNow();
-            if (!scheduledExecutor.awaitTermination(3, TimeUnit.SECONDS)) scheduledExecutor.shutdownNow();
+            if (!executorService.awaitTermination(5, TimeUnit.SECONDS)) {
+                executorService.shutdownNow();
+            }
+            if (!scheduledExecutor.awaitTermination(5, TimeUnit.SECONDS)) {
+                scheduledExecutor.shutdownNow();
+            }
         } catch (InterruptedException e) {
             executorService.shutdownNow();
             scheduledExecutor.shutdownNow();

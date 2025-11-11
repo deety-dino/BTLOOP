@@ -34,18 +34,18 @@ public class PowerUpBrick extends Brick {
 
     @Override
     public void onDestroyed() {
-        // Enhanced power-up type selection with weighted probabilities
-        double r = 0.7;//Math.random();
+        // Cân bằng tỷ lệ các loại powerup đồng đều hơn
+        double r = Math.random();
         PowerUp.PowerUpType type;
 
-        if (r < 0.35) {
-            type = PowerUp.PowerUpType.WIDE_PADDLE;      // 35% chance
-        } else if (r < 0.65) {
-            type = PowerUp.PowerUpType.SPEED_BALL;       // 30% chance
-        } else if (r < 0.85) {
-            type = PowerUp.PowerUpType.MULTI_BALL;       // 20% chance
+        if (r < 0.25) {
+            type = PowerUp.PowerUpType.WIDE_PADDLE;      // 25% chance
+        } else if (r < 0.50) {
+            type = PowerUp.PowerUpType.SPEED_BALL;       // 25% chance
+        } else if (r < 0.75) {
+            type = PowerUp.PowerUpType.MULTI_BALL;       // 25% chance
         } else {
-            type = PowerUp.PowerUpType.LASER_PADDLE;     // 15% chance
+            type = PowerUp.PowerUpType.LASER_PADDLE;     // 25% chance
         }
 
         // Create power-up at brick's position with slight random offset
@@ -60,7 +60,6 @@ public class PowerUpBrick extends Brick {
     @Override
     public void hit() {
         super.hit();
-        // Add visual feedback when hit
         shape.setOpacity(0.8);
     }
 

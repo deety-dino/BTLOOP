@@ -1,50 +1,91 @@
 package controller.dat;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import gameobjects.Ball.Ball;
 import gameobjects.Brick.Brick;
 import gameobjects.Brick.BrickFactory;
-import gameobjects.Controller.BallController;
-import gameobjects.Controller.BrickController;
-import gameobjects.Controller.PaddleController;
-import gameobjects.Controller.PowerUpController;
+import gameobjects.Brick.PowerUpBrick;
+import gameobjects.Brick.StrongBrick;
+import gameobjects.Controller.powerUpController;
+import gameobjects.Laser;
+import gameobjects.paddle.Paddle;
+import gameobjects.powerup.PowerUp;
 import javafx.scene.Group;
+import javafx.animation.PauseTransition;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
+import mng.gameInfo;
 
-// Removed unused import
 
-public class IngameData {
+public class IngameData  {
     private final Group root;
     private boolean isPause;
     private boolean isRunning;
+    private boolean isWon = false;
     private boolean leftPressed = false;
     private boolean rightPressed = false;
+    private boolean spacePressed = false;
+    private boolean ballLaunched = false;
+    ArrayList<Ball> balls = new ArrayList<>();
+    ArrayList<Brick> bricks = new ArrayList<>();
+    ArrayList<Laser> lasers = new ArrayList<>();
+    powerUpController powerUps;
 
-    BallController balls;
-    BrickController bricks;
-    PaddleController paddle;
-    PowerUpController powerUps;
+    Paddle paddle;
 
-    //Constructor
+    private int score = 0;
+    private int lives = 5;
+    private int highScore = 0;
+
+    private static final int NORMAL_BRICK_POINTS = 10;
+    private static final int STRONG_BRICK_POINTS = 20;
+    private static final int POWERUP_BRICK_POINTS = 30;
+
     public IngameData(Group root) {
         this.root = root;
         isPause = false;
         isRunning = true;
-        balls = BallController.getInstance();
-        bricks = BrickController.getInstance();
-        paddle = PaddleController.getInstance();
-        powerUps = PowerUpController.getInstance();
+        paddle = new Paddle(350, 550, 100, 15);
+        powerUps = powerUpController.getInstance();
     }
 
 
+    public void addPowerUp(PowerUp powerUp) {
+        powerUps.addPowerUp(powerUp, root);
+    }
+
     public void getText(Text laser, Text wide, Text speed) {
         powerUps.getText(laser, wide, speed);
+    }
+    // Power-ups access the paddle
+    public Paddle getPaddle() {
+        return paddle;
+    }
+
+    // Add a ball to the game and the scene
+    public void addBall(Ball ball) {
+        if (ball == null) return;
+        balls.add(ball);
+        root.getChildren().add(ball.getNode());
+    }
+
+    // Allow power-ups to inspect/modify current balls
+    public ArrayList<Ball> getBalls() {
+        return balls;
     }
 
     public void loadData(int level) {
         isPause = false;
         isRunning = true;
-        balls.refresh();
-        bricks.refresh();
+        isWon = false;
+        balls.clear();
+        bricks.clear();
+        lasers.clear();
+        ballLaunched = false;
+        score = 0;
+        lives = 5;
         switch (level) {
             case 1:
                 level1();
@@ -54,9 +95,11 @@ public class IngameData {
         }
     }
 
-    //level Pane
     private void level1() {
-        balls.addBall(new Ball(400, 100, 8));
+        Ball ball = new Ball(paddle.getX() + paddle.getSize().getWidth() / 2, paddle.getY() - 10, 8);
+        ball.setDirection(0, 0);
+        balls.add(ball);
+
         int rows = 5;
         int cols = 10;
         double brickWidth = 70;
@@ -70,23 +113,170 @@ public class IngameData {
                         offsetX + col * (brickWidth + 5),
                         offsetY + row * (brickHeight + 5),
                         brickWidth, brickHeight);
-                bricks.addBrick(brick);
+                bricks.add(brick);
+            }
+        }
+    }
+
+    private void updatePaddle() {
+        if (leftPressed) {
+            paddle.moveLeft();
+        }
+        if (rightPressed) {
+            paddle.moveRight();
+        }
+    }
+
+    private void updateBall() {
+        if (balls.isEmpty()) {
+            lives--;
+            if (lives <= 0) {
+                isRunning = false;
+                updateHighScore();
+            } else {
+                Ball newBall = new Ball(paddle.getX() + paddle.getSize().getWidth() / 2, paddle.getY() - 10, 8);
+                newBall.setDirection(0, 0);
+                balls.add(newBall);
+                root.getChildren().add(newBall.getNode());
+                ballLaunched = false;
+            }
+        } else {
+            Iterator<Ball> ballIt = balls.iterator();
+            while (ballIt.hasNext()) {
+                Ball ball = ballIt.next();
+
+                if (ball.getY() > gameInfo.height) {
+                    root.getChildren().remove(ball.getNode());
+                    ballIt.remove();
+                    continue;
+                }
+
+                if (!ballLaunched && ball.getDirection().getX() == 0 && ball.getDirection().getY() == 0) {
+                    double newX = paddle.getX() + paddle.getSize().getWidth() / 2;
+                    double newY = paddle.getY() - 10;
+                    ball.getPosition().setPosition(newX, newY);
+                    ((javafx.scene.shape.Circle) ball.getNode()).setCenterX(newX);
+                    ((javafx.scene.shape.Circle) ball.getNode()).setCenterY(newY);
+                    continue;
+                }
+
+                Iterator<Brick> brickIt = bricks.iterator();
+                while (brickIt.hasNext()) {
+                    Brick brick = brickIt.next();
+                    if (ball.intersects(brick)) {
+                        ball.bounce(brick);
+                        brick.hit();
+
+                        if (brick.isDestroyed()) {
+                            brick.onDestroyed();
+
+                            if (brick instanceof PowerUpBrick) {
+                                score += POWERUP_BRICK_POINTS;
+                                PowerUp powerUp = ((PowerUpBrick) brick).getPowerUp();
+                                if (powerUp != null) {
+                                    powerUps.addPowerUp(powerUp, root);
+                                }
+                            } else if (brick instanceof StrongBrick) {
+                                score += STRONG_BRICK_POINTS;
+                            } else {
+                                score += NORMAL_BRICK_POINTS;
+                            }
+                            brickIt.remove();
+                            root.getChildren().remove(brick.getNode());
+                        }
+                    }
+                }
+
+                if (ball.intersects(paddle)) {
+                    ball.bounce(paddle);
+                    javafx.scene.effect.Glow glow = new javafx.scene.effect.Glow(0.3);
+                    paddle.getNode().setEffect(glow);
+                    PauseTransition pt = new PauseTransition(Duration.millis(100));
+                    pt.setOnFinished(e -> paddle.getNode().setEffect(null));
+                    pt.play();
+                }
+                ball.update();
+            }
+        }
+    }
+
+    private void updateLasers() {
+        if (spacePressed && paddle.hasLaser()) {
+            Laser laser = paddle.shoot();
+            if (laser != null) {
+                lasers.add(laser);
+                root.getChildren().add(laser.getNode());
+            }
+        }
+
+        Iterator<Laser> laserIt = lasers.iterator();
+        while (laserIt.hasNext()) {
+            Laser laser = laserIt.next();
+            laser.update();
+
+            if (laser.isOffScreen()) {
+                root.getChildren().remove(laser.getNode());
+                laserIt.remove();
+                continue;
+            }
+
+            Iterator<Brick> brickIt = bricks.iterator();
+            while (brickIt.hasNext()) {
+                Brick brick = brickIt.next();
+                if (laser.intersects(brick)) {
+                    brick.hit();
+
+                    if (brick.isDestroyed()) {
+                        brick.onDestroyed();
+
+                        if (brick instanceof PowerUpBrick) {
+                            score += POWERUP_BRICK_POINTS;
+                            PowerUp powerUp = ((PowerUpBrick) brick).getPowerUp();
+                            if (powerUp != null) {
+                                powerUps.addPowerUp(powerUp, root);
+                            }
+                        } else if (brick instanceof StrongBrick) {
+                            score += STRONG_BRICK_POINTS;
+                        } else {
+                            score += NORMAL_BRICK_POINTS;
+                        }
+
+                        brickIt.remove();
+                        root.getChildren().remove(brick.getNode());
+                    }
+
+                    root.getChildren().remove(laser.getNode());
+                    laserIt.remove();
+                    break;
+                }
             }
         }
     }
 
     public void update(double time) {
-        if(balls.isEmpty()) {
-            isRunning =  false;
-        } else {
-            bricks.update(root, time);
-            paddle.update(time, leftPressed, rightPressed);
-            balls.update(root, time);
-            powerUps.update(root, time);
+        updatePaddle();
+        updateBall();
+        updateLasers();
+        powerUps.update(root, time, paddle, balls);
+
+        if (bricks.isEmpty() && !isWon && isRunning && ballLaunched) {
+            isWon = true;
+            isRunning = false;
+            updateHighScore();
+        }
+
+        if (spacePressed && !ballLaunched) {
+            for (Ball ball : balls) {
+                if (ball.getDirection().getX() == 0 && ball.getDirection().getY() == 0) {
+                    double randomAngle = -0.5 + Math.random();
+                    ball.setDirection(randomAngle, -1);
+                    ball.getDirection().normalize(1.0);
+                    ballLaunched = true;
+                }
+            }
         }
     }
 
-    //Getter and setter
     public void setLeftPressed(boolean leftPressed) {
         this.leftPressed = leftPressed;
     }
@@ -95,13 +285,17 @@ public class IngameData {
         this.rightPressed = rightPressed;
     }
 
+    public void setSpacePressed(boolean spacePressed) {
+        this.spacePressed = spacePressed;
+    }
+
     public void getGroup() {
         root.getChildren().clear();
-        root.getChildren().add(paddle.getPaddle().getNode());
-        for (Brick brick : bricks.getBricks()) {
+        root.getChildren().add(paddle.getNode());
+        for (Brick brick : bricks) {
             root.getChildren().add(brick.getNode());
         }
-        for (Ball ball : balls.getBalls()) {
+        for (Ball ball : balls) {
             root.getChildren().add(ball.getNode());
         }
     }
@@ -120,5 +314,27 @@ public class IngameData {
 
     public void setRunning() {
         isRunning = true;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
+
+    private void updateHighScore() {
+        if (score > highScore) {
+            highScore = score;
+        }
+    }
+
+    public boolean isWon() {
+        return isWon;
     }
 }

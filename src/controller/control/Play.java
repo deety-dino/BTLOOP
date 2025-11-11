@@ -1,134 +1,95 @@
 package controller.control;
 
 import controller.dat.IngameData;
+import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import mng.ThreadPoolManager;
 import mng.gameManager;
 import user.User;
 
 import java.io.IOException;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
 
 public class Play {
-
-    private ScheduledFuture<?> gameTicker;
-
+    private AnimationTimer gameLoop;
     private long cur;
     private IngameData data;
     private User user;
     @FXML
     protected Pane root;
     @FXML
-    protected Group buttonGroup, gamePlay, pane;
+    protected Group buttonGroup, gamePlay, pane, winPane;
     @FXML
     protected Text WIDEPADDLE_POWERUP_TIME, LASER_POWERUP_TIME, SPEED_POWERUP_TIME;
+    @FXML
+    protected Text scoreText, livesText, highScoreText;
+    @FXML
+    protected Text winScoreText, winHighScoreText, winComparisonText;
 
     @FXML
     protected void clickPause() {
         data.setPause();
-        Platform.runLater(() -> root.requestFocus());
     }
 
     @FXML
     protected void clickToHome() throws IOException {
         gameManager.State = gameManager.ApplicationState.LEVEL_SELECTION_SCREEN;
         gameManager.letShow();
-        Platform.runLater(() -> root.requestFocus());
     }
 
     @FXML
     protected void clickRestart() {
         pane.setVisible(false);
+        winPane.setVisible(false);
         gamePlay.setVisible(true);
         data.loadData(user.getSelectedLevel());
         data.getGroup();
-        cur = 0;
-        Platform.runLater(() -> root.requestFocus());
     }
 
     @FXML
     protected void clickNext() {
-        cur = 0;
         User.setSelectedLevel(user.getSelectedLevel() + 1);
         data.loadData(user.getSelectedLevel());
         data.getGroup();
-        Platform.runLater(() -> root.requestFocus());
     }
 
     @FXML
     protected void initialize() {
         data = new IngameData(gamePlay);
-
-        Platform.runLater(() -> root.requestFocus());
-        // Set key handlers on FX thread (these only set model flags)
-        root.setOnKeyReleased(e -> {
-            if (e.getCode() == KeyCode.LEFT) data.setLeftPressed(false);
-            if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(false);
-        });
-        root.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.LEFT) data.setLeftPressed(true);
-            if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(true);
-            if (e.getCode() == KeyCode.K) data.setPause();
-        });
-
-        // Schedule the game tick on a worker thread at ~60 FPS (16ms)
-        ThreadPoolManager tpm = ThreadPoolManager.getInstance();
-        gameTicker = tpm.scheduleAtFixedRate(() -> {
-            long now = System.nanoTime();
-            try {
+        gameLoop = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
                 if (user == null) {
                     user = User.getInstance();
                 } else if (user.isSelected()) {
-                    // Load level data in background; then sync scene on FX thread
-                    int levelToLoad = user.getSelectedLevel();
-                    tpm.submit(() -> {
-                        data.loadData(levelToLoad); // model initialization (creates bricks etc)
-                        // reset timer in worker thread so the next update has a fresh baseline
-                        cur = System.nanoTime();
-                        Platform.runLater(() -> {
-                            data.getGroup();
-                            pane.setVisible(false);
-                            gamePlay.setVisible(true);
-                        });
-                    });
+                    data.loadData(user.getSelectedLevel());
+                    data.getGroup();
+                    pane.setVisible(false);
+                    gamePlay.setVisible(true);
                     User.setSelected(false);
                 } else {
-                    double deltaSeconds;
-                    if (cur == 0) {
-                        // first frame after start/load: approximate 16ms
-                        deltaSeconds = 16.0 / 1000.0;
-                    } else {
-                        deltaSeconds = (now - cur) / 1000000000.0;
-                    }
-                    cur = now;
-                    if (!data.isRunning()) {
-                        // show pause/end UI on FX thread
-                        Platform.runLater(() -> {
-                            pane.setVisible(true);
-                            gamePlay.setVisible(false);
-                        });
-                    } else if (!data.isPause()) {
-                        // Perform update (model work) off FX thread, passing a delta time
-                        Platform.runLater(() -> data.update(deltaSeconds));
-                        // Sync UI state (power-up timers etc.) on FX thread
-                        Platform.runLater(() -> data.getText(LASER_POWERUP_TIME, WIDEPADDLE_POWERUP_TIME, SPEED_POWERUP_TIME));
-                    }
+                    double time = (l - cur) / 1000000000.0;
+                    update(time);
                 }
-            } catch (Throwable t) {
-                t.printStackTrace();
+                cur = l;
             }
-        }, 0, 16, TimeUnit.MILLISECONDS);
+        };
+        gameLoop.start();
     }
 
     private void update(double time) {
         if (!data.isRunning()) {
-            pane.setVisible(true);
+            if (data.isWon()) {
+                winPane.setVisible(true);
+                pane.setVisible(false);
+                updateWinScreen();
+            } else {
+                pane.setVisible(true);
+                winPane.setVisible(false);
+            }
             gamePlay.setVisible(false);
         } else if (!data.isPause()) {
             root.setOnKeyReleased(e -> {
@@ -136,10 +97,12 @@ public class Play {
                     data.setLeftPressed(false);
                 }
                 if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(false);
+                if (e.getCode() == KeyCode.SPACE) data.setSpacePressed(false);
             });
             root.setOnKeyPressed(e -> {
                 if (e.getCode() == KeyCode.LEFT) data.setLeftPressed(true);
                 if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(true);
+                if (e.getCode() == KeyCode.SPACE) data.setSpacePressed(true);
                 if (e.getCode() == KeyCode.K) {
                     data.setPause();
                 }
@@ -148,6 +111,43 @@ public class Play {
             Platform.runLater(() -> root.requestFocus());
             data.update(time);
             data.getText(LASER_POWERUP_TIME, WIDEPADDLE_POWERUP_TIME, SPEED_POWERUP_TIME);
+
+            // Cập nhật hiển thị điểm và mạng
+            updateScoreDisplay();
+        }
+    }
+
+    private void updateScoreDisplay() {
+        if (scoreText != null) {
+            scoreText.setText("Score: " + data.getScore());
+        }
+        if (livesText != null) {
+            livesText.setText("Lives: " + data.getLives());
+        }
+        if (highScoreText != null) {
+            highScoreText.setText("High Score: " + data.getHighScore());
+        }
+    }
+
+    private void updateWinScreen() {
+        int score = data.getScore();
+        int highScore = data.getHighScore();
+
+        if (winScoreText != null) {
+            winScoreText.setText("Your Score: " + score);
+        }
+        if (winHighScoreText != null) {
+            winHighScoreText.setText("High Score: " + highScore);
+        }
+        if (winComparisonText != null) {
+            if (score >= highScore) {
+                winComparisonText.setText("🏆 NEW HIGH SCORE! 🏆");
+                winComparisonText.setFill(javafx.scene.paint.Color.GOLD);
+            } else {
+                int difference = highScore - score;
+                winComparisonText.setText("+" + difference + " points to beat high score!");
+                winComparisonText.setFill(javafx.scene.paint.Color.LIGHTBLUE);
+            }
         }
     }
 }
