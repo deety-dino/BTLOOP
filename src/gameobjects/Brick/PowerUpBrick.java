@@ -1,5 +1,6 @@
-package gameobjects;
+package gameobjects.Brick;
 
+import gameobjects.powerup.PowerUp;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;

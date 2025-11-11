@@ -1,10 +1,14 @@
-package gameobjects;
+package gameobjects.Ball;
 
+import gameobjects.Controller.objectInfo;
+import gameobjects.GameObject;
+import gameobjects.vector2f;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import mng.gameInfo;
 
 public class Ball extends GameObject {
-    vector2f direction;
+    private vector2f direction;
     private double ve_Multi;
 
     public void setVe_Multi(double ve_Multi) {
@@ -22,11 +26,11 @@ public class Ball extends GameObject {
     @Override
     public void update() {
         direction.normalize(1);
-        position.setPosition(position.getX() + ball_velocity * ve_Multi * direction.getX(),
-                position.getY() + ball_velocity * ve_Multi * direction.getY());
+        position.setPosition(position.getX() + objectInfo.ballVelocity * ve_Multi * direction.getX(),
+                position.getY() + objectInfo.ballVelocity * ve_Multi * direction.getY());
         ((Circle) shape).setCenterX(position.getX());
         ((Circle) shape).setCenterY(position.getY());
-        if (position.getX() <= 0 || position.getX() >= width) {
+        if (position.getX() <= 0 || position.getX() >= gameInfo.width) {
             direction.setVector(-direction.getX(), direction.getY());
         }
         if (position.getY() <= 0) {
@@ -35,6 +39,9 @@ public class Ball extends GameObject {
     }
 
     // Allow external code to set the initial direction of the ball
+    public vector2f getDirection() {
+        return direction;
+    }
     public void setDirection(double x, double y) {
         if (direction == null) direction = new vector2f(x, y);
         else direction.setVector(x, y);
@@ -49,10 +56,10 @@ public class Ball extends GameObject {
     }
 
     public void bounce(GameObject obj) {
-        double topSide = obj.position.getY();
-        double bottomSide = obj.position.getY() + obj.size.getHeight();
-        double leftSide = obj.position.getX();
-        double rightSide = obj.position.getX() + obj.size.getWidth();
+        double topSide = obj.getPosition().getY();
+        double bottomSide = obj.getPosition().getY() + obj.getSize().getHeight();
+        double leftSide = obj.getPosition().getX();
+        double rightSide = obj.getPosition().getX() + obj.getSize().getWidth();
         if (position.getY() < topSide) {
             if (position.getX() < leftSide) {
                 vector2f vector = new vector2f(position.getX() - leftSide, position.getY() - topSide);
