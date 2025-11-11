@@ -1,14 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.Pane?>
-
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
-<Pane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.control.Play" style="-fx-background-color: black">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="root" prefHeight="600" prefWidth="800" style="-fx-background-color: black" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.control.Play">
+    <ImageView fitHeight="600" fitWidth="800.0" layoutX="0.0" layoutY="0.0" opacity="0.6" pickOnBounds="true">
+        <image>
+            <Image url="@../../../resources/gfx/inGame/InGameBG.jpg" />
+        </image>
+    </ImageView>
+    <Group fx:id="gamePlay" />
     <Group fx:id="buttonGroup">
-        <Button layoutX="553.0" mnemonicParsing="false" onAction="#clickPause" text="Pause"/>
-        <Button mnemonicParsing="false" onAction="#clickToHome" text="Home"/>
+        <Button mnemonicParsing="false" onAction="#clickToHome" stylesheets="@../../../resources/style.css" text="Home">
+            <font>
+                <Font size="13.0" />
+            </font>
+      </Button>
+        <Button contentDisplay="RIGHT" layoutX="749.0" mnemonicParsing="false" onAction="#clickPause" stylesheets="@../../../resources/style.css" text="Pause">
+            <font>
+                <Font size="13.0" />
+            </font>
+      </Button>
+      <!-- Hiển thị điểm, mạng và điểm cao - Chỉ text, không có background -->
+      <VBox layoutX="10.0" layoutY="50.0" spacing="5.0">
+         <children>
+            <Text fx:id="livesText" fill="#FF6B6B" strokeType="OUTSIDE" strokeWidth="0.0" text="Lives: 5">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="scoreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Score: 0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text fx:id="highScoreText" fill="#FFD700" strokeType="OUTSIDE" strokeWidth="0.0" text="High Score: 0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <VBox layoutX="700.0" layoutY="500.0" prefHeight="100.0" prefWidth="100.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/gfx/power-up/FireBall.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fx:id="LASER_POWERUP_TIME" fill="WHITE" layoutX="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/gfx/power-up/PaddleSize.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fx:id="WIDEPADDLE_POWERUP_TIME" fill="WHITE" layoutX="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="60.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/gfx/power-up/Speed.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fx:id="SPEED_POWERUP_TIME" fill="WHITE" layoutX="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
     </Group>
-    <Group fx:id="gamePlay"></Group>
+    <Group fx:id="pane" layoutX="300.0" layoutY="250.0" visible="false"><children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="55.0" text="Game Over!" textFill="#fffcfc">
+                <font>
+                    <Font size="15.0" />
+                </font>
+            </Label>
+            <Button layoutX="-10.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickToHome" text="Home" />
+            <Button layoutX="69.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickRestart" text="Restart" />
+            <Button layoutX="161.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickNext" text="Next" />
+        </children>
+    </Group>
+    <Group fx:id="winPane" layoutX="250.0" layoutY="200.0" visible="false">
+        <children>
+            <VBox alignment="CENTER" prefHeight="280.0" prefWidth="300.0" spacing="15.0" style="-fx-background-color: rgba(0, 0, 0, 0.9); -fx-background-radius: 15; -fx-border-color: gold; -fx-border-width: 3; -fx-border-radius: 15;">
+                <children>
+                    <Text fill="#FFD700" strokeType="OUTSIDE" strokeWidth="0.0" text="🎉 YOU WON! 🎉">
+                        <font>
+                            <Font name="System Bold" size="28.0" />
+                        </font>
+                    </Text>
+                    <Text fx:id="winScoreText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Score: 0">
+                        <font>
+                            <Font name="System Bold" size="20.0" />
+                        </font>
+                    </Text>
+                    <Text fx:id="winHighScoreText" fill="#FFD700" strokeType="OUTSIDE" strokeWidth="0.0" text="High Score: 0">
+                        <font>
+                            <Font name="System Bold" size="18.0" />
+                        </font>
+                    </Text>
+                    <Text fx:id="winComparisonText" fill="#00FF00" strokeType="OUTSIDE" strokeWidth="0.0" text="">
+                        <font>
+                            <Font name="System Bold" size="16.0" />
+                        </font>
+                    </Text>
+                    <HBox alignment="CENTER" spacing="20.0">
+                        <children>
+                            <Button mnemonicParsing="false" onAction="#clickToHome" prefWidth="100.0" stylesheets="@../../../resources/style.css" text="Home">
+                                <font>
+                                    <Font size="14.0" />
+                                </font>
+                            </Button>
+                            <Button mnemonicParsing="false" onAction="#clickRestart" prefWidth="100.0" stylesheets="@../../../resources/style.css" text="Restart">
+                                <font>
+                                    <Font size="14.0" />
+                                </font>
+                            </Button>
+                            <Button mnemonicParsing="false" onAction="#clickNext" prefWidth="100.0" stylesheets="@../../../resources/style.css" text="Next">
+                                <font>
+                                    <Font size="14.0" />
+                                </font>
+                            </Button>
+                        </children>
+                    </HBox>
+                </children>
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                </padding>
+            </VBox>
+        </children>
+    </Group>
 </Pane>

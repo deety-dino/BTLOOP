@@ -19,13 +19,13 @@ public class BrickFactory {
         }
     }
 
-    //Random
+    //Random - Cải thiện tỷ lệ powerup và cân bằng hơn
     public static Brick createRandomBrick(double x, double y, double width, double height) {
         Random rand = new Random();
         int choice = rand.nextInt(10); // tweak ratios
-        if (choice < 6) return createBrick("normal", x, y, width, height);
-        else if (choice < 9) return createBrick("strong", x, y, width, height);
-        else return createBrick("powerup", x, y, width, height);
+        if (choice < 4) return createBrick("normal", x, y, width, height);      // 40% Normal
+        else if (choice < 7) return createBrick("strong", x, y, width, height); // 30% Strong
+        else return createBrick("powerup", x, y, width, height);                // 30% PowerUp (tăng từ 10% lên 30%)
     }
 
 }
