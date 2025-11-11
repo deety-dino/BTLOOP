@@ -16,22 +16,22 @@ public class Paddle extends GameObject {
         shape.setLayoutY(y);
     }
 
-    public void moveLeft() {
+    public void moveLeft(double time) {
         if (position.getX() > 0) {
-            position.setPosition(position.getX() - objectInfo.paddleVelocity, position.getY());
+            position.setPosition(position.getX() - objectInfo.paddleVelocity * time, position.getY());
             shape.setLayoutX(position.getX());
         }
     }
 
-    public void moveRight() {
+    public void moveRight(double time) {
         if (position.getX() + size.getWidth() < gameInfo.width) {
-            position.setPosition(position.getX() + objectInfo.paddleVelocity, position.getY());
+            position.setPosition(position.getX() + objectInfo.paddleVelocity * time, position.getY());
             shape.setLayoutX(position.getX());
         }
     }
 
     @Override
-    public void update() {
+    public void update(double time) {
 
     }
 }

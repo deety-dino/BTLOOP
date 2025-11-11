@@ -18,7 +18,7 @@ public abstract class GameObject {
     public Node getNode() {
         return shape;
     }
-    public abstract void update();
+    public abstract void update(double time);
 
     public boolean intersects(GameObject other) {
         return shape.getBoundsInParent().intersects(other.shape.getBoundsInParent());

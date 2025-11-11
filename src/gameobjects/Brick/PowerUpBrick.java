@@ -35,7 +35,7 @@ public class PowerUpBrick extends Brick {
     @Override
     public void onDestroyed() {
         // Enhanced power-up type selection with weighted probabilities
-        double r = Math.random();
+        double r = 0.7;//Math.random();
         PowerUp.PowerUpType type;
 
         if (r < 0.35) {

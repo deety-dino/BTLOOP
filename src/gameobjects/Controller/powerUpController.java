@@ -10,8 +10,8 @@ import mng.gameInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class powerUpController {
-    private static powerUpController powerUpController;
+public class PowerUpController implements objectInfo {
+    private static PowerUpController powerUpController;
     private ArrayList<PowerUp> powerUps;
     private final double powerUp_time = 5;
     private double widePaddle_time;
@@ -19,13 +19,13 @@ public class powerUpController {
     private boolean active;
     private double laserPaddle_time;
 
-    public static powerUpController getInstance() {
+    public static PowerUpController getInstance() {
         if (powerUpController == null) {
-            powerUpController = new powerUpController();
+            powerUpController = new PowerUpController();
         }
         return powerUpController;
     }
-    private powerUpController() {
+    private PowerUpController() {
         widePaddle_time = 0.0;
         speedBall_time = 0.0;
         active = false;
@@ -33,7 +33,10 @@ public class powerUpController {
         powerUps = new ArrayList<>();
     }
 
-    public void refreshPowerUps() {
+    public ArrayList<PowerUp> getPowerUps() {
+        return powerUps;
+    }
+    public void refresh() {
         powerUps.clear();
     }
     public void setActive(PowerUp powerUp) {
@@ -63,28 +66,42 @@ public class powerUpController {
         root.getChildren().add(powerUp.getNode());
     }
 
-    public void update(Group root, double time, Paddle paddle, ArrayList<Ball> balls) {
+    public void update(Group root, double time) {
+        if(laserPaddle_time > 0) {
+            laserPaddle_time -= time;
+            if(laserPaddle_time > 0) {
+                PowerUp.laserPaddle_Activation();
+            }
+        }
         if (widePaddle_time > 0) {
-            widePaddle_time = widePaddle_time - time;
+            widePaddle_time -= time;
             if (widePaddle_time > 0) {
-                PowerUp.widePaddle_Activation(paddle);
+                PowerUp.widePaddle_Activation(PaddleController.getInstance().getPaddle());
             } else {
-                PowerUp.widePaddle_Deactivation(paddle);
+                PowerUp.widePaddle_Deactivation(PaddleController.getInstance().getPaddle());
             }
         }
         if (speedBall_time > 0) {
-            speedBall_time = speedBall_time - time;
-
+            speedBall_time -= time;
+            if(speedBall_time > 0) {
+                PowerUp.speedBall_Activation();
+            } else {
+                PowerUp.speedBall_Deactivation();
+            }
+        }
+        if(active) {
+            active = false;
+            PowerUp.multiBall_Activation();
         }
         Iterator<PowerUp> it = powerUps.iterator();
         while (it.hasNext()) {
             PowerUp powerUp = it.next();
-            powerUp.update();
+            powerUp.update(time);
             if (powerUp.getY() > gameInfo.height + 50) {
                 powerUps.remove(it);
                 root.getChildren().remove(powerUp.getNode());
             }
-            if (powerUp.intersects(paddle)) {
+            if (powerUp.intersects(PaddleController.getInstance().getPaddle())) {
                 setActive(powerUp);
                 powerUps.remove(it);
                 root.getChildren().remove(powerUp.getNode());

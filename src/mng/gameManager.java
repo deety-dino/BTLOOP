@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 
 public class gameManager {
+    private static final Object lock = new Object();
+
     private AnimationTimer loop;
     private static gameManager gameManager;
     private static FXMLLoader[] fxmlLoader = new FXMLLoader[3];
@@ -28,7 +30,11 @@ public class gameManager {
 
     public static gameManager getInstance(Stage stage) {
         if (gameManager == null) {
-            gameManager = new gameManager(stage);
+            synchronized (lock) {
+                if (gameManager == null) {
+                    gameManager = new gameManager(stage);
+                }
+            }
         }
         return gameManager;
     }
