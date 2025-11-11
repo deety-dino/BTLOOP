@@ -14,6 +14,7 @@ public class Ball extends GameObject {
     public void setVe_Multi(double ve_Multi) {
         this.ve_Multi = ve_Multi;
     }
+
     public Ball(double x, double y, double radius) {
         super(x, y, radius * 2, radius * 2);
         shape = new Circle(x, y, radius);
@@ -24,10 +25,10 @@ public class Ball extends GameObject {
     }
 
     @Override
-    public void update() {
+    public void update(double time) {
         direction.normalize(1);
-        position.setPosition(position.getX() + objectInfo.ballVelocity * ve_Multi * direction.getX(),
-                position.getY() + objectInfo.ballVelocity * ve_Multi * direction.getY());
+        position.setPosition(position.getX() + objectInfo.ballVelocity * ve_Multi * direction.getX() * time,
+                position.getY() + objectInfo.ballVelocity * ve_Multi * direction.getY() * time);
         ((Circle) shape).setCenterX(position.getX());
         ((Circle) shape).setCenterY(position.getY());
         if (position.getX() <= 0 || position.getX() >= gameInfo.width) {
@@ -42,6 +43,7 @@ public class Ball extends GameObject {
     public vector2f getDirection() {
         return direction;
     }
+
     public void setDirection(double x, double y) {
         if (direction == null) direction = new vector2f(x, y);
         else direction.setVector(x, y);

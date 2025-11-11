@@ -1,27 +1,20 @@
 package gameobjects.powerup;
 
-import controller.dat.IngameData;
 import gameobjects.Ball.Ball;
+import gameobjects.Controller.BallController;
+import gameobjects.Controller.objectInfo;
 import gameobjects.GameObject;
 import gameobjects.paddle.Paddle;
-import javafx.animation.PauseTransition;
-import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class PowerUp extends GameObject {
     private final PowerUpType type;
-    private boolean active = false;
-    private static final double BASE_FALL_SPEED = 2.0;
-    private double fallSpeed = BASE_FALL_SPEED;
-    private double oscillatePhase = 0;
+    private double fallSpeed;
     private final Random random = new Random();
-    private static final double OSCILLATION_AMPLITUDE = 30.0;
-    private static final double OSCILLATION_SPEED = 0.05;
 
     public enum PowerUpType {
         WIDE_PADDLE,
@@ -66,12 +59,12 @@ public class PowerUp extends GameObject {
         shape.setLayoutY(position.getY());
 
         // Randomize initial fall speed slightly
-        fallSpeed = BASE_FALL_SPEED * (0.8 + random.nextDouble() * 0.4);
+        fallSpeed = objectInfo.BASE_FALL_SPEED * (0.8 + random.nextDouble() * 0.4);
     }
 
     @Override
-    public void update() {
-        getPosition().setPosition(position.getX(), position.getY() + fallSpeed);
+    public void update(double time) {
+        getPosition().setPosition(position.getX(), position.getY() + fallSpeed * time);
         shape.setLayoutX(getPosition().getX());
         shape.setLayoutY(getPosition().getY());
     }
@@ -79,37 +72,41 @@ public class PowerUp extends GameObject {
     //Wide Paddle powerup
     public static void widePaddle_Activation(Paddle paddle) {
         Rectangle paddleShape = (Rectangle) paddle.getNode();
-        paddleShape.setWidth(75);
+        paddleShape.setWidth(objectInfo.defaultPaddleSize * 1.5);
     }
+
     public static void widePaddle_Deactivation(Paddle paddle) {
         Rectangle paddleShape = (Rectangle) paddle.getNode();
-        paddleShape.setWidth(50);
+        paddleShape.setWidth(objectInfo.defaultPaddleSize * 1.0);
     }
 
     //Speed Ball powerup
-    public static void speedBall_Activation(ArrayList<Ball> balls) {
-        for(Ball ball : balls) {
+    public static void speedBall_Activation() {
+        for (Ball ball : BallController.getInstance().getBalls()) {
             ball.setVe_Multi(1.5);
         }
     }
-    public static void speedBall_Deactivation(ArrayList<Ball> balls) {
-        for (Ball ball : balls) {
+
+    public static void speedBall_Deactivation() {
+        for (Ball ball : BallController.getInstance().getBalls()) {
             ball.setVe_Multi(1.0);
         }
     }
 
     //Multi Ball powerup
-    public static void multiBall_Activation(ArrayList<Ball> balls) {
-        int i = balls.size();
-        while (i > 0) {
+    public static void multiBall_Activation() {
+        ArrayList<Ball> balls = BallController.getInstance().getBalls();
+        int i = balls.size() - 1;
+        while (i >= 0) {
             Ball ball = balls.get(i);
-            ball.setDirection(ball.getDirection().getX(), -ball.getDirection().getY());
+            ball.setDirection(-ball.getDirection().getX(), ball.getDirection().getY());
             balls.add(ball);
+            i--;
         }
     }
 
     //Laser Paddle powerup
-    public static void laserPaddle_Activation(Paddle paddle) {
+    public static void laserPaddle_Activation() {
 
     }
 

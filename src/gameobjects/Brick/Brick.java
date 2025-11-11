@@ -30,7 +30,7 @@ public abstract class Brick extends GameObject {
     protected void onHit() {}
 
     @Override
-    public void update() {
+    public void update(double time) {
 
     }
 
