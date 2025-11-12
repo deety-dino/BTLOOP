@@ -1,10 +1,14 @@
-package gameobjects.Controller;
+package gameobjects.controller;
 
-import gameobjects.Ball.Ball;
-import gameobjects.Brick.Brick;
-import gameobjects.Brick.PowerUpBrick;
+import controller.dat.IngameData;
+import gameobjects.ball.Ball;
+import gameobjects.brick.Brick;
+import gameobjects.brick.PowerUpBrick;
 import gameobjects.paddle.Paddle;
 import gameobjects.powerup.PowerUp;
+import gameobjects.controller.BrickController;
+import gameobjects.controller.PowerUpController;
+import gameobjects.controller.PaddleController;
 import javafx.animation.PauseTransition;
 import javafx.scene.Group;
 import javafx.util.Duration;
@@ -13,12 +17,17 @@ import mng.gameInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class BallController implements objectInfo {
+public class BallController implements gameobjects.controller.objectInfo {
     private static BallController instance;
     private ArrayList<Ball> balls;
+    private IngameData gameData;
 
     private BallController() {
         balls = new ArrayList<>();
+    }
+
+    public void setGameData(IngameData gameData) {
+        this.gameData = gameData;
     }
 
     public static BallController getInstance() {
@@ -61,8 +70,12 @@ public class BallController implements objectInfo {
 
                     if (brick.isDestroyed()) {
                         brick.onDestroyed();
+                        if (gameData != null) {
+                            gameData.addScore(brick.getScoreValue());
+                        }
                         if (brick instanceof PowerUpBrick) {
-                            PowerUp powerUp = ((PowerUpBrick) brick).getPowerUp();
+                            PowerUpBrick powerUpBrick = (PowerUpBrick) brick;
+                            PowerUp powerUp = powerUpBrick.getPowerUp();
                             if (powerUp != null) {
                                 PowerUpController.getInstance().addPowerUp(powerUp);
                             }

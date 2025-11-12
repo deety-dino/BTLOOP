@@ -1,14 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.Pane?>
-
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
-<Pane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.control.Play" style="-fx-background-color: black">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="root" prefHeight="600" prefWidth="800" style="-fx-background-color: black" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.control.Play">
+    <ImageView fitHeight="600" fitWidth="800.0" layoutX="0.0" layoutY="0.0" opacity="0.6" pickOnBounds="true">
+        <image>
+            <Image url="@/gfx/inGame/InGameBG.jpg" />
+        </image>
+    </ImageView>
     <Group fx:id="buttonGroup">
-        <Button layoutX="553.0" mnemonicParsing="false" onAction="#clickPause" text="Pause"/>
-        <Button mnemonicParsing="false" onAction="#clickToHome" text="Home"/>
+        <Button mnemonicParsing="false" onAction="#clickToHome" stylesheets="@/style.css" text="Home">
+            <font>
+                <Font size="13.0" />
+            </font>
+      </Button>
+        <Button contentDisplay="RIGHT" layoutX="749.0" mnemonicParsing="false" onAction="#clickPause" stylesheets="@/style.css" text="Pause">
+            <font>
+                <Font size="13.0" />
+            </font>
+      </Button>
+      <VBox layoutX="700.0" layoutY="500.0" prefHeight="100.0" prefWidth="100.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/gfx/power-up/FireBall.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fx:id="LASER_POWERUP_TIME" fill="WHITE" layoutX="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/gfx/power-up/PaddleSize.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fx:id="WIDEPADDLE_POWERUP_TIME" fill="WHITE" layoutX="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="60.0" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/gfx/power-up/Speed.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="10.0" top="2.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fx:id="SPEED_POWERUP_TIME" fill="WHITE" layoutX="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
     </Group>
-    <Group fx:id="gamePlay"></Group>
+    <Group fx:id="gamePlay" />
+    <Group fx:id="statsGroup">
+        <HBox layoutX="10.0" layoutY="40.0" spacing="30.0">
+            <children>
+                <HBox spacing="10.0">
+                    <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@/gfx/inGame/Life.png" />
+                            </image>
+                        </ImageView>
+                        <Text fx:id="LIVES_TEXT" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </HBox>
+                <HBox spacing="10.0">
+                    <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Text>
+                        <Text fx:id="SCORE_TEXT" fill="YELLOW" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </HBox>
+                <HBox spacing="10.0">
+                    <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="High:">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Text>
+                        <Text fx:id="HIGHSCORE_TEXT" fill="GOLD" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                            <font>
+                                <Font name="System Bold" size="20.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+    </Group>
+    <Group fx:id="pane" layoutX="300.0" layoutY="250.0">
+        <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="55.0" text="Game Over!" textFill="#fffcfc">
+                <font>
+                    <Font size="15.0" />
+                </font>
+            </Label>
+            <Button layoutX="-10.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickToHome" text="Home" />
+            <Button layoutX="69.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickRestart" text="Restart" />
+            <Button layoutX="161.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickNext" text="Next" />
+        </children>
+    </Group>
 </Pane>

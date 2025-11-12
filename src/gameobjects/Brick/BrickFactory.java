@@ -1,4 +1,4 @@
-package gameobjects.Brick;
+package gameobjects.brick;
 
 import java.util.Random;
 
@@ -19,12 +19,11 @@ public class BrickFactory {
         }
     }
 
-    //Random
     public static Brick createRandomBrick(double x, double y, double width, double height) {
         Random rand = new Random();
-        int choice = rand.nextInt(10); // tweak ratios
+        int choice = rand.nextInt(10);
         if (choice < 6) return createBrick("normal", x, y, width, height);
-        else if (choice < 9) return createBrick("strong", x, y, width, height);
+        else if (choice < 8) return createBrick("strong", x, y, width, height);
         else return createBrick("powerup", x, y, width, height);
     }
 

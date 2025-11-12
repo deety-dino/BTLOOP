@@ -1,5 +1,6 @@
-package gameobjects.Controller;
+package gameobjects.controller;
 
+import gameobjects.laser.Laser;
 import gameobjects.paddle.Paddle;
 import javafx.scene.Group;
 
@@ -16,6 +17,7 @@ public class PaddleController implements objectInfo {
         paddle.getPosition().setPosition(350, 550);
         paddle.getNode().setLayoutX(350);
         paddle.getNode().setLayoutY(550);
+        paddle.setHasLaser(false);
     }
     public Paddle getPaddle() {
         return paddle;
@@ -33,14 +35,27 @@ public class PaddleController implements objectInfo {
 
     @Override
     public void update(double time) {
+        paddle.update(time);
     }
 
-    public void update(double time, boolean leftPressed, boolean rightPressed) {
+    public void update(double time, boolean leftPressed, boolean rightPressed, boolean spacePressed) {
         if(leftPressed) {
             paddle.moveLeft(time);
         }
         if(rightPressed) {
             paddle.moveRight(time);
         }
+        if(spacePressed && paddle.canShoot()) {
+            shootLaser();
+        }
+        paddle.update(time);
+    }
+
+    private void shootLaser() {
+        double laserX = paddle.getCenterX() - 2.5;
+        double laserY = paddle.getY() - 15;
+        Laser laser = new Laser(laserX, laserY);
+        LaserController.getInstance().addLaser(laser);
+        paddle.resetShootCooldown();
     }
 }

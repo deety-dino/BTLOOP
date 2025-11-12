@@ -1,10 +1,10 @@
-package gameobjects.Controller;
+package gameobjects.controller;
 
 import javafx.scene.Group;
 
 public interface objectInfo {
-    public int ballVelocity = 200;
-    public int paddleVelocity = 200;
+    public int ballVelocity = 210;
+    public int paddleVelocity = 210;
 
     public double BASE_FALL_SPEED = 150.0;
 

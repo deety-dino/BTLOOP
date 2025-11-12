@@ -25,9 +25,11 @@ public class Play {
     @FXML
     protected Pane root;
     @FXML
-    protected Group buttonGroup, gamePlay, pane;
+    protected Group buttonGroup, gamePlay, pane, statsGroup;
     @FXML
     protected Text WIDEPADDLE_POWERUP_TIME, LASER_POWERUP_TIME, SPEED_POWERUP_TIME;
+    @FXML
+    protected Text LIVES_TEXT, SCORE_TEXT, HIGHSCORE_TEXT;
 
     @FXML
     protected void clickPause() {
@@ -69,11 +71,19 @@ public class Play {
         root.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.LEFT) data.setLeftPressed(false);
             if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(false);
+            if (e.getCode() == KeyCode.SPACE) data.setSpacePressed(false);
         });
         root.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.LEFT) data.setLeftPressed(true);
             if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(true);
-            if (e.getCode() == KeyCode.K) data.setPause();
+            if (e.getCode() == KeyCode.SPACE) {
+                if (!data.isRunning() || data.isPause()) {
+                    data.resume();
+                } else {
+                    data.setSpacePressed(true);
+                }
+            }
+            if (e.getCode() == KeyCode.P) data.setPause();
         });
 
         ThreadPoolManager tpm = ThreadPoolManager.getInstance();
@@ -114,10 +124,14 @@ public class Play {
                         gamePlay.setVisible(true);
                         // Perform update (model work) off FX thread, passing a delta time
                         Platform.runLater(() -> data.update(deltaSeconds));
-                        // Sync UI state (power-up timers etc.) on FX thread
                         Platform.runLater(() -> {
                             data.getGroup();
                             data.getText(LASER_POWERUP_TIME, WIDEPADDLE_POWERUP_TIME, SPEED_POWERUP_TIME);
+                            LIVES_TEXT.setText(String.valueOf(data.getLives()));
+                            SCORE_TEXT.setText(String.valueOf(data.getScore()));
+                            SCORE_TEXT.setFill(javafx.scene.paint.Color.RED);
+                            HIGHSCORE_TEXT.setText(String.valueOf(data.getHighScore()));
+                            HIGHSCORE_TEXT.setFill(javafx.scene.paint.Color.RED);
                         });
                     }
                 }

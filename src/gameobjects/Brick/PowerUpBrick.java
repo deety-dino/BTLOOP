@@ -1,4 +1,4 @@
-package gameobjects.Brick;
+package gameobjects.brick;
 
 import gameobjects.powerup.PowerUp;
 import javafx.scene.paint.Color;
@@ -34,22 +34,20 @@ public class PowerUpBrick extends Brick {
 
     @Override
     public void onDestroyed() {
-        // Enhanced power-up type selection with weighted probabilities
         double r = Math.random();
         PowerUp.PowerUpType type;
 
-        if (r < 0.35) {
-            type = PowerUp.PowerUpType.WIDE_PADDLE;      // 35% chance
-        } else if (r < 0.65) {
-            type = PowerUp.PowerUpType.SPEED_BALL;       // 30% chance
-        } else if (r < 0.85) {
-            type = PowerUp.PowerUpType.MULTI_BALL;       // 20% chance
+        if (r < 0.25) {
+            type = PowerUp.PowerUpType.WIDE_PADDLE;
+        } else if (r < 0.5) {
+            type = PowerUp.PowerUpType.SPEED_BALL;
+        } else if (r < 0.75) {
+            type = PowerUp.PowerUpType.MULTI_BALL;
         } else {
-            type = PowerUp.PowerUpType.LASER_PADDLE;     // 15% chance
+            type = PowerUp.PowerUpType.LASER_PADDLE;
         }
 
-        // Create power-up at brick's position with slight random offset
-        double offsetX = (Math.random() - 0.5) * 10;  // ±5 pixels
+        double offsetX = (Math.random() - 0.5) * 10;
         powerUp = new PowerUp(
             getPosition().getX() + offsetX,
             getPosition().getY(),

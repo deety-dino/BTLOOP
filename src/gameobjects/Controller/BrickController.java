@@ -1,6 +1,6 @@
-package gameobjects.Controller;
+package gameobjects.controller;
 
-import gameobjects.Brick.Brick;
+import gameobjects.brick.Brick;
 import javafx.scene.Group;
 
 import java.util.ArrayList;
