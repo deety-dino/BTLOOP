@@ -5,59 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f28e3b1-52f5-4c59-ad90-c486aad8a1c4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/SETUP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gameobjects/Controller/LaserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gameobjects/laser/Laser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BTLOOP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BTLOOP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/Play$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/Play.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/Play.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/levelSelection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/levelSelection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/IngameData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/IngameData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/dat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/levelSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/levelSelection.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/play.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/play.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Ball.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/BrickFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/GameObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/NormalBrick.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Paddle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/PowerUp$PowerUpType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/PowerUp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/PowerUpBrick.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/StrongBrick.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/position.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/size.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/size.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/vector2f.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/vector2f.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/main/Arkanoid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/main/Arkanoid.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/mng/gameManager$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/mng/gameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/mng/gameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/user/User$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/user/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/user/data/users.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/users.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/control/Play.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/control/Play.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/dat/IngameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/dat/IngameData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxml/levelSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxml/levelSelection.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxml/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxml/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxml/play.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxml/play.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/Ball/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Ball/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/Brick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/BrickFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/BrickFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/NormalBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/NormalBrick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/PowerUpBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/PowerUpBrick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/StrongBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/StrongBrick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/BallController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/BallController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/BrickController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/BrickController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/PaddleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/PaddleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/objectInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/objectInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/powerUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/powerUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/paddle/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/paddle/Paddle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameobjects/powerup/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/powerup/PowerUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mng/gameInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mng/gameInfo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
