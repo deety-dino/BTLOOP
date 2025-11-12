@@ -4,6 +4,7 @@ import gameobjects.Controller.objectInfo;
 import gameobjects.GameObject;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.image.*;
 import mng.gameInfo;
 
 public class Paddle extends GameObject {
@@ -11,7 +12,13 @@ public class Paddle extends GameObject {
         super(x, y, w, h);
         shape = new Rectangle(w, h);
         Rectangle rect = (Rectangle) shape;
-        rect.setFill(Color.LIGHTBLUE);
+        try {
+            Image paddleTexture = new Image(getClass().getResourceAsStream("/gfx/pad/Pad.png"));
+            rect.setFill(new javafx.scene.paint.ImagePattern(paddleTexture));
+        } catch (Exception e) {
+            // Fallback to solid color
+            rect.setFill(Color.LIGHTBLUE);
+        }
         shape.setLayoutX(x);
         shape.setLayoutY(y);
     }

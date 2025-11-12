@@ -6,21 +6,38 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.image.*;
 
 public class PowerUpBrick extends Brick {
     private PowerUp powerUp;
     private static final Color BRICK_COLOR = Color.web("#D4AF37");
     private static final Color GLOW_COLOR = Color.YELLOW;
+    private static final Color FALLBACK_COLOR = Color.web("#D4AF37");
 
     public PowerUpBrick(double x, double y, double w, double h) {
-        // Pass the base color to super constructor instead of gradient
-        super(x, y, w, h, 1, BRICK_COLOR);
+        super(x, y, w, h, 1, FALLBACK_COLOR);
 
-        // Apply gradient and effects to shape after construction
-        Rectangle rect = (Rectangle) shape;
-        rect.setFill(createGradient());
-        rect.setStroke(GLOW_COLOR);
-        rect.setStrokeWidth(1.5);
+        // Load the power-up brick image
+        try {
+            Image brickImage = new Image(getClass().getResourceAsStream("/gfx/brick/Brick3.png"));
+            ImageView imageView = new ImageView(brickImage);
+            imageView.setFitWidth(w);
+            imageView.setFitHeight(h);
+            imageView.setPreserveRatio(false);
+            shape = imageView;
+            shape.setLayoutX(x);
+            shape.setLayoutY(y);
+
+            // Optional: Add glow effect to power-up brick
+            javafx.scene.effect.Glow glow = new javafx.scene.effect.Glow();
+            glow.setLevel(0.3);
+            shape.setEffect(glow);
+
+        } catch (Exception e) {
+            System.out.println("Power-up brick image not found, using fallback with gradient");
+            e.printStackTrace();
+            // Keep the gradient fallback from original code
+        }
     }
 
     private static LinearGradient createGradient() {

@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "NotoSansExtraBoldItalic";
+    src: url("ttf/NotoSans-ExtraBoldItalic.ttf");
+}
+
+.button {
+    -fx-font-family: "NotoSansExtraBoldItalic";
+    -fx-text-fill: #000405;
+    -fx-background-color: linear-gradient(to bottom , #a6ecf7, #ffffff);
+}
+
+.button:hover {
+    -fx-opacity: 0.7;
+}
+
