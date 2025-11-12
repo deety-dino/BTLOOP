@@ -86,9 +86,9 @@ public class Play {
                     // Load level data in background; then sync scene on FX thread
                     int levelToLoad = user.getSelectedLevel();
                     tpm.submit(() -> {
-                        data.loadData(levelToLoad);
                         cur = System.nanoTime();
                         Platform.runLater(() -> {
+                            data.loadData(levelToLoad);
                             data.getGroup();
                             pane.setVisible(false);
                             gamePlay.setVisible(true);
@@ -110,6 +110,8 @@ public class Play {
                             gamePlay.setVisible(false);
                         });
                     } else if (!data.isPause()) {
+                        pane.setVisible(false);
+                        gamePlay.setVisible(true);
                         // Perform update (model work) off FX thread, passing a delta time
                         Platform.runLater(() -> data.update(deltaSeconds));
                         // Sync UI state (power-up timers etc.) on FX thread
