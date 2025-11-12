@@ -69,9 +69,7 @@ public class PowerUpController implements gameobjects.controller.objectInfo {
         if (laserPaddle_time > 0) {
             laserPaddle_time -= time;
             if (laserPaddle_time > 0) {
-                PowerUp.laserPaddle_Activation(PaddleController.getInstance().getPaddle());
-            } else {
-                PowerUp.laserPaddle_Deactivation(PaddleController.getInstance().getPaddle());
+                PowerUp.laserPaddle_Activation();
             }
         }
         if (widePaddle_time > 0) {

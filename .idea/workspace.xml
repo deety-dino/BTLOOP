@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f28e3b1-52f5-4c59-ad90-c486aad8a1c4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BTLOOP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BTLOOP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/controller/PowerUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/controller/PowerUpController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +58,7 @@
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "dev.sweep.assistant.data.RecentlyUsedFiles": "src\\gameobjects\\controller\\PowerUpController.java;src\\gameobjects\\controller\\BallController.java;src\\controller\\fxml\\play.fxml;src\\gameobjects\\brick\\Brick.java;src\\controller\\control\\Play.java;src\\controller\\dat\\IngameData.java;src\\gameobjects\\powerup\\PowerUp.java;src\\gameobjects\\controller\\PaddleController.java;src\\gameobjects\\controller\\LaserController.java;src\\gameobjects\\laser\\Laser.java",
-    "git-widget-placeholder": "TuanAnhFix",
+    "git-widget-placeholder": "TuanAnhAdd1",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
