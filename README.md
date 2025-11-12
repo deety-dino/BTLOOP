@@ -56,6 +56,8 @@ BTLOOP/
 ---
 
 ## Nguồn cho asset:
-⦁	Tất cả asset ảnh với BGM đều được lấy từ game Blue Archive với font được generate từ web: https://symbolon.pages.dev/  
-⦁	Asset cho bóng được lấy từ game Geometry Dash
-⦁	SFX trong game cũng lấy từ Blue Archive
+- Tất cả asset ảnh với BGM đều được lấy từ game Blue Archive với font được generate từ web: https://symbolon.pages.dev/  
+- Asset cho bóng được lấy từ game Geometry Dash
+- SFX trong game cũng lấy từ Blue Archive
+
+
