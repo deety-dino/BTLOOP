@@ -28,7 +28,9 @@ public class BrickController implements objectInfo {
     public void addBrick(Brick brick) {
         bricks.add(brick);
     }
-
+    public boolean isEmpty() {
+        return bricks.isEmpty();
+    }
     @Override
     public void update(double time) {
     }

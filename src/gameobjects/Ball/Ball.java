@@ -1,10 +1,12 @@
 package gameobjects.Ball;
-
 import gameobjects.Controller.objectInfo;
 import gameobjects.GameObject;
+import gameobjects.paddle.Paddle;
 import gameobjects.vector2f;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import mng.gameInfo;
 
 public class Ball extends GameObject {
@@ -17,12 +19,34 @@ public class Ball extends GameObject {
 
     public Ball(double x, double y, double radius) {
         super(x, y, radius * 2, radius * 2);
-        shape = new Circle(x, y, radius);
-        Circle circ = (Circle) shape;
-        circ.setFill(Color.WHITE);
+
+        // Try to load ball image
+        try {
+            Image ballImage = new Image(getClass().getResourceAsStream("/gfx/ball/NormalBall.png"));
+            ImageView imageView = new ImageView(ballImage);
+            imageView.setFitWidth(radius * 2);
+            imageView.setFitHeight(radius * 2);
+            imageView.setPreserveRatio(false);
+
+            // Center the image at the ball's position
+            imageView.setX(x - radius);
+            imageView.setY(y - radius);
+
+            shape = imageView;
+        } catch (Exception e) {
+            System.out.println("Ball image not found, using circle fallback");
+            e.printStackTrace();
+
+            // Fallback to circle
+            Circle circ = new Circle(x, y, radius);
+            circ.setFill(Color.WHITE);
+            shape = circ;
+        }
+
         ve_Multi = 1;
         direction = new vector2f(1, 1);
     }
+
     public Ball getCopy() {
         return new Ball(getX(), getY(), getRadius());
     }
@@ -32,12 +56,27 @@ public class Ball extends GameObject {
         direction.normalize(1);
         position.setPosition(position.getX() + objectInfo.ballVelocity * ve_Multi * direction.getX() * time,
                 position.getY() + objectInfo.ballVelocity * ve_Multi * direction.getY() * time);
-        ((Circle) shape).setCenterX(position.getX());
-        ((Circle) shape).setCenterY(position.getY());
+
+        // Update position based on shape type
+        if (shape instanceof Circle) {
+            ((Circle) shape).setCenterX(position.getX());
+            ((Circle) shape).setCenterY(position.getY());
+        } else if (shape instanceof ImageView) {
+            ImageView imageView = (ImageView) shape;
+            imageView.setX(position.getX() - getRadius());
+            imageView.setY(position.getY() - getRadius());
+        }
+
         if (position.getX() <= 0 || position.getX() >= gameInfo.width) {
             direction.setVector(-direction.getX(), direction.getY());
+            if(position.getX() <= 0) {
+                position.setPosition(2, position.getY());
+            } else {
+                position.setPosition(gameInfo.width - 2, position.getY());
+            }
         }
         if (position.getY() <= 0) {
+            position.setPosition(position.getX(), 2);
             direction.setVector(direction.getX(), -direction.getY());
         }
     }
@@ -65,6 +104,7 @@ public class Ball extends GameObject {
         double bottomSide = obj.getPosition().getY() + obj.getSize().getHeight();
         double leftSide = obj.getPosition().getX();
         double rightSide = obj.getPosition().getX() + obj.getSize().getWidth();
+
         if (position.getY() < topSide) {
             if (position.getX() < leftSide) {
                 vector2f vector = new vector2f(position.getX() - leftSide, position.getY() - topSide);
@@ -93,7 +133,11 @@ public class Ball extends GameObject {
             direction.setVector(-direction.getX(), direction.getY());
         }
     }
-
+    public void bouncePaddle(Paddle paddle) {
+        double X = paddle.getX() + paddle.getSize().getWidth() / 2;
+        double Y = paddle.getY() + paddle.getSize().getHeight() / 2;
+        direction.setVector(position.getX() - X, position.getY() - Y);
+    }
     public double getRadius() {
         return size.getHeight() / 2;
     }

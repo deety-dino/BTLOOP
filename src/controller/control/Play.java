@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import mng.gameInfo.State;
+
 public class Play {
 
     private ScheduledFuture<?> gameTicker;
@@ -25,18 +27,22 @@ public class Play {
     @FXML
     protected Pane root;
     @FXML
-    protected Group buttonGroup, gamePlay, pane;
+    protected Group GAME_STAT, gamePlay, GAME_OVER, PAUSE, VICTORY;
     @FXML
     protected Text WIDEPADDLE_POWERUP_TIME, LASER_POWERUP_TIME, SPEED_POWERUP_TIME;
+    @FXML
+    protected Text SCORE_TEXT, HIGHSCORE_TEXT, HEART_TEXT;
 
     @FXML
     protected void clickPause() {
+        data.state = State.PAUSE;
         data.setPause();
         Platform.runLater(() -> root.requestFocus());
     }
 
     @FXML
     protected void clickToHome() throws IOException {
+        data.state = State.LOADING;
         gameManager.State = gameManager.ApplicationState.LEVEL_SELECTION_SCREEN;
         gameManager.letShow();
         Platform.runLater(() -> root.requestFocus());
@@ -44,8 +50,7 @@ public class Play {
 
     @FXML
     protected void clickRestart() {
-        pane.setVisible(false);
-        gamePlay.setVisible(true);
+        data.state = State.IN_GAME;
         data.loadData(user.getSelectedLevel());
         data.getGroup();
         cur = 0;
@@ -54,17 +59,23 @@ public class Play {
 
     @FXML
     protected void clickNext() {
-        cur = 0;
         User.setSelectedLevel(user.getSelectedLevel() + 1);
-        data.loadData(user.getSelectedLevel());
-        data.getGroup();
-        Platform.runLater(() -> root.requestFocus());
+        if (user.getSelectedLevel() <= 3) {
+            data.state = State.IN_GAME;
+            data.loadData(user.getSelectedLevel());
+            data.getGroup();
+            Platform.runLater(() -> root.requestFocus());
+        }
     }
 
     @FXML
+    protected void clickContinue() {
+        data.state = State.IN_GAME;
+    }
+    @FXML
     protected void initialize() {
         data = new IngameData(gamePlay);
-
+        data.state = State.LOADING;
         Platform.runLater(() -> root.requestFocus());
         root.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.LEFT) data.setLeftPressed(false);
@@ -79,46 +90,79 @@ public class Play {
         ThreadPoolManager tpm = ThreadPoolManager.getInstance();
         gameTicker = tpm.scheduleAtFixedRate(() -> {
             long now = System.nanoTime();
+            //System.out.println(data.state);
             try {
-                if (user == null) {
-                    user = User.getInstance();
-                } else if (user.isSelected()) {
-                    // Load level data in background; then sync scene on FX thread
-                    int levelToLoad = user.getSelectedLevel();
-                    tpm.submit(() -> {
-                        cur = System.nanoTime();
-                        Platform.runLater(() -> {
-                            data.loadData(levelToLoad);
-                            data.getGroup();
-                            pane.setVisible(false);
-                            gamePlay.setVisible(true);
-                        });
-                    });
-                    User.setSelected(false);
-                } else {
-                    double deltaSeconds;
-                    if (cur == 0) {
-                        deltaSeconds = 16.0 / 1000.0;
-                    } else {
-                        deltaSeconds = (now - cur) / 1000000000.0;
-                    }
-                    cur = now;
-                    if (!data.isRunning()) {
-                        // show pause/end UI on FX thread
-                        Platform.runLater(() -> {
-                            pane.setVisible(true);
-                            gamePlay.setVisible(false);
-                        });
-                    } else if (!data.isPause()) {
-                        pane.setVisible(false);
+                switch (data.state) {
+                    case LOADING: {
+                        GAME_STAT.setVisible(true);
                         gamePlay.setVisible(true);
-                        // Perform update (model work) off FX thread, passing a delta time
+                        PAUSE.setVisible(false);
+                        VICTORY.setVisible(false);
+                        GAME_OVER.setVisible(false);
+                        if (user == null) {
+                            user = User.getInstance();
+                        } else if (user.isSelected()) {
+                            // Load level data in background; then sync scene on FX thread
+                            int levelToLoad = user.getSelectedLevel();
+                            cur = System.nanoTime();
+                            Platform.runLater(() -> {
+                                System.out.println("Loading");
+                                data.loadData(levelToLoad);
+                                data.getGroup();
+                            });
+                            User.setSelected(false);
+                            data.state = State.IN_GAME;
+                        }
+                        break;
+                    }
+                    case PAUSE: {
+                        GAME_STAT.setVisible(false);
+                        gamePlay.setVisible(false);
+                        PAUSE.setVisible(true);
+                        VICTORY.setVisible(false);
+                        GAME_OVER.setVisible(false);
+                        break;
+                    }
+                    case IN_GAME: {
+                        GAME_STAT.setVisible(true);
+                        gamePlay.setVisible(true);
+                        PAUSE.setVisible(false);
+                        VICTORY.setVisible(false);
+                        GAME_OVER.setVisible(false);
+                        double deltaSeconds;
+                        if (cur == 0) {
+                            deltaSeconds = 16.0 / 1000.0;
+                        } else {
+                            deltaSeconds = (now - cur) / 1000000000.0;
+                        }
+                        cur = now;
                         Platform.runLater(() -> data.update(deltaSeconds));
-                        // Sync UI state (power-up timers etc.) on FX thread
+                        System.out.println(data.state);
                         Platform.runLater(() -> {
                             data.getGroup();
                             data.getText(LASER_POWERUP_TIME, WIDEPADDLE_POWERUP_TIME, SPEED_POWERUP_TIME);
                         });
+                        break;
+                    }
+                    case VICTORY: {
+                        Platform.runLater(() -> {
+                            GAME_STAT.setVisible(false);
+                            gamePlay.setVisible(false);
+                            PAUSE.setVisible(false);
+                            VICTORY.setVisible(true);
+                            GAME_OVER.setVisible(false);
+                        });
+                        break;
+                    }
+                    case GAMEOVER: {
+                        Platform.runLater(() -> {
+                            GAME_STAT.setVisible(false);
+                            gamePlay.setVisible(false);
+                            PAUSE.setVisible(false);
+                            VICTORY.setVisible(false);
+                            GAME_OVER.setVisible(true);
+                        });
+                        break;
                     }
                 }
             } catch (Throwable t) {

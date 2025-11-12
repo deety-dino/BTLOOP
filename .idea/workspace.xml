@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f28e3b1-52f5-4c59-ad90-c486aad8a1c4" name="Changes" comment="">
+    <list default="true" id="a8607df0-c975-4284-8008-1048b2e703c1" name="Changes" comment="Thêm layout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/gfx/InGameBG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/gfx/MenuIMG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/gfx/title.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxml/levelSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxml/levelSelection.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxml/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxml/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxml/play.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxml/play.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/dat/LevelData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/dat/LevelData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,14 +16,45 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
+        <option value="package-info" />
+        <option value="module-info" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="package.json" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;,
+      &quot;author&quot;: &quot;deety-dino&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;author&quot;: &quot;deety-dino&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/deety-dino/BTLOOP.git&quot;,
+    &quot;accountId&quot;: &quot;3c318d94-0a8f-4e22-b34f-41e6e8be4979&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;deety-dino&quot;,
+    &quot;repository&quot;: &quot;BTLOOP&quot;
+  }
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -38,10 +63,9 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="34NAGeE7pt7xwhy92GvejAo2YNu" />
+        &quot;associatedIndex&quot;: 0
+        }</component>
+  <component name="ProjectId" id="359GpeIKCK2Qbpafv5nBef19an5" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
@@ -51,60 +75,119 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.Arkanoid.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;UI-+-Sound&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Reupdate&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/BTL/BTLOOP&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;database.query.execution&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/dosao/Downloads/BTLOOP-revert-20-TuanAnh/BTLOOP-revert-20-TuanAnh/src/controller/dat/IngameData.java&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dosao\IdeaProjects\BTLOOP\out\production\resources" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="Arkanoid" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="main.Arkanoid" />
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <module name="BTLOOP" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-25\lib&quot; --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="filePath" />
+      <method v="2" />
     </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
       </set>
     </attachedChunks>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7f28e3b1-52f5-4c59-ad90-c486aad8a1c4" name="Changes" comment="" />
-      <created>1761043565461</created>
+      <changelist id="a8607df0-c975-4284-8008-1048b2e703c1" name="Changes" comment="" />
+      <created>1762515059086</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1761043565461</updated>
-      <workItem from="1762420508221" duration="618000" />
-      <workItem from="1762421199327" duration="50000" />
+      <updated>1762515059086</updated>
+      <workItem from="1762515060298" duration="6330000" />
+      <workItem from="1762574087285" duration="1656000" />
+      <workItem from="1762698669782" duration="1944000" />
+      <workItem from="1762700924641" duration="1757000" />
+      <workItem from="1762782832197" duration="4116000" />
+      <workItem from="1762819591883" duration="6346000" />
+      <workItem from="1762828991706" duration="7635000" />
+      <workItem from="1762837268740" duration="1365000" />
+      <workItem from="1762846607790" duration="3191000" />
+      <workItem from="1762850551511" duration="8520000" />
+      <workItem from="1762872669881" duration="4527000" />
+      <workItem from="1762911587063" duration="11822000" />
     </task>
+    <task id="LOCAL-00001" summary="Sửa lại ball logic">
+      <option name="closed" value="true" />
+      <created>1762525801429</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762525801429</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Thêm layout">
+      <option name="closed" value="true" />
+      <created>1762525830291</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762525830291</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Thêm layout">
+      <option name="closed" value="true" />
+      <created>1762526170456</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1762526170456</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Sửa lại ball logic" />
+    <MESSAGE value="Thêm layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Thêm layout" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BTLOOP$Main.ic" NAME="Main Coverage Results" MODIFIED="1762701434786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>main.*</FILTER>
+    </SUITE>
   </component>
 </project>

@@ -2,7 +2,6 @@ package controller.dat;
 
 import gameobjects.Ball.Ball;
 import gameobjects.Brick.Brick;
-import gameobjects.Brick.BrickFactory;
 import gameobjects.Controller.BallController;
 import gameobjects.Controller.BrickController;
 import gameobjects.Controller.PaddleController;
@@ -10,10 +9,13 @@ import gameobjects.Controller.PowerUpController;
 import gameobjects.powerup.PowerUp;
 import javafx.scene.Group;
 import javafx.scene.text.Text;
+import mng.gameInfo;
+
 
 // Removed unused import
 
 public class IngameData {
+    public gameInfo.State state;
     private final Object lock = new Object();
     private Group root;
     private boolean isPause;
@@ -31,6 +33,7 @@ public class IngameData {
         this.root = root;
         isPause = false;
         isRunning = true;
+        state = gameInfo.State.LOADING;
         balls = BallController.getInstance();
         bricks = BrickController.getInstance();
         paddle = PaddleController.getInstance();
@@ -45,36 +48,24 @@ public class IngameData {
     public synchronized void loadData(int level) {
         refesh();
         switch (level) {
-            case 1:
-                level1();
+            case 1: {
+                LevelData.level1();
                 break;
+            } case 2: {
+                LevelData.level2();
+                break;
+            } case 3: {
+                LevelData.level3();
+            }
             default:
                 System.out.println("Coming soon...");
         }
         getGroup();
-    }
-
-    //level Pane
-    private void level1() {
-        balls.addBall(new Ball(400, 100, 8));
-        int rows = 5;
-        int cols = 10;
-        double brickWidth = 70;
-        double brickHeight = 50;
-        double offsetX = 35;
-        double offsetY = 50;
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
-                Brick brick = BrickFactory.createRandomBrick(
-                        offsetX + col * (brickWidth + 5),
-                        offsetY + row * (brickHeight + 5),
-                        brickWidth, brickHeight);
-                bricks.addBrick(brick);
-            }
-        }
+        state = gameInfo.State.IN_GAME;
     }
 
     private void refesh() {
+        state = gameInfo.State.LOADING;
         isRunning = true;
         isPause = false;
 
@@ -87,12 +78,14 @@ public class IngameData {
 
     public void update(double time) {
         if (balls.isEmpty()) {
-            isRunning = false;
-        } else {
+            state = gameInfo.State.GAMEOVER;
+        } else if(bricks.isEmpty()){
+            state = gameInfo.State.VICTORY;
+        }else {
             bricks.update(time);
             paddle.update(time, leftPressed, rightPressed);
             balls.update(time);
-            powerUps.update( time);
+            powerUps.update(time);
         }
     }
 

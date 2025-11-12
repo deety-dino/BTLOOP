@@ -6,7 +6,6 @@ import gameobjects.Brick.PowerUpBrick;
 import gameobjects.paddle.Paddle;
 import gameobjects.powerup.PowerUp;
 import javafx.animation.PauseTransition;
-import javafx.scene.Group;
 import javafx.util.Duration;
 import mng.gameInfo;
 
@@ -76,7 +75,7 @@ public class BallController implements objectInfo {
             // Paddle collision with improved bounce angles
             Paddle paddle = PaddleController.getInstance().getPaddle();
             if (ball.intersects(paddle)) {
-                ball.bounce(paddle);
+                ball.bouncePaddle(paddle);
                 // Add subtle visual feedback
                 javafx.scene.effect.Glow glow = new javafx.scene.effect.Glow(0.3);
                 paddle.getNode().setEffect(glow);

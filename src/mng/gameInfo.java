@@ -7,7 +7,15 @@ public interface gameInfo {
     public int height = 600;
     public int width = 800;
 
-    public FXMLLoader loginFXML = new FXMLLoader(Arkanoid.class.getResource("/login.fxml"));
-    public FXMLLoader levelFXML = new FXMLLoader(Arkanoid.class.getResource("/levelSelection.fxml"));
-    public FXMLLoader playFXML = new FXMLLoader(Arkanoid.class.getResource("/play.fxml"));
+    public enum State {
+        LOADING,
+        IN_GAME,
+        PAUSE,
+        GAMEOVER,
+        VICTORY
+    }
+
+    public FXMLLoader loginFXML = new FXMLLoader(Arkanoid.class.getResource("/controller/fxml/login.fxml"));
+    public FXMLLoader levelFXML = new FXMLLoader(Arkanoid.class.getResource("/controller/fxml/levelSelection.fxml"));
+    public FXMLLoader playFXML = new FXMLLoader(Arkanoid.class.getResource("/controller/fxml/play.fxml"));
 }

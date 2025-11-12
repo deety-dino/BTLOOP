@@ -6,7 +6,7 @@ import javafx.scene.shape.Shape;
 
 public abstract class GameObject {
 
-    protected Shape shape;
+    protected Node shape;
     protected Position position;
     protected Size size;
     public GameObject(double x, double y, double width, double height) {
