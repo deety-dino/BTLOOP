@@ -125,15 +125,19 @@
     <Group fx:id="gamePlay" />
     <Group fx:id="pane" layoutX="300.0" layoutY="250.0">
         <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="55.0" text="Game Over!" textFill="#fffcfc">
+            <ImageView fitHeight="149.0" fitWidth="221.0" layoutX="-16.0" opacity="0.7" pickOnBounds="true">
+            <image>
+               <Image url="@../../../resources/gfx/inGame/Endscreen.png" />
+            </image>
+         </ImageView>
+            <Label layoutX="28.0" layoutY="22.0" text="Game Over!" textFill="#cfe0ff">
                 <font>
-                    <Font size="15.0" />
+                    <Font name="Castellar" size="19.0" />
                 </font>
             </Label>
-            <Button layoutX="-10.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickToHome" text="Home" />
-            <Button layoutX="69.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickRestart" text="Restart" />
-            <Button layoutX="161.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickNext" text="Next" />
+            <Button layoutX="-7.0" layoutY="71.0" mnemonicParsing="false" onAction="#clickToHome" stylesheets="@../../../resources/style.css" text="Home" />
+            <Button layoutX="67.0" layoutY="71.0" mnemonicParsing="false" onAction="#clickRestart" stylesheets="@../../../resources/style.css" text="Restart" />
+            <Button layoutX="150.0" layoutY="71.0" mnemonicParsing="false" onAction="#clickNext" stylesheets="@../../../resources/style.css" text="Next" />
         </children>
     </Group>
    <Group fx:id="pane1" layoutX="300.0" layoutY="250.0">
