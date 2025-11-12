@@ -52,3 +52,10 @@ BTLOOP/
 - **Java 17**
 - **JavaFX 21** (thiết kế giao diện)
 - **JSON** (đọc/ghi thông tin)
+
+---
+
+## Nguồn cho asset:
+⦁	Tất cả asset ảnh với BGM đều được lấy từ game Blue Archive với font được generate từ web: https://symbolon.pages.dev/  
+⦁	Asset cho bóng được lấy từ game Geometry Dash
+⦁	SFX trong game cũng lấy từ Blue Archive
