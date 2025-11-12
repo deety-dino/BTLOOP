@@ -1,6 +1,6 @@
-package gameobjects.Ball;
+package gameobjects.ball;
 
-import gameobjects.Controller.objectInfo;
+import gameobjects.controller.objectInfo;
 import gameobjects.GameObject;
 import gameobjects.vector2f;
 import javafx.scene.paint.Color;

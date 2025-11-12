@@ -1,4 +1,4 @@
-package gameobjects.Brick;
+package gameobjects.brick;
 
 import gameobjects.powerup.PowerUp;
 import javafx.scene.paint.Color;

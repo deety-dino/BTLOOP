@@ -1,7 +1,7 @@
 package gameobjects.powerup;
 
 import controller.dat.IngameData;
-import gameobjects.Ball.Ball;
+import gameobjects.ball.Ball;
 import gameobjects.GameObject;
 import gameobjects.paddle.Paddle;
 import javafx.animation.PauseTransition;

@@ -1,6 +1,6 @@
-package gameobjects.Controller;
+package gameobjects.controller;
 
-import gameobjects.Ball.Ball;
+import gameobjects.ball.Ball;
 import gameobjects.paddle.Paddle;
 import gameobjects.powerup.PowerUp;
 import javafx.scene.Group;

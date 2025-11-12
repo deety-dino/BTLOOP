@@ -5,14 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f28e3b1-52f5-4c59-ad90-c486aad8a1c4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/gfx/InGameBG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/gfx/MenuIMG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/gfx/title.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxml/levelSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxml/levelSelection.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxml/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxml/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fxml/play.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxml/play.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTLOOP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BTLOOP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/IngameData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/IngameData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Ball/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Ball/Ball.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick/Brick.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick/Brick.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick/BrickFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick/BrickFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick/NormalBrick.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick/NormalBrick.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick/PowerUpBrick.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick/PowerUpBrick.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick/StrongBrick.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick/StrongBrick.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Controller/objectInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Controller/objectInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Controller/powerUpController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Controller/powerUpController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Controller/powerUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Controller/powerUpController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/paddle/Paddle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/paddle/Paddle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/powerup/PowerUp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/powerup/PowerUp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/dat/IngameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/dat/IngameData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Ball/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Ball/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/Brick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/BrickFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/BrickFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/NormalBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/NormalBrick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/PowerUpBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/PowerUpBrick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/StrongBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/StrongBrick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/BallController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/BallController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/BrickController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/BrickController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/PaddleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/PaddleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/objectInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/objectInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/powerUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/powerUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/paddle/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/paddle/Paddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/powerup/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/powerup/PowerUp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,27 +70,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Arkanoid.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;UI-+-Sound&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/BTL/BTLOOP&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Arkanoid.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "dev.sweep.assistant.data.RecentlyUsedFiles": "src\\main\\Main.java;src\\gameobjects\\controller\\PaddleController.java;src\\gameobjects\\controller\\BallController.java;src\\gameobjects\\controller\\BrickController.java;src\\controller\\dat\\IngameData.java;src\\gameobjects\\powerup\\PowerUp.java;src\\gameobjects\\paddle\\Paddle.java;src\\gameobjects\\Controller\\PaddleController.java;src\\gameobjects\\Controller\\objectInfo.java;src\\gameobjects\\Controller\\powerUpController.java",
+    "git-widget-placeholder": "TuanAnhFix",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/BTL/BTLOOP",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "sweep.chatMode": "Agent",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Arkanoid" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Arkanoid" />

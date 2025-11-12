@@ -1,8 +1,8 @@
-package gameobjects.Controller;
+package gameobjects.controller;
 
-import gameobjects.Ball.Ball;
-import gameobjects.Brick.Brick;
-import gameobjects.Brick.PowerUpBrick;
+import gameobjects.ball.Ball;
+import gameobjects.brick.Brick;
+import gameobjects.brick.PowerUpBrick;
 import gameobjects.paddle.Paddle;
 import gameobjects.powerup.PowerUp;
 import javafx.animation.PauseTransition;
@@ -41,7 +41,6 @@ public class BallController implements objectInfo {
         return balls.isEmpty();
     }
 
-    @Override
     public void update(Group root, double time) {
         Iterator<Ball> it = balls.iterator();
         while (it.hasNext()) {
@@ -65,7 +64,7 @@ public class BallController implements objectInfo {
                         if (brick instanceof PowerUpBrick) {
                             PowerUp powerUp = ((PowerUpBrick) brick).getPowerUp();
                             if (powerUp != null) {
-                                PowerUpController.getInstance().addPowerUp(powerUp, root);
+                                powerUpController.getInstance().addPowerUp(powerUp, root);
                             }
                         }
                         brickIt.remove();
@@ -86,11 +85,10 @@ public class BallController implements objectInfo {
                 pt.setOnFinished(e -> paddle.getNode().setEffect(null));
                 pt.play();
             }
-            ball.update(time);
+            ball.update();
         }
     }
 
-    @Override
     public void refresh() {
         balls.clear();
     }

@@ -1,4 +1,4 @@
-package gameobjects.Brick;
+package gameobjects.brick;
 
 import gameobjects.GameObject;
 import javafx.scene.paint.Color;

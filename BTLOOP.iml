@@ -10,15 +10,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/../../Program Files/Java/javafx-sdk-25/lib" />
+          <root url="file://$MODULE_DIR$/../JavaFX/javafx-sdk-25.0.1/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/../../Program Files/Java/javafx-sdk-25/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../JavaFX/javafx-sdk-25.0.1/lib" recursive="false" />
       </library>
     </orderEntry>
   </component>

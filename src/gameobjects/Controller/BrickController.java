@@ -1,6 +1,6 @@
-package gameobjects.Controller;
+package gameobjects.controller;
 
-import gameobjects.Brick.Brick;
+import gameobjects.brick.Brick;
 import javafx.scene.Group;
 
 import java.util.ArrayList;
@@ -29,12 +29,10 @@ public class BrickController implements objectInfo {
         bricks.add(brick);
     }
 
-    @Override
     public void update(Group root, double time) {
 
     }
 
-    @Override
     public void refresh() {
         bricks.clear();
     }

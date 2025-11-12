@@ -1,6 +1,6 @@
 package gameobjects.paddle;
 
-import gameobjects.Controller.objectInfo;
+import gameobjects.controller.objectInfo;
 import gameobjects.GameObject;
 import gameobjects.Laser;
 import javafx.scene.paint.Color;

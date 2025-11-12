@@ -3,12 +3,12 @@ package controller.dat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import gameobjects.Ball.Ball;
-import gameobjects.Brick.Brick;
-import gameobjects.Brick.BrickFactory;
-import gameobjects.Brick.PowerUpBrick;
-import gameobjects.Brick.StrongBrick;
-import gameobjects.Controller.powerUpController;
+import gameobjects.ball.Ball;
+import gameobjects.brick.Brick;
+import gameobjects.brick.BrickFactory;
+import gameobjects.brick.PowerUpBrick;
+import gameobjects.brick.StrongBrick;
+import gameobjects.controller.powerUpController;
 import gameobjects.Laser;
 import gameobjects.paddle.Paddle;
 import gameobjects.powerup.PowerUp;

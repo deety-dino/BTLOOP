@@ -1,4 +1,4 @@
-package gameobjects.Controller;
+package gameobjects.controller;
 
 public interface objectInfo {
     public int ballVelocity = 5;  // Giảm tốc độ bóng từ 10 xuống 5 để dễ chơi hơn
