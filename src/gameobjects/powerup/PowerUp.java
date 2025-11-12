@@ -5,6 +5,7 @@ import gameobjects.Controller.BallController;
 import gameobjects.Controller.objectInfo;
 import gameobjects.GameObject;
 import gameobjects.paddle.Paddle;
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -97,10 +98,14 @@ public class PowerUp extends GameObject {
     public static void multiBall_Activation() {
         ArrayList<Ball> balls = BallController.getInstance().getBalls();
         int i = balls.size() - 1;
-        while (i >= 0) {
-            Ball ball = balls.get(i);
-            ball.setDirection(-ball.getDirection().getX(), ball.getDirection().getY());
-            balls.add(ball);
+        while (balls.size() < 1000 && i >= 0) {
+            try {
+                Ball ball = balls.get(i).getCopy();
+                ball.setDirection(-ball.getDirection().getX(), ball.getDirection().getY());
+                BallController.getInstance().addBall(ball);
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+            }
             i--;
         }
     }

@@ -9,6 +9,7 @@ import user.User;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class gameManager {
     private static final Object lock = new Object();

@@ -34,7 +34,7 @@ public class BallController implements objectInfo {
     public void setBalls(ArrayList<Ball> balls) {
         this.balls = balls;
     }
-    public void addBall(Ball ball) {
+    public void addBall( Ball ball) {
         balls.add(ball);
     }
     public boolean isEmpty() {
@@ -42,12 +42,11 @@ public class BallController implements objectInfo {
     }
 
     @Override
-    public void update(Group root, double time) {
+    public void update(double time) {
         Iterator<Ball> it = balls.iterator();
         while (it.hasNext()) {
             Ball ball = it.next();
             if (ball.getY() > gameInfo.height) {
-                root.getChildren().remove(ball.getNode());
                 it.remove();
                 continue;
             }
@@ -65,11 +64,10 @@ public class BallController implements objectInfo {
                         if (brick instanceof PowerUpBrick) {
                             PowerUp powerUp = ((PowerUpBrick) brick).getPowerUp();
                             if (powerUp != null) {
-                                PowerUpController.getInstance().addPowerUp(powerUp, root);
+                                PowerUpController.getInstance().addPowerUp(powerUp);
                             }
                         }
                         brickIt.remove();
-                        root.getChildren().remove(brick.getNode());
                     }
                 break;
                 }
