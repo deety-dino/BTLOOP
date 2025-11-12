@@ -25,8 +25,8 @@
                     <font>
                         <Font size="13.0" />
                     </font></Button>
-                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadLevel2" prefHeight="45.0" prefWidth="90.0" stylesheets="style.css" text="Level 2" />
-                <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#loadLevel3" prefHeight="45.0" prefWidth="90.0" stylesheets="style.css" text="Level 3" />
+                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadLevel2" prefHeight="45.0" prefWidth="90.0" stylesheets="/style.css" text="Level 2" />
+                <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#loadLevel3" prefHeight="45.0" prefWidth="90.0" stylesheets="/style.css" text="Level 3" />
             </children>
         </VBox>
         <ImageView fitHeight="300.0" fitWidth="400.0" layoutX="250.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">

@@ -67,11 +67,9 @@ public class User {
             users.add(new User(username, password, newHighScore,1));
             try {
                 Gson gson = new Gson();
-                // Cách 1: Ghi trực tiếp
                 FileWriter writer1 = new FileWriter("src/user/data/users.json");
                 gson.toJson(users, writer1);
-                writer1.close();
-                System.out.println("✓ Đã ghi file: users.json");
+                writer1.close();;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -85,9 +83,6 @@ public class User {
             FileReader reader = new FileReader("src/user/data/users.json");
             Type playerListType = new TypeToken<ArrayList<User>>(){}.getType();
             users = gson.fromJson(reader, playerListType);
-            for(User user : users) {
-                System.out.println(user.getUserName() + user.getPassowrd());
-            }
             reader.close();
             System.out.println("Users have been initialized!");
         } catch (IOException e) {

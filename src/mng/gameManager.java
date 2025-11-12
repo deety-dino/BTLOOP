@@ -1,5 +1,7 @@
 package mng;
+
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.media.Media;
@@ -8,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.Arkanoid;
 import user.User;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
@@ -34,7 +37,9 @@ public class gameManager {
         LOGIN_SCREEN,
         LEVEL_SELECTION_SCREEN,
         IN_GAME_SCREEN
-    };
+    }
+
+    ;
 
     public static ApplicationState State;
 
@@ -71,7 +76,7 @@ public class gameManager {
         try {
             scene[1] = new Scene(gameInfo.levelFXML.load(), 800, 600);
             System.out.println("Level selection scene loaded successfully!");
-        } catch (IOException e)  {
+        } catch (IOException e) {
             System.err.println("Failed to load level selection scene: " + e.getMessage());
             throw e;
         }
@@ -152,18 +157,18 @@ public class gameManager {
     }
 
     public static void letShow() throws IOException {
-        switch(State) {
-            case LOGIN_SCREEN ->  {
+        switch (State) {
+            case LOGIN_SCREEN -> {
                 stage.setScene(scene[0]);
                 playBGM(loginBGM);
                 stage.show();
             }
-            case LEVEL_SELECTION_SCREEN ->  {
+            case LEVEL_SELECTION_SCREEN -> {
                 stage.setScene(scene[1]);
                 playBGM(lobbyBGM);
                 stage.show();
             }
-            case IN_GAME_SCREEN ->  {
+            case IN_GAME_SCREEN -> {
                 stage.setScene(scene[2]);
                 playRandomGameBGM(); // Randomly select one of the 3 OSTs
                 stage.show();

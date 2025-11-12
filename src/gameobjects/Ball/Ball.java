@@ -1,6 +1,7 @@
 package gameobjects.Ball;
 import gameobjects.Controller.objectInfo;
 import gameobjects.GameObject;
+import gameobjects.paddle.Paddle;
 import gameobjects.vector2f;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -132,7 +133,11 @@ public class Ball extends GameObject {
             direction.setVector(-direction.getX(), direction.getY());
         }
     }
-
+    public void bouncePaddle(Paddle paddle) {
+        double X = paddle.getX() + paddle.getSize().getWidth() / 2;
+        double Y = paddle.getY() + paddle.getSize().getHeight() / 2;
+        direction.setVector(position.getX() - X, position.getY() - Y);
+    }
     public double getRadius() {
         return size.getHeight() / 2;
     }
