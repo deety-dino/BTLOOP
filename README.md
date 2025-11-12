@@ -4,12 +4,12 @@
 
 **Nhóm 4 – Lập trình Game JavaFX**
 
-| Họ và tên           | Vai trò     | Nhiệm vụ chính                                        |
-|---------------------|-------------|-------------------------------------------------------|
-| Nguyễn Đức Anh      | Trưởng nhóm | Thiết kế giao diện người dùng, xử lý va chạm, sự kiện |
-| Nguyễn Phạm Sơn Hải | Thành viên  | Thiết kế đối tượng, ...                               |
-| Phạm Minh Đức       | Thành viên  | Xử lý đồ họa, âm thanh, hiệu ứng đặc biệt, ...        |
-| Đỗ Tuấn Anh         | Thành viên   | Xử lý powerup, ...                                    |
+| Họ và tên           |Mã sinh viên| Vai trò     | Nhiệm vụ chính                                        |
+|---------------------|------------|-------------|-------------------------------------------------------|
+| Nguyễn Đức Anh      |24021369| Trưởng nhóm | Thiết kế giao diện người dùng, xử lý va chạm, sự kiện |
+| Nguyễn Phạm Sơn Hải || Thành viên  | Thiết kế đối tượng, ...                               |
+| Phạm Minh Đức       ||Thành viên  | Xử lý đồ họa, âm thanh, hiệu ứng đặc biệt, ...        |
+| Đỗ Tuấn Anh         ||Thành viên   | Xử lý powerup, ...                                    |
 
 ---
 
