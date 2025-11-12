@@ -6,7 +6,6 @@ import gameobjects.Brick.PowerUpBrick;
 import gameobjects.paddle.Paddle;
 import gameobjects.powerup.PowerUp;
 import javafx.animation.PauseTransition;
-import javafx.scene.Group;
 import javafx.util.Duration;
 import mng.gameInfo;
 

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class PowerUpController implements objectInfo {
 
-    private static PowerUpController powerUpController;
+    private static PowerUpController PowerUpController;
     private ArrayList<PowerUp> powerUps;
     private final double powerUp_time = 5;
     private volatile double widePaddle_time;
@@ -17,10 +17,10 @@ public class PowerUpController implements objectInfo {
     private volatile double laserPaddle_time;
 
     public static PowerUpController getInstance() {
-        if (powerUpController == null) {
-            powerUpController = new PowerUpController();
+        if (PowerUpController == null) {
+            PowerUpController = new PowerUpController();
         }
-        return powerUpController;
+        return PowerUpController;
     }
 
     private PowerUpController() {

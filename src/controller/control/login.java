@@ -25,13 +25,12 @@ public class login {
     @FXML
     protected void lLogin() {
         try {
+            User.login(lUserName.getText(), lPassword.getText());
             gameManager.State = gameManager.ApplicationState.LEVEL_SELECTION_SCREEN;
             gameManager.letShow();
-            User.login(lUserName.getText(), lPassword.getText());
         } catch (Exception e) {
             System.err.println("Login error: " + e.getMessage());
-        } finally {
-            System.out.printf("User: %s Login successfully! \n", lUserName.getText());
+            return;
         }
     }
 
@@ -49,6 +48,11 @@ public class login {
 
     @FXML
     protected void sSignUp() {
-
+        try {
+            User.signup(sUserName.getText(), sPassword.getText(), sRePassword.getText());
+        } catch (Exception e) {
+            System.err.println("Login error: " + e.getMessage());
+            return;
+        }
     }
 }

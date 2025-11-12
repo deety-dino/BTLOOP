@@ -45,11 +45,9 @@ public class gameManager {
         gameManager.stage = stage;
     }
 
-    public static void loadData(int level) {
-
-    }
-
     public void loadResource() throws IOException {
+
+        User.initialize();
         // Helper to load a single FXML by path
         try {
             scene[0] = new Scene(gameInfo.loginFXML.load(), 800, 600);
