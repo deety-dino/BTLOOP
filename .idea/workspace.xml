@@ -5,49 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8607df0-c975-4284-8008-1048b2e703c1" name="Changes" comment="Thêm layout">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javafx.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javafx_base.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BTLOOP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BTLOOP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/Play$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/Play.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/Play.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/levelSelection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/levelSelection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/IngameData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/IngameData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/dat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/levelSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/levelSelection.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/play.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/play.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Ball.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/BrickFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/GameObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/NormalBrick.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Paddle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/PowerUp$PowerUpType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/PowerUp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/PowerUpBrick.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/StrongBrick.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/position.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/size.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/size.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/vector2f.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/vector2f.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/main/Arkanoid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/main/Arkanoid.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/mng/gameManager$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/mng/gameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/mng/gameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/user/User$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/user/User$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/user/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/user/data/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/user/data/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BTLOOP2.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/control/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/control/login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mng/gameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mng/gameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/dat/LevelData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/dat/LevelData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,9 +56,9 @@
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -107,40 +66,50 @@
         &quot;associatedIndex&quot;: 0
         }</component>
   <component name="ProjectId" id="359GpeIKCK2Qbpafv5nBef19an5" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "true",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Reupdate",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "database.query.execution",
-    "two.files.diff.last.used.file": "C:/Users/dosao/Downloads/BTLOOP-revert-20-TuanAnh/BTLOOP-revert-20-TuanAnh/src/controller/dat/IngameData.java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Reupdate&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;database.query.execution&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/dosao/Downloads/BTLOOP-revert-20-TuanAnh/BTLOOP-revert-20-TuanAnh/src/controller/dat/IngameData.java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\dosao\IdeaProjects\BTLOOP\out\production\resources" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="BTLOOP" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
