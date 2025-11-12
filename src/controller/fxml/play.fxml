@@ -19,11 +19,6 @@
         </image>
     </ImageView>
     <Group fx:id="buttonGroup">
-        <Button mnemonicParsing="false" onAction="#clickToHome" stylesheets="@../../../resources/style.css" text="Home">
-            <font>
-                <Font size="13.0" />
-            </font>
-      </Button>
         <Button contentDisplay="RIGHT" layoutX="749.0" mnemonicParsing="false" onAction="#clickPause" stylesheets="@../../../resources/style.css" text="Pause">
             <font>
                 <Font size="13.0" />
@@ -84,6 +79,48 @@
             </HBox>
          </children>
       </VBox>
+      <Group fx:id="Score">
+         <children>
+            <VBox prefHeight="60.0" prefWidth="150.0">
+               <children>
+                  <Text fx:id="SCORE_TEXT" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="HIGHSCORE_TEXT" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Highscore:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Text>
+                  <HBox id="Heart" prefHeight="25.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/gfx/inGame/Life.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="10.0" top="2.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Text id="Heart" fx:id="LASER_POWERUP_TIME1" fill="WHITE" layoutX="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="HEART_TEXT" prefHeight="100.0" prefWidth="100.0" />
+         </children>
+      </Group>
     </Group>
     <Group fx:id="gamePlay" />
     <Group fx:id="pane" layoutX="300.0" layoutY="250.0">
