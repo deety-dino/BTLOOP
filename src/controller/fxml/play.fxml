@@ -99,4 +99,17 @@
             <Button layoutX="161.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickNext" text="Next" />
         </children>
     </Group>
+   <Group fx:id="pane1" layoutX="300.0" layoutY="250.0">
+      <children>
+         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+         <Label layoutX="55.0" text="PAUSE!" textFill="#fffcfc">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
+         <Button layoutX="-10.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickToHome" text="Home" />
+         <Button layoutX="69.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickRestart" text="Restart" />
+         <Button layoutX="161.0" layoutY="70.0" mnemonicParsing="false" onAction="#clickNext" text="Continue" />
+      </children>
+   </Group>
 </Pane>
