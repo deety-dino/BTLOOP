@@ -4,7 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f28e3b1-52f5-4c59-ad90-c486aad8a1c4" name="Changes" comment="" />
+    <list default="true" id="a8607df0-c975-4284-8008-1048b2e703c1" name="Changes" comment="Thêm layout">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javafx.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javafx_base.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTLOOP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BTLOOP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/Play$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/Play.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/Play.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/levelSelection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/levelSelection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/IngameData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/IngameData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/dat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/levelSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/levelSelection.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/play.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/play.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Ball.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/BrickFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/GameObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/NormalBrick.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Paddle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/PowerUp$PowerUpType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/PowerUp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/PowerUpBrick.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/StrongBrick.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/position.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/size.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/size.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/vector2f.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/vector2f.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/main/Arkanoid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/main/Arkanoid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/mng/gameManager$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/mng/gameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/mng/gameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/user/User$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/user/User$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/user/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/user/data/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/user/data/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/users.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BTLOOP2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/control/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/control/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mng/gameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mng/gameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/user/User.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,89 +57,168 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
+        <option value="package-info" />
+        <option value="module-info" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="package.json" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="KubernetesApiPersistence">{}</component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;,
+      &quot;author&quot;: &quot;deety-dino&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;author&quot;: &quot;deety-dino&quot;
+  }
 }</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/deety-dino/BTLOOP.git&quot;,
+    &quot;accountId&quot;: &quot;3c318d94-0a8f-4e22-b34f-41e6e8be4979&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;deety-dino&quot;,
+    &quot;repository&quot;: &quot;BTLOOP&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="34NAGeE7pt7xwhy92GvejAo2YNu" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+        &quot;associatedIndex&quot;: 0
+        }</component>
+  <component name="ProjectId" id="359GpeIKCK2Qbpafv5nBef19an5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Arkanoid.executor": "Run",
     "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Reupdate",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/BTL/BTLOOP",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
+    "settings.editor.selected.configurable": "database.query.execution",
+    "two.files.diff.last.used.file": "C:/Users/dosao/Downloads/BTLOOP-revert-20-TuanAnh/BTLOOP-revert-20-TuanAnh/src/controller/dat/IngameData.java",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Arkanoid" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="main.Arkanoid" />
-      <module name="BTLOOP" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\Java\javafx-sdk-25\lib&quot; --add-modules javafx.controls,javafx.fxml " />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dosao\IdeaProjects\BTLOOP\out\production\resources" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
       </set>
     </attachedChunks>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7f28e3b1-52f5-4c59-ad90-c486aad8a1c4" name="Changes" comment="" />
-      <created>1761043565461</created>
+      <changelist id="a8607df0-c975-4284-8008-1048b2e703c1" name="Changes" comment="" />
+      <created>1762515059086</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1761043565461</updated>
-      <workItem from="1762420508221" duration="618000" />
-      <workItem from="1762421199327" duration="50000" />
+      <updated>1762515059086</updated>
+      <workItem from="1762515060298" duration="6330000" />
+      <workItem from="1762574087285" duration="1656000" />
+      <workItem from="1762698669782" duration="1944000" />
+      <workItem from="1762700924641" duration="1757000" />
+      <workItem from="1762782832197" duration="4116000" />
+      <workItem from="1762819591883" duration="6346000" />
+      <workItem from="1762828991706" duration="7635000" />
+      <workItem from="1762837268740" duration="1365000" />
+      <workItem from="1762846607790" duration="3191000" />
+      <workItem from="1762850551511" duration="8520000" />
+      <workItem from="1762872669881" duration="4527000" />
+      <workItem from="1762911587063" duration="11822000" />
     </task>
+    <task id="LOCAL-00001" summary="Sửa lại ball logic">
+      <option name="closed" value="true" />
+      <created>1762525801429</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762525801429</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Thêm layout">
+      <option name="closed" value="true" />
+      <created>1762525830291</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762525830291</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Thêm layout">
+      <option name="closed" value="true" />
+      <created>1762526170456</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1762526170456</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Sửa lại ball logic" />
+    <MESSAGE value="Thêm layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Thêm layout" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BTLOOP$Main.ic" NAME="Main Coverage Results" MODIFIED="1762701434786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>main.*</FILTER>
+    </SUITE>
   </component>
 </project>
