@@ -68,8 +68,14 @@ public class Ball extends GameObject {
 
         if (position.getX() <= 0 || position.getX() >= gameInfo.width) {
             direction.setVector(-direction.getX(), direction.getY());
+            if(position.getX() <= 0) {
+                position.setPosition(2, position.getY());
+            } else {
+                position.setPosition(gameInfo.width - 2, position.getY());
+            }
         }
         if (position.getY() <= 0) {
+            position.setPosition(position.getX(), 2);
             direction.setVector(direction.getX(), -direction.getY());
         }
     }
