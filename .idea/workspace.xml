@@ -5,14 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f28e3b1-52f5-4c59-ad90-c486aad8a1c4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/SETUP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gameobjects/Controller/LaserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gameobjects/laser/Laser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/gfx/InGameBG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/gfx/MenuIMG.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/gfx/title.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BTLOOP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BTLOOP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/Play$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/Play.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/Play.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/levelSelection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/levelSelection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/control/login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/IngameData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/IngameData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/dat/dat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/levelSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/levelSelection.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/play.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/controller/fxml/play.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Ball.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Brick.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/BrickFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/GameObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/NormalBrick.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/Paddle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/PowerUp$PowerUpType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/PowerUp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/PowerUpBrick.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/StrongBrick.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/position.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/size.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/size.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/vector2f.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/gameobjects/vector2f.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/main/Arkanoid.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/main/Arkanoid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/mng/gameManager$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/mng/gameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/mng/gameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/user/User$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BTLOOP/user/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/user/data/users.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BTLOOP/users.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/control/Play.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/control/Play.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/dat/IngameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/dat/IngameData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/fxml/levelSelection.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxml/levelSelection.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/fxml/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxml/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/fxml/play.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fxml/play.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Ball/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Ball/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/Brick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/BrickFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/BrickFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/NormalBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/NormalBrick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/PowerUpBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/PowerUpBrick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Brick/StrongBrick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Brick/StrongBrick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/BallController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/BallController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/BrickController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/BrickController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/PaddleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/PaddleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/objectInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/objectInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/Controller/powerUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/Controller/powerUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/paddle/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/paddle/Paddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameobjects/powerup/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameobjects/powerup/PowerUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mng/gameInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mng/gameInfo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,27 +94,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Arkanoid.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;UI-+-Sound&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/BTL/BTLOOP&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Arkanoid.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.zencoder-patch-add-chat-message-raw-content": "true",
+    "RunOnceActivity.zencoder-patch-generate-chat-message-id": "true",
+    "RunOnceActivity.zencoder-patch-migrate-custom-instruction": "true",
+    "RunOnceActivity.zencoder-patch-migrate-repo-info-to-rules": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "dev.sweep.assistant.data.RecentlyUsedFiles": "src\\gameobjects\\controller\\PowerUpController.java;src\\gameobjects\\controller\\BallController.java;src\\controller\\fxml\\play.fxml;src\\gameobjects\\brick\\Brick.java;src\\controller\\control\\Play.java;src\\controller\\dat\\IngameData.java;src\\gameobjects\\powerup\\PowerUp.java;src\\gameobjects\\controller\\PaddleController.java;src\\gameobjects\\controller\\LaserController.java;src\\gameobjects\\laser\\Laser.java",
+    "git-widget-placeholder": "TuanAnhFix",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/BTL/BTLOOP",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "sweep.chatMode": "Agent",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Arkanoid" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Arkanoid" />
@@ -103,8 +155,583 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="ai.zencoder.plugin.mcp">
+    <option name="internalToolsState" value="{&quot;fetch_webpage&quot;:true,&quot;web_search&quot;:true,&quot;ExecuteShellCommand&quot;:true,&quot;file_search&quot;:true,&quot;str_replace_editor&quot;:true,&quot;list_resources&quot;:true,&quot;FileDiagnosticsTool&quot;:true,&quot;fulltext_search&quot;:true,&quot;read_resource&quot;:true,&quot;RequirementsTool&quot;:true}" />
+    <option name="libraryTools">
+      <map>
+        <entry key="agentql">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="agentrpc">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="aiven">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="apache iotdb">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="apify">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="apimatic mcp">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="astra db">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="aws kb retrieval">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="axiom">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="bankless onchain">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="bicscan">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="box">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="brave search">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="browserbase">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="chroma">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="circleci">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="clickhouse">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="cloudflare">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="codacy">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="codelogic">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="comet opik">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="context7">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="convex">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="e2b">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="elasticsearch">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="everart">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="everything">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="exa">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="fetch">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="fibery">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="filesystem">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="financial datasets">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="firecrawl">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="fireproof">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="forevervm">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="git">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="gitee">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="github">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="gitlab">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="google drive">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="google maps">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="grafana">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="graphlit">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="greptimedb">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="heroku">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="hologres">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="hyperbrowser">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="ibm wxflows">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="inkeep">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="integration app">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="jetbrains">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="kagi search">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="langfuse prompt management">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="logfire">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="mailgun">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="make">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="meilisearch">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="memory">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="metoro">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="milvus">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="momento">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="motherduck">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="needle">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="neo4j">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="neon">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="notion">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="oceanbase">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="octagon">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="oxylabs">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="paddle">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="paypal">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="perplexity">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="playwright">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="postgresql">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="puppeteer">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="qdrant">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="ramp">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="raygun">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="redis">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="riza">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="screenshotone">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="search1api">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="semgrep">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="sentry">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="sequential thinking">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="singlestore">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="slack">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="sqlite">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="starrocks">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="stripe">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="taskmaster-ai">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="tavily">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="thirdweb">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="tinybird">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="unifai">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="unstructured">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="vectorize">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="zapier">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+        <entry key="zenml">
+          <value>
+            <McpServerInfo />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="zencoderBackendTools">
+      <map>
+        <entry key="ExecuteShellCommand">
+          <value>
+            <McpServerInfo>
+              <option name="status">
+                <McpServerStatus />
+              </option>
+            </McpServerInfo>
+          </value>
+        </entry>
+        <entry key="FileDiagnosticsTool">
+          <value>
+            <McpServerInfo>
+              <option name="status">
+                <McpServerStatus />
+              </option>
+            </McpServerInfo>
+          </value>
+        </entry>
+        <entry key="RequirementsTool">
+          <value>
+            <McpServerInfo>
+              <option name="status">
+                <McpServerStatus />
+              </option>
+            </McpServerInfo>
+          </value>
+        </entry>
+        <entry key="fetch_webpage">
+          <value>
+            <McpServerInfo>
+              <option name="status">
+                <McpServerStatus />
+              </option>
+            </McpServerInfo>
+          </value>
+        </entry>
+        <entry key="str_replace_editor">
+          <value>
+            <McpServerInfo>
+              <option name="status">
+                <McpServerStatus />
+              </option>
+            </McpServerInfo>
+          </value>
+        </entry>
+        <entry key="web_search">
+          <value>
+            <McpServerInfo>
+              <option name="status">
+                <McpServerStatus />
+              </option>
+            </McpServerInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="ai.zencoder.plugin.rag.RepoInfoWarningState">
+    <option name="currentWarningState" value="true" />
+    <option name="lastCheckTime" value="1762954775740" />
   </component>
 </project>

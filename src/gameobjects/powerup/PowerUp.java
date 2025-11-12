@@ -1,8 +1,8 @@
 package gameobjects.powerup;
 
-import gameobjects.Ball.Ball;
-import gameobjects.Controller.BallController;
-import gameobjects.Controller.objectInfo;
+import gameobjects.ball.Ball;
+import gameobjects.controller.BallController;
+import gameobjects.controller.objectInfo;
 import gameobjects.GameObject;
 import gameobjects.paddle.Paddle;
 import javafx.scene.Group;
@@ -110,9 +110,12 @@ public class PowerUp extends GameObject {
         }
     }
 
-    //Laser Paddle powerup
-    public static void laserPaddle_Activation() {
+    public static void laserPaddle_Activation(Paddle paddle) {
+        paddle.setHasLaser(true);
+    }
 
+    public static void laserPaddle_Deactivation(Paddle paddle) {
+        paddle.setHasLaser(false);
     }
 
 

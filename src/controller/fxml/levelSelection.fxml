@@ -11,12 +11,12 @@
     <children>
         <ImageView fitHeight="600.0" fitWidth="800.0" opacity="0.7" pickOnBounds="true">
             <image>
-                <Image url="@../../../resources/gfx/LevelSelection/Bg.jpg" />
+                <Image url="@/gfx/LevelSelection/Bg.jpg" />
             </image>
         </ImageView>
         <ImageView fitHeight="112.0" fitWidth="307.0" layoutX="249.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../resources/gfx/LevelSelection/LevelSelectTitle.png" />
+                <Image url="@/gfx/LevelSelection/LevelSelectTitle.png" />
             </image>
         </ImageView>
         <VBox fillWidth="false" layoutX="76.0" layoutY="80.0" prefHeight="241.0" prefWidth="496.0" spacing="50.0">
@@ -31,7 +31,7 @@
         </VBox>
         <ImageView fitHeight="300.0" fitWidth="400.0" layoutX="250.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../resources/gfx/LevelSelection/Filler.png" />
+                <Image url="@/gfx/LevelSelection/Filler.png" />
             </image>
         </ImageView>
     </children>

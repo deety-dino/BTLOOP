@@ -1,17 +1,12 @@
-package gameobjects.Controller;
+package gameobjects.controller;
 
-import gameobjects.Ball.Ball;
-import gameobjects.paddle.Paddle;
 import gameobjects.powerup.PowerUp;
-import javafx.scene.Group;
 import javafx.scene.text.Text;
 import mng.gameInfo;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-public class PowerUpController implements objectInfo {
+public class PowerUpController implements gameobjects.controller.objectInfo {
 
     private static PowerUpController powerUpController;
     private ArrayList<PowerUp> powerUps;
@@ -74,7 +69,9 @@ public class PowerUpController implements objectInfo {
         if (laserPaddle_time > 0) {
             laserPaddle_time -= time;
             if (laserPaddle_time > 0) {
-                PowerUp.laserPaddle_Activation();
+                PowerUp.laserPaddle_Activation(PaddleController.getInstance().getPaddle());
+            } else {
+                PowerUp.laserPaddle_Deactivation(PaddleController.getInstance().getPaddle());
             }
         }
         if (widePaddle_time > 0) {

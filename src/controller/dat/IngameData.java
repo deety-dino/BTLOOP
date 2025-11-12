@@ -1,17 +1,17 @@
 package controller.dat;
 
-import gameobjects.Ball.Ball;
-import gameobjects.Brick.Brick;
-import gameobjects.Brick.BrickFactory;
-import gameobjects.Controller.BallController;
-import gameobjects.Controller.BrickController;
-import gameobjects.Controller.PaddleController;
-import gameobjects.Controller.PowerUpController;
+import gameobjects.ball.Ball;
+import gameobjects.brick.Brick;
+import gameobjects.brick.BrickFactory;
+import gameobjects.controller.BallController;
+import gameobjects.controller.BrickController;
+import gameobjects.controller.LaserController;
+import gameobjects.controller.PaddleController;
+import gameobjects.controller.PowerUpController;
+import gameobjects.laser.Laser;
 import gameobjects.powerup.PowerUp;
 import javafx.scene.Group;
 import javafx.scene.text.Text;
-
-// Removed unused import
 
 public class IngameData {
     private final Object lock = new Object();
@@ -20,13 +20,18 @@ public class IngameData {
     private boolean isRunning;
     private boolean leftPressed = false;
     private boolean rightPressed = false;
+    private boolean spacePressed = false;
+
+    private int lives = 3;
+    private int score = 0;
+    private int highScore = 0;
 
     BallController balls;
     BrickController bricks;
     PaddleController paddle;
     PowerUpController powerUps;
+    LaserController lasers;
 
-    //Constructor
     public IngameData(Group root) {
         this.root = root;
         isPause = false;
@@ -35,6 +40,9 @@ public class IngameData {
         bricks = BrickController.getInstance();
         paddle = PaddleController.getInstance();
         powerUps = PowerUpController.getInstance();
+        lasers = LaserController.getInstance();
+        balls.setGameData(this);
+        lasers.setGameData(this);
     }
 
 
@@ -77,22 +85,31 @@ public class IngameData {
     private void refesh() {
         isRunning = true;
         isPause = false;
+        lives = 3;
+        score = 0;
 
         root.getChildren().removeAll(root.getChildren());
         balls.refresh();
         bricks.refresh();
         powerUps.refresh();
         paddle.refresh();
+        lasers.refresh();
     }
 
     public void update(double time) {
         if (balls.isEmpty()) {
-            isRunning = false;
+            lives--;
+            if (lives <= 0) {
+                isRunning = false;
+            } else {
+                balls.addBall(new Ball(400, 300, 8));
+            }
         } else {
             bricks.update(time);
-            paddle.update(time, leftPressed, rightPressed);
+            paddle.update(time, leftPressed, rightPressed, spacePressed);
             balls.update(time);
-            powerUps.update( time);
+            powerUps.update(time);
+            lasers.update(time);
         }
     }
 
@@ -107,10 +124,12 @@ public class IngameData {
         for(PowerUp powerUp : powerUps.getPowerUps()) {
             root.getChildren().add(powerUp.getNode());
         }
+        for(Laser laser : lasers.getLasers()) {
+            root.getChildren().add(laser.getNode());
+        }
         root.getChildren().add(paddle.getPaddle().getNode());
     }
 
-    //Getter and setter
     public void setLeftPressed(boolean leftPressed) {
         this.leftPressed = leftPressed;
     }
@@ -119,8 +138,36 @@ public class IngameData {
         this.rightPressed = rightPressed;
     }
 
+    public void setSpacePressed(boolean spacePressed) {
+        this.spacePressed = spacePressed;
+    }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public void addScore(int points) {
+        score += points;
+        if (score > highScore) {
+            highScore = score;
+        }
+    }
+
     public void setPause() {
         isPause = !isPause;
+    }
+
+    public void resume() {
+        isRunning = true;
+        isPause = false;
     }
 
     public boolean isPause() {
