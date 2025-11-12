@@ -7,13 +7,15 @@ import gameobjects.Controller.BallController;
 import gameobjects.Controller.BrickController;
 import gameobjects.Controller.PaddleController;
 import gameobjects.Controller.PowerUpController;
+import gameobjects.powerup.PowerUp;
 import javafx.scene.Group;
 import javafx.scene.text.Text;
 
 // Removed unused import
 
 public class IngameData {
-    private final Group root;
+    private final Object lock = new Object();
+    private Group root;
     private boolean isPause;
     private boolean isRunning;
     private boolean leftPressed = false;
@@ -40,11 +42,8 @@ public class IngameData {
         powerUps.getText(laser, wide, speed);
     }
 
-    public void loadData(int level) {
-        isPause = false;
-        isRunning = true;
-        balls.refresh();
-        bricks.refresh();
+    public synchronized void loadData(int level) {
+        refesh();
         switch (level) {
             case 1:
                 level1();
@@ -52,6 +51,7 @@ public class IngameData {
             default:
                 System.out.println("Coming soon...");
         }
+        getGroup();
     }
 
     //level Pane
@@ -63,7 +63,6 @@ public class IngameData {
         double brickHeight = 50;
         double offsetX = 35;
         double offsetY = 50;
-
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 Brick brick = BrickFactory.createRandomBrick(
@@ -75,15 +74,40 @@ public class IngameData {
         }
     }
 
+    private void refesh() {
+        isRunning = true;
+        isPause = false;
+
+        root.getChildren().removeAll(root.getChildren());
+        balls.refresh();
+        bricks.refresh();
+        powerUps.refresh();
+        paddle.refresh();
+    }
+
     public void update(double time) {
-        if(balls.isEmpty()) {
-            isRunning =  false;
+        if (balls.isEmpty()) {
+            isRunning = false;
         } else {
-            bricks.update(root, time);
+            bricks.update(time);
             paddle.update(time, leftPressed, rightPressed);
-            balls.update(root, time);
-            powerUps.update(root, time);
+            balls.update(time);
+            powerUps.update( time);
         }
+    }
+
+    public void getGroup() {
+        root.getChildren().removeAll(root.getChildren());
+        for (Ball ball : balls.getBalls()) {
+            root.getChildren().add(ball.getNode());
+        }
+        for(Brick brick : bricks.getBricks()) {
+            root.getChildren().add(brick.getNode());
+        }
+        for(PowerUp powerUp : powerUps.getPowerUps()) {
+            root.getChildren().add(powerUp.getNode());
+        }
+        root.getChildren().add(paddle.getPaddle().getNode());
     }
 
     //Getter and setter
@@ -93,17 +117,6 @@ public class IngameData {
 
     public void setRightPressed(boolean rightPressed) {
         this.rightPressed = rightPressed;
-    }
-
-    public void getGroup() {
-        root.getChildren().clear();
-        root.getChildren().add(paddle.getPaddle().getNode());
-        for (Brick brick : bricks.getBricks()) {
-            root.getChildren().add(brick.getNode());
-        }
-        for (Ball ball : balls.getBalls()) {
-            root.getChildren().add(ball.getNode());
-        }
     }
 
     public void setPause() {
@@ -116,9 +129,5 @@ public class IngameData {
 
     public boolean isRunning() {
         return isRunning;
-    }
-
-    public void setRunning() {
-        isRunning = true;
     }
 }

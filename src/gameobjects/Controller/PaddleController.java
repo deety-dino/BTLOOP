@@ -11,6 +11,12 @@ public class PaddleController implements objectInfo {
         paddle = new Paddle(350, 550, 100, 15);
     }
 
+    @Override
+    public void refresh() {
+        paddle.getPosition().setPosition(350, 550);
+        paddle.getNode().setLayoutX(350);
+        paddle.getNode().setLayoutY(550);
+    }
     public Paddle getPaddle() {
         return paddle;
     }
@@ -24,14 +30,9 @@ public class PaddleController implements objectInfo {
         }
         return instance;
     }
-    @Override
-    public void refresh() {
-        paddle.getPosition().setPosition(350, 550);
-    }
 
     @Override
-    public void update(Group root, double time) {
-
+    public void update(double time) {
     }
 
     public void update(double time, boolean leftPressed, boolean rightPressed) {

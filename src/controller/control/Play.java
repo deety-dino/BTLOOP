@@ -66,7 +66,6 @@ public class Play {
         data = new IngameData(gamePlay);
 
         Platform.runLater(() -> root.requestFocus());
-        // Set key handlers on FX thread (these only set model flags)
         root.setOnKeyReleased(e -> {
             if (e.getCode() == KeyCode.LEFT) data.setLeftPressed(false);
             if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(false);
@@ -77,7 +76,6 @@ public class Play {
             if (e.getCode() == KeyCode.K) data.setPause();
         });
 
-        // Schedule the game tick on a worker thread at ~60 FPS (16ms)
         ThreadPoolManager tpm = ThreadPoolManager.getInstance();
         gameTicker = tpm.scheduleAtFixedRate(() -> {
             long now = System.nanoTime();
@@ -88,8 +86,7 @@ public class Play {
                     // Load level data in background; then sync scene on FX thread
                     int levelToLoad = user.getSelectedLevel();
                     tpm.submit(() -> {
-                        data.loadData(levelToLoad); // model initialization (creates bricks etc)
-                        // reset timer in worker thread so the next update has a fresh baseline
+                        data.loadData(levelToLoad);
                         cur = System.nanoTime();
                         Platform.runLater(() -> {
                             data.getGroup();
@@ -101,7 +98,6 @@ public class Play {
                 } else {
                     double deltaSeconds;
                     if (cur == 0) {
-                        // first frame after start/load: approximate 16ms
                         deltaSeconds = 16.0 / 1000.0;
                     } else {
                         deltaSeconds = (now - cur) / 1000000000.0;
@@ -117,37 +113,15 @@ public class Play {
                         // Perform update (model work) off FX thread, passing a delta time
                         Platform.runLater(() -> data.update(deltaSeconds));
                         // Sync UI state (power-up timers etc.) on FX thread
-                        Platform.runLater(() -> data.getText(LASER_POWERUP_TIME, WIDEPADDLE_POWERUP_TIME, SPEED_POWERUP_TIME));
+                        Platform.runLater(() -> {
+                            data.getGroup();
+                            data.getText(LASER_POWERUP_TIME, WIDEPADDLE_POWERUP_TIME, SPEED_POWERUP_TIME);
+                        });
                     }
                 }
             } catch (Throwable t) {
                 t.printStackTrace();
             }
         }, 0, 16, TimeUnit.MILLISECONDS);
-    }
-
-    private void update(double time) {
-        if (!data.isRunning()) {
-            pane.setVisible(true);
-            gamePlay.setVisible(false);
-        } else if (!data.isPause()) {
-            root.setOnKeyReleased(e -> {
-                if (e.getCode() == KeyCode.LEFT) {
-                    data.setLeftPressed(false);
-                }
-                if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(false);
-            });
-            root.setOnKeyPressed(e -> {
-                if (e.getCode() == KeyCode.LEFT) data.setLeftPressed(true);
-                if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(true);
-                if (e.getCode() == KeyCode.K) {
-                    data.setPause();
-                }
-            });
-            root.setFocusTraversable(true);
-            Platform.runLater(() -> root.requestFocus());
-            data.update(time);
-            data.getText(LASER_POWERUP_TIME, WIDEPADDLE_POWERUP_TIME, SPEED_POWERUP_TIME);
-        }
     }
 }

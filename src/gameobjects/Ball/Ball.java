@@ -23,6 +23,9 @@ public class Ball extends GameObject {
         ve_Multi = 1;
         direction = new vector2f(1, 1);
     }
+    public Ball getCopy() {
+        return new Ball(getX(), getY(), getRadius());
+    }
 
     @Override
     public void update(double time) {

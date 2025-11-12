@@ -30,8 +30,7 @@ public class BrickController implements objectInfo {
     }
 
     @Override
-    public void update(Group root, double time) {
-
+    public void update(double time) {
     }
 
     @Override

@@ -1,5 +1,6 @@
 package mng;
 
+import java.sql.Time;
 import java.util.concurrent.*;
 
 /**
@@ -46,6 +47,9 @@ public class ThreadPoolManager {
         return scheduledExecutor.scheduleAtFixedRate(command, initialDelay, period, unit);
     }
 
+    public ScheduledFuture<?> scheduleAtFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit) {
+        return scheduledExecutor.scheduleWithFixedDelay(command, initialDelay, delay, unit);
+    }
     // Shutdown executors gracefully
     public void shutdown() {
         executorService.shutdown();
