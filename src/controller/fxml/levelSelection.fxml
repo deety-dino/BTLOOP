@@ -8,31 +8,27 @@
 <?import javafx.scene.text.Font?>
 
 <Pane fx:id="root" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.control.levelSelection">
-    <children>
-        <ImageView fitHeight="600.0" fitWidth="800.0" opacity="0.7" pickOnBounds="true">
-            <image>
-                <Image url="@../../../resources/gfx/LevelSelection/Bg.jpg" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="112.0" fitWidth="307.0" layoutX="249.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../resources/gfx/LevelSelection/LevelSelectTitle.png" />
-            </image>
-        </ImageView>
-        <VBox fillWidth="false" layoutX="76.0" layoutY="80.0" prefHeight="241.0" prefWidth="496.0" spacing="50.0">
-            <children>
-                <Button mnemonicParsing="false" onAction="#loadLevel1" prefHeight="45.0" prefWidth="90.0" stylesheets="/style.css" text="Level 1">
-                    <font>
-                        <Font size="13.0" />
-                    </font></Button>
-                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadLevel2" prefHeight="45.0" prefWidth="90.0" stylesheets="/style.css" text="Level 2" />
-                <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#loadLevel3" prefHeight="45.0" prefWidth="90.0" stylesheets="/style.css" text="Level 3" />
-            </children>
-        </VBox>
-        <ImageView fitHeight="300.0" fitWidth="400.0" layoutX="250.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../resources/gfx/LevelSelection/Filler.png" />
-            </image>
-        </ImageView>
-    </children>
+    <ImageView fitHeight="600.0" fitWidth="800.0" opacity="0.7" pickOnBounds="true">
+        <Image url="@../../../resources/gfx/LevelSelection/Bg.jpg" />
+    </ImageView>
+    <ImageView fitHeight="112.0" fitWidth="307.0" layoutX="249.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../../resources/gfx/LevelSelection/LevelSelectTitle.png" />
+    </ImageView>
+   <Button layoutX="772.0" mnemonicParsing="false" onAction="#logout" stylesheets="/style.css" text="x">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </Button>
+    <VBox fillWidth="false" layoutX="76.0" layoutY="210.0" spacing="50.0">
+        <Button mnemonicParsing="false" onAction="#loadLevel1" prefWidth="90.0" stylesheets="/style.css" text="Level 1">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
+        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadLevel2" prefWidth="90.0" stylesheets="/style.css" text="Level 2" />
+        <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#loadLevel3" prefWidth="90.0" stylesheets="/style.css" text="Level 3" />
+    </VBox>
+    <ImageView fitHeight="300.0" fitWidth="400.0" layoutX="250.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../../resources/gfx/LevelSelection/Filler.png" />
+    </ImageView>
 </Pane>

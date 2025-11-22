@@ -1,29 +1,23 @@
 package controller.control;
 
-import controller.dat.IngameData;
+import controller.dat.GameData;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import mng.SceneManager;
 import mng.ThreadPoolManager;
-import mng.gameManager;
+import mng.GameEngine;
 import user.User;
+import user.UserManager;
 
-import java.io.IOException;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import mng.gameInfo.State;
-
 public class Play {
-
-    private ScheduledFuture<?> gameTicker;
-
+    private GameData gameData;
     private long cur;
-    private IngameData data;
-    private User user;
     @FXML
     protected Pane root;
     @FXML
@@ -35,139 +29,100 @@ public class Play {
 
     @FXML
     protected void clickPause() {
-        data.state = State.PAUSE;
-        data.setPause();
+        if (gameData.getStatus().isState_PAUSE())  {
+            gameData.getStatus().setState_PLAYING();
+        } else {
+            gameData.getStatus().setState_PAUSE();
+        }
+        gameData.getStatus().setPause();
         Platform.runLater(() -> root.requestFocus());
     }
 
     @FXML
-    protected void clickToHome() throws IOException {
-        data.state = State.LOADING;
-        gameManager.State = gameManager.ApplicationState.LEVEL_SELECTION_SCREEN;
-        gameManager.letShow();
+    protected void clickToHome() {
+        gameData.refesh();
+        GameEngine.sceneState = SceneManager.SceneState.LEVEL_SELECETION_SCENE;
+        GameEngine.letShow();
         Platform.runLater(() -> root.requestFocus());
     }
 
     @FXML
     protected void clickRestart() {
-        data.state = State.IN_GAME;
-        data.loadData(user.getSelectedLevel());
-        data.getGroup();
+        gameData.getStatus().setState_PLAYING();
+        gameData.loadData(UserManager.getInstance().getUser().getSelectedLevel());
         cur = 0;
         Platform.runLater(() -> root.requestFocus());
     }
 
     @FXML
     protected void clickNext() {
-        User.setSelectedLevel(user.getSelectedLevel() + 1);
-        if (user.getSelectedLevel() <= 3) {
-            data.state = State.IN_GAME;
-            data.loadData(user.getSelectedLevel());
-            data.getGroup();
+        UserManager.getInstance().getUser().setSelectedLevel(UserManager.getInstance().getUser().getSelectedLevel() + 1);
+        if (UserManager.getInstance().getUser().getSelectedLevel() <= 3) {
+            gameData.getStatus().setState_PLAYING();
+            gameData.loadData(UserManager.getInstance().getUser().getSelectedLevel());
             Platform.runLater(() -> root.requestFocus());
         }
     }
 
     @FXML
     protected void clickContinue() {
-        data.state = State.IN_GAME;
+        gameData.getStatus().setState_PLAYING();
+        gameData.getStatus().setPause();
+        Platform.runLater(() -> root.requestFocus());
     }
+
     @FXML
     protected void initialize() {
-        data = new IngameData(gamePlay);
-        data.state = State.LOADING;
+        gameData = GameData.getInstance(gamePlay);
         Platform.runLater(() -> root.requestFocus());
         root.setOnKeyReleased(e -> {
-            if (e.getCode() == KeyCode.LEFT) data.setLeftPressed(false);
-            if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(false);
+            if (e.getCode() == KeyCode.LEFT) gameData.getStatus().setLeftPressed(false);
+            if (e.getCode() == KeyCode.RIGHT) gameData.getStatus().setRightPressed(false);
         });
         root.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.LEFT) data.setLeftPressed(true);
-            if (e.getCode() == KeyCode.RIGHT) data.setRightPressed(true);
-            if (e.getCode() == KeyCode.K) data.setPause();
+            if (e.getCode() == KeyCode.LEFT) gameData.getStatus().setLeftPressed(true);
+            if (e.getCode() == KeyCode.RIGHT) gameData.getStatus().setRightPressed(true);
         });
 
         ThreadPoolManager tpm = ThreadPoolManager.getInstance();
-        gameTicker = tpm.scheduleAtFixedRate(() -> {
+        // Load level data in background; then sync scene on FX thread
+        tpm.scheduleAtFixedRate(() -> {
             long now = System.nanoTime();
-            //System.out.println(data.state);
-            try {
-                switch (data.state) {
-                    case LOADING: {
-                        GAME_STAT.setVisible(true);
-                        gamePlay.setVisible(true);
-                        PAUSE.setVisible(false);
-                        VICTORY.setVisible(false);
-                        GAME_OVER.setVisible(false);
-                        if (user == null) {
-                            user = User.getInstance();
-                        } else if (user.isSelected()) {
-                            // Load level data in background; then sync scene on FX thread
-                            int levelToLoad = user.getSelectedLevel();
-                            cur = System.nanoTime();
-                            Platform.runLater(() -> {
-                                System.out.println("Loading");
-                                data.loadData(levelToLoad);
-                                data.getGroup();
-                            });
-                            User.setSelected(false);
-                            data.state = State.IN_GAME;
-                        }
-                        break;
-                    }
-                    case PAUSE: {
-                        GAME_STAT.setVisible(false);
-                        gamePlay.setVisible(false);
-                        PAUSE.setVisible(true);
-                        VICTORY.setVisible(false);
-                        GAME_OVER.setVisible(false);
-                        break;
-                    }
-                    case IN_GAME: {
-                        GAME_STAT.setVisible(true);
-                        gamePlay.setVisible(true);
-                        PAUSE.setVisible(false);
-                        VICTORY.setVisible(false);
-                        GAME_OVER.setVisible(false);
+            if(GameEngine.sceneState == SceneManager.SceneState.GAME_SCENE){
+                gamePlay.setVisible(gameData.getStatus().isState_PLAYING());
+                GAME_STAT.setVisible(gameData.getStatus().isState_PLAYING());
+                GAME_OVER.setVisible(gameData.getStatus().isState_GAME_OVER());
+                PAUSE.setVisible(gameData.getStatus().isState_PAUSE());
+                VICTORY.setVisible(gameData.getStatus().isState_VICTORY());
+                if (UserManager.getInstance().getUser() != null) {
+                    if (UserManager.getInstance().getUser().isSelected()) {
+                        // Load level data in background; then sync scene on FX thread
+                        Platform.runLater(() -> {
+                            gameData.loadData(UserManager.getInstance().getUser().getSelectedLevel());
+                            gameData.getStatus().setState_PLAYING();
+                        });
+                        UserManager.getInstance().getUser().setSelected(false);
+                    } else {
                         double deltaSeconds;
                         if (cur == 0) {
                             deltaSeconds = 16.0 / 1000.0;
                         } else {
                             deltaSeconds = (now - cur) / 1000000000.0;
                         }
-                        cur = now;
-                        Platform.runLater(() -> data.update(deltaSeconds));
-                        System.out.println(data.state);
-                        Platform.runLater(() -> {
-                            data.getGroup();
-                            data.getText(LASER_POWERUP_TIME, WIDEPADDLE_POWERUP_TIME, SPEED_POWERUP_TIME);
-                        });
-                        break;
-                    }
-                    case VICTORY: {
-                        Platform.runLater(() -> {
-                            GAME_STAT.setVisible(false);
-                            gamePlay.setVisible(false);
-                            PAUSE.setVisible(false);
-                            VICTORY.setVisible(true);
-                            GAME_OVER.setVisible(false);
-                        });
-                        break;
-                    }
-                    case GAMEOVER: {
-                        Platform.runLater(() -> {
-                            GAME_STAT.setVisible(false);
-                            gamePlay.setVisible(false);
-                            PAUSE.setVisible(false);
-                            VICTORY.setVisible(false);
-                            GAME_OVER.setVisible(true);
-                        });
-                        break;
+                        synchronized (this){
+                            Platform.runLater(() -> gameData.update(deltaSeconds));
+                        }
+                        synchronized (this) {
+                            Platform.runLater(() -> {
+                                gameData.getGroup();
+                                gameData.getPowerUpText(LASER_POWERUP_TIME, WIDEPADDLE_POWERUP_TIME, SPEED_POWERUP_TIME);
+                                gameData.getStatText(SCORE_TEXT, HIGHSCORE_TEXT, HEART_TEXT);
+                            });
+                        }
                     }
                 }
-            } catch (Throwable t) {
-                t.printStackTrace();
             }
+            cur = now;
         }, 0, 16, TimeUnit.MILLISECONDS);
     }
 }
