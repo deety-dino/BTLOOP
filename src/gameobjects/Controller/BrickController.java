@@ -1,17 +1,19 @@
 package gameobjects.Controller;
 
+import gameobjects.Ball.Ball;
 import gameobjects.Brick.Brick;
-import javafx.scene.Group;
+import gameobjects.Brick.PowerUpBrick;
 
 import java.util.ArrayList;
 
-public class BrickController implements objectInfo {
+public class BrickController implements ObjectController {
     private static BrickController instance;
-    private ArrayList<Brick> bricks;
+    private final ArrayList<Brick> bricks;
 
     private BrickController() {
         bricks = new ArrayList<>();
     }
+
     public static BrickController getInstance() {
         if (instance == null) {
             instance = new BrickController();
@@ -19,18 +21,6 @@ public class BrickController implements objectInfo {
         return instance;
     }
 
-    public ArrayList<Brick> getBricks() {
-        return bricks;
-    }
-    public void setBricks(ArrayList<Brick> bricks) {
-        this.bricks = bricks;
-    }
-    public void addBrick(Brick brick) {
-        bricks.add(brick);
-    }
-    public boolean isEmpty() {
-        return bricks.isEmpty();
-    }
     @Override
     public void update(double time) {
     }
@@ -38,5 +28,34 @@ public class BrickController implements objectInfo {
     @Override
     public void refresh() {
         bricks.clear();
+    }
+
+
+    public ArrayList<Brick> getBricks() {
+        return bricks;
+    }
+
+    public void addBrick(Brick brick) {
+        bricks.add(brick);
+    }
+
+    public boolean isEmpty() {
+        return bricks.isEmpty();
+    }
+
+    public Brick checkBrickCollision(Ball ball) {
+        for (Brick brick : bricks) {
+            if (ball.intersects(brick)) {
+                brick.hit();
+                if (brick.isDestroyed()) {
+                    if (brick instanceof PowerUpBrick) {
+                        PowerUpController.getInstance().addPowerUp(((PowerUpBrick) brick).getPowerUp());
+                    }
+                    bricks.remove(brick);
+                }
+                return brick;
+            }
+        }
+        return null;
     }
 }

@@ -1,14 +1,17 @@
 package gameobjects.Controller;
 
+import controller.dat.GameStatusData;
+import gameobjects.Ball.Ball;
 import gameobjects.paddle.Paddle;
-import javafx.scene.Group;
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
 
-public class PaddleController implements objectInfo {
+public class PaddleController implements ObjectController {
     private static PaddleController instance;
-    private Paddle paddle;
+    private final Paddle paddle;
 
     private PaddleController() {
-        paddle = new Paddle(350, 550, 100, 15);
+        paddle = new Paddle(350, 550, defaultPaddleWidth, defaultPaddleHeight);
     }
 
     @Override
@@ -20,9 +23,6 @@ public class PaddleController implements objectInfo {
     public Paddle getPaddle() {
         return paddle;
     }
-    public void setPaddle(Paddle paddle) {
-        this.paddle = paddle;
-    }
 
     public static PaddleController getInstance() {
         if (instance == null) {
@@ -33,14 +33,23 @@ public class PaddleController implements objectInfo {
 
     @Override
     public void update(double time) {
+        paddle.update(time);
+        if (GameStatusData.getInstance().isLeftPressed()) {paddle.moveLeft(time);}
+        if (GameStatusData.getInstance().isRightPressed()) {paddle.moveRight(time);}
     }
 
-    public void update(double time, boolean leftPressed, boolean rightPressed) {
-        if(leftPressed) {
-            paddle.moveLeft(time);
+    private void bounceEffect() {
+        javafx.scene.effect.Glow glow = new javafx.scene.effect.Glow(0.3);
+        paddle.getNode().setEffect(glow);
+        PauseTransition pt = new PauseTransition(Duration.millis(100));
+        pt.setOnFinished(_ -> paddle.getNode().setEffect(null));
+        pt.play();
+    }
+    public boolean checkPaddleCollision(Ball ball) {
+        if (ball.intersects(paddle)) {
+            bounceEffect();
+            return true;
         }
-        if(rightPressed) {
-            paddle.moveRight(time);
-        }
+        return false;
     }
 }

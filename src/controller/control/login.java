@@ -4,15 +4,16 @@ import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import mng.gameManager;
-import user.User;
+import mng.SceneManager;
+import mng.GameEngine;
+import user.UserManager;
 
 public class login {
 
     @FXML
     protected Pane root;
     @FXML
-    protected Group loginField, signUpField ;
+    protected Group loginField, signUpField;
     @FXML
     protected TextField lUserName, lPassword, sUserName, sPassword, sRePassword;
 
@@ -22,16 +23,20 @@ public class login {
         loginField.setVisible(true);
         signUpField.setVisible(false);
     }
+
     @FXML
     protected void lLogin() {
         try {
-            User.login(lUserName.getText(), lPassword.getText());
-            gameManager.State = gameManager.ApplicationState.LEVEL_SELECTION_SCREEN;
-            gameManager.letShow();
+            UserManager.getInstance().login(lUserName.getText(), lPassword.getText());
+            GameEngine.sceneState = SceneManager.SceneState.LEVEL_SELECETION_SCENE;
+            GameEngine.letShow();
+            //lUserName.clear();
+            //lPassword.clear();
         } catch (Exception e) {
             System.err.println("Login error: " + e.getMessage());
-            return;
+            e.printStackTrace();
         }
+
     }
 
     @FXML
@@ -49,10 +54,9 @@ public class login {
     @FXML
     protected void sSignUp() {
         try {
-            User.signup(sUserName.getText(), sPassword.getText(), sRePassword.getText());
+            UserManager.getInstance().signup(sUserName.getText(), sPassword.getText(), sRePassword.getText());
         } catch (Exception e) {
             System.err.println("Login error: " + e.getMessage());
-            return;
         }
     }
 }

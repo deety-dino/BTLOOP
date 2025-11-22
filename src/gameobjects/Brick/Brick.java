@@ -9,46 +9,36 @@ public abstract class Brick extends GameObject {
 
     protected int hitPoints;
 
-    public Brick(double x, double y, double w, double h, int hitPoints, Color color) {
+    public Brick(double x, double y, double w, double h, int hitPoints) {
         super(x, y, w, h);
         this.hitPoints = hitPoints;
-
-        shape = new Rectangle(w, h, color);
-        shape.setLayoutX(x);
-        shape.setLayoutY(y);
     }
 
-    protected void loadBrickImage(String imagePath, Color fallbackColor) {
-        try {
-            Image brickImage = new Image(getClass().getResourceAsStream(imagePath));
-            ImageView imageView = new ImageView(brickImage);
+    @Override
+    protected void setImage(Image image, Color fallbackColor) {
+        if (image != null) {
+            ImageView imageView = new ImageView(image);
             imageView.setFitWidth(size.getWidth());
             imageView.setFitHeight(size.getHeight());
+            imageView.setLayoutX(position.getX());
+            imageView.setLayoutY(position.getY());
             imageView.setPreserveRatio(false);
             shape = imageView;
-            shape.setLayoutX(position.getX());
-            shape.setLayoutY(position.getY());
-        } catch (Exception e) {
-            System.out.println("Brick image not found: " + imagePath + ", using fallback color");
-            e.printStackTrace();
-            Rectangle rect = new Rectangle(size.getWidth(), size.getHeight(), fallbackColor);
-            shape = rect;
-            shape.setLayoutX(position.getX());
-            shape.setLayoutY(position.getY());
+        } else {
+            Rectangle rectangle =  new Rectangle(size.getWidth(), size.getHeight(), fallbackColor);
+            rectangle.setX(position.getX());
+            rectangle.setY(position.getY());
+            shape = rectangle;
         }
     }
 
     public void hit() {
         hitPoints--;
-        onHit();
     }
 
     public boolean isDestroyed() {
         return hitPoints <= 0;
     }
-
-    public void onDestroyed() {}
-    protected void onHit() {}
 
     @Override
     public void update(double time) {

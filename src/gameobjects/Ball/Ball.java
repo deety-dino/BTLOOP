@@ -1,5 +1,7 @@
 package gameobjects.Ball;
-import gameobjects.Controller.objectInfo;
+
+import controller.resources.GFXManager;
+import gameobjects.Controller.ObjectController;
 import gameobjects.GameObject;
 import gameobjects.paddle.Paddle;
 import gameobjects.vector2f;
@@ -7,7 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import mng.gameInfo;
+import mng.SceneManager;
 
 public class Ball extends GameObject {
     private vector2f direction;
@@ -19,32 +21,9 @@ public class Ball extends GameObject {
 
     public Ball(double x, double y, double radius) {
         super(x, y, radius * 2, radius * 2);
-
-        // Try to load ball image
-        try {
-            Image ballImage = new Image(getClass().getResourceAsStream("/gfx/ball/NormalBall.png"));
-            ImageView imageView = new ImageView(ballImage);
-            imageView.setFitWidth(radius * 2);
-            imageView.setFitHeight(radius * 2);
-            imageView.setPreserveRatio(false);
-
-            // Center the image at the ball's position
-            imageView.setX(x - radius);
-            imageView.setY(y - radius);
-
-            shape = imageView;
-        } catch (Exception e) {
-            System.out.println("Ball image not found, using circle fallback");
-            e.printStackTrace();
-
-            // Fallback to circle
-            Circle circ = new Circle(x, y, radius);
-            circ.setFill(Color.WHITE);
-            shape = circ;
-        }
-
         ve_Multi = 1;
         direction = new vector2f(1, 1);
+        setImage(GFXManager.getInstance().getGFX_Ball(), Color.WHITE);
     }
 
     public Ball getCopy() {
@@ -52,27 +31,41 @@ public class Ball extends GameObject {
     }
 
     @Override
+    protected void setImage(Image image, Color fallbackColor) {
+        if(image != null) {
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(size.getWidth());
+            imageView.setFitHeight(size.getHeight());
+            imageView.setPreserveRatio(false);
+            shape = imageView;
+        } else {
+            Circle circ = new Circle(position.getX(), position.getY(), size.getWidth());
+            circ.setFill(Color.WHITE);
+            shape = circ;
+        }
+    }
+
+    @Override
     public void update(double time) {
         direction.normalize(1);
-        position.setPosition(position.getX() + objectInfo.ballVelocity * ve_Multi * direction.getX() * time,
-                position.getY() + objectInfo.ballVelocity * ve_Multi * direction.getY() * time);
+        position.setPosition(position.getX() + ObjectController.BALL_VELOCITY * ve_Multi * direction.getX() * time,
+                position.getY() + ObjectController.BALL_VELOCITY * ve_Multi * direction.getY() * time);
 
         // Update position based on shape type
         if (shape instanceof Circle) {
             ((Circle) shape).setCenterX(position.getX());
             ((Circle) shape).setCenterY(position.getY());
-        } else if (shape instanceof ImageView) {
-            ImageView imageView = (ImageView) shape;
+        } else if (shape instanceof ImageView imageView) {
             imageView.setX(position.getX() - getRadius());
             imageView.setY(position.getY() - getRadius());
         }
 
-        if (position.getX() <= 0 || position.getX() >= gameInfo.width) {
+        if (position.getX() <= 0 || position.getX() >= SceneManager.width) {
             direction.setVector(-direction.getX(), direction.getY());
-            if(position.getX() <= 0) {
+            if (position.getX() <= 0) {
                 position.setPosition(2, position.getY());
             } else {
-                position.setPosition(gameInfo.width - 2, position.getY());
+                position.setPosition(SceneManager.width - 2, position.getY());
             }
         }
         if (position.getY() <= 0) {
@@ -89,14 +82,6 @@ public class Ball extends GameObject {
     public void setDirection(double x, double y) {
         if (direction == null) direction = new vector2f(x, y);
         else direction.setVector(x, y);
-    }
-
-    public double getX() {
-        return position.getX();
-    }
-
-    public double getY() {
-        return position.getY();
     }
 
     public void bounce(GameObject obj) {
@@ -133,11 +118,13 @@ public class Ball extends GameObject {
             direction.setVector(-direction.getX(), direction.getY());
         }
     }
+
     public void bouncePaddle(Paddle paddle) {
         double X = paddle.getX() + paddle.getSize().getWidth() / 2;
         double Y = paddle.getY() + paddle.getSize().getHeight() / 2;
         direction.setVector(position.getX() - X, position.getY() - Y);
     }
+
     public double getRadius() {
         return size.getHeight() / 2;
     }

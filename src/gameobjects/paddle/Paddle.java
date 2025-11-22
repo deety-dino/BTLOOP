@@ -1,44 +1,50 @@
 package gameobjects.paddle;
 
-import gameobjects.Controller.objectInfo;
+import controller.resources.GFXManager;
+import gameobjects.Controller.ObjectController;
 import gameobjects.GameObject;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.image.*;
-import mng.gameInfo;
+import mng.SceneManager;
 
 public class Paddle extends GameObject {
     public Paddle(double x, double y, double w, double h) {
         super(x, y, w, h);
-        shape = new Rectangle(w, h);
-        Rectangle rect = (Rectangle) shape;
-        try {
-            Image paddleTexture = new Image(getClass().getResourceAsStream("/gfx/pad/Pad.png"));
-            rect.setFill(new javafx.scene.paint.ImagePattern(paddleTexture));
-        } catch (Exception e) {
-            // Fallback to solid color
-            rect.setFill(Color.LIGHTBLUE);
-        }
-        shape.setLayoutX(x);
-        shape.setLayoutY(y);
+        setImage(GFXManager.getInstance().getGFX_Paddle(), Color.LIGHTBLUE);
     }
 
     public void moveLeft(double time) {
         if (position.getX() > 0) {
-            position.setPosition(position.getX() - objectInfo.paddleVelocity * time, position.getY());
+            position.setPosition(position.getX() - ObjectController.paddleVelocity * time, position.getY());
             shape.setLayoutX(position.getX());
         }
     }
 
     public void moveRight(double time) {
-        if (position.getX() + size.getWidth() < gameInfo.width) {
-            position.setPosition(position.getX() + objectInfo.paddleVelocity * time, position.getY());
+        if (position.getX() + size.getWidth() < SceneManager.width) {
+            position.setPosition(position.getX() + ObjectController.paddleVelocity * time, position.getY());
             shape.setLayoutX(position.getX());
         }
     }
 
     @Override
-    public void update(double time) {
+    protected void setImage(Image image, Color fallbackColor) {
+        if (image != null) {
+            ImageView imageView = new ImageView(image);
+            imageView.setLayoutX(position.getX());
+            imageView.setLayoutY(position.getY());
+            imageView.setFitHeight(size.getHeight());
+            imageView.setFitWidth(size.getWidth());
+            imageView.setPreserveRatio(true);
+            shape = imageView;
+        } else {
+            Rectangle rect = (Rectangle) shape;
+            rect.setFill(fallbackColor);
+        }
+    }
 
+    @Override
+    public void update(double time) {
     }
 }

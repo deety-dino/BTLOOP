@@ -1,6 +1,5 @@
 package mng;
 
-import java.sql.Time;
 import java.util.concurrent.*;
 
 /**
@@ -27,29 +26,11 @@ public class ThreadPoolManager {
         return instance;
     }
 
-    // Submit a one-off runnable task
-    public Future<?> submit(Runnable task) {
-        return executorService.submit(task);
-    }
-
-    // Submit a callable task
-    public <T> Future<T> submit(Callable<T> task) {
-        return executorService.submit(task);
-    }
-
-    // Schedule a single run after a delay
-    public ScheduledFuture<?> schedule(Runnable task, long delay, TimeUnit unit) {
-        return scheduledExecutor.schedule(task, delay, unit);
-    }
-
     // Schedule a recurring task at fixed rate (this is the method Play.java expects)
-    public ScheduledFuture<?> scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit) {
-        return scheduledExecutor.scheduleAtFixedRate(command, initialDelay, period, unit);
+    public void scheduleAtFixedRate(Runnable command, long initialDelay, long period, TimeUnit unit) {
+        scheduledExecutor.scheduleAtFixedRate(command, initialDelay, period, unit);
     }
 
-    public ScheduledFuture<?> scheduleAtFixedDelay(Runnable command, long initialDelay, long delay, TimeUnit unit) {
-        return scheduledExecutor.scheduleWithFixedDelay(command, initialDelay, delay, unit);
-    }
     // Shutdown executors gracefully
     public void shutdown() {
         executorService.shutdown();
